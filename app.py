@@ -1,6 +1,7 @@
 from flask import Flask, jsonify, request
 import random
 import requests as req
+import os
 
 app = Flask(__name__)
 
@@ -86,22 +87,7 @@ cocktails = {
     "cupid": {
         "description": "A refreshing Shrub cordial gin drink with strawberry and vinegar for revitalising acidity, topped with soda for a lively effervescence.",
         "ingredients": ["Gin", "Strawberry Shrub", "Vinegar", "Soda"],
-        "images": ["https://www.finamill.com/cdn/shop/articles/cupid_kiss_b20c04d7-bb04-4a52-ad95-66c102017390.jpg?v=1745506834"]
-    },
-    "immortal_khaya": {
-        "description": "Inspired by the 100-year-old Khaya tree, this vibrant green vodka cocktail blends sourness, sweetness, and subtle peppery undertones.",
-        "ingredients": ["Vodka", "Pepper", "Honey", "Green Apple"],
-        "images": ["https://www.epicureasia.com/wp-content/uploads/2024/06/X7V05586-HD-Fits.jpg"]
-    },
-    "albatross": {
-        "description": "A milk punch clarified for a pristine appearance, with an exceptionally gentle and velvety texture derived from Cognac, Fino Sherry, and Honey.",
-        "ingredients": ["Cognac", "Fino Sherry", "Vermouth", "Honey", "Milk"],
-        "images": ["https://www.bcliquorstores.com/sites/default/files/recipe/BarStar_Albatross_KI.jpg"]
-    },
-    "the_braid_martini": {
-        "description": "A timeless Dry Martini crafted from the house 1924 Gin and dry vermouth, personalised with aromatic botanical options of lavender, rose, or jasmine.",
-        "ingredients": ["1924 Gin", "Dry Vermouth", "Lavender / Rose / Jasmine"],
-        "images": ["https://www.cocktailicious.nl/wp-content/uploads/2019/12/Pornstar_Martini_cocktail.jpg"]
+        "images": ["https://www.liquor.com/thmb/P9lQ1-ePDlYhfPA-kYRvM-G-ezM=/750x0/filters:no_upscale():max_bytes(150000):strip_icc():format(webp)/cupids-champagne-potion-720x720-primary-a9eebba81d9343d8870c9054636c1094.jpg"]
     },
     "1924": {
         "description": "The Braid Bar's signature Tiki-style cocktail, a fruity and refreshing homage to the house 1924 Gin, maintaining its full alcoholic strength.",
@@ -572,6 +558,103 @@ cocktails = {
 
 
 
+
+# ─────────────────────────────────────────
+#  Cocktail History Data (10 iconic cocktails)
+# ─────────────────────────────────────────
+cocktail_history = {
+    "old_fashioned": {
+        "name": "Old Fashioned",
+        "year": "1806",
+        "origin": "United States",
+        "era": "19th Century",
+        "summary": "The Old Fashioned is widely considered the original cocktail. The word 'cocktail' was first defined in 1806 as a mix of spirits, sugar, water, and bitters — which is exactly what an Old Fashioned is. By the 1880s, bartenders began adding unnecessary garnishes and liqueurs, prompting patrons to request their drink made the 'old fashioned' way. The name stuck. It remains one of the most ordered cocktails in the world.",
+        "fun_fact": "President Franklin D. Roosevelt reportedly celebrated the end of Prohibition in 1933 by mixing Old Fashioneds for his staff.",
+        "image": "https://www.liquor.com/thmb/g4on6L9ECJf_1WJO3Uxf5hOmCFQ=/750x0/filters:no_upscale():max_bytes(150000):strip_icc():format(webp)/__opt__aboutcom__coeus__resources__content_migration__liquor__2018__08__14074619__bentons-old-fashioned-720x720-recipe-acc67854ebf54e9597329cc81f75e4c5.jpg"
+    },
+    "martini": {
+        "name": "Martini",
+        "year": "1880s",
+        "origin": "United States",
+        "era": "Gilded Age",
+        "summary": "The Martini's exact origin is disputed — some trace it to Martinez, California in the 1860s, while others credit New York bartenders in the 1880s. Originally made with sweet vermouth and gin, it evolved into the drier version we know today. By the 1920s it became the defining drink of sophistication. Ernest Hemingway, Winston Churchill, and Dorothy Parker all had famously strong opinions about the perfect Martini ratio.",
+        "fun_fact": "Winston Churchill's preferred method was to simply glance at a bottle of vermouth across the room while drinking his gin — he liked his Martini bone dry.",
+        "image": "https://www.liquor.com/thmb/js3M99n5Oz1C2WmNyX1idOAgZPw=/750x0/filters:no_upscale():max_bytes(150000):strip_icc():format(webp)/wet-martini-1500x1500-hero-9de0178e0e84444da2f6bcecf367e79d.jpg"
+    },
+    "negroni": {
+        "name": "Negroni",
+        "year": "1919",
+        "origin": "Florence, Italy",
+        "era": "Post-WWI",
+        "summary": "The Negroni was born in Florence, Italy in 1919 when Count Camillo Negroni asked bartender Fosco Scarselli to strengthen his Americano by replacing soda water with gin. The bartender also switched the orange slice for an orange peel to signify it was a different drink. The Count's family later opened the Negroni distillery to produce a ready-made version of the cocktail, cementing its place in history.",
+        "fun_fact": "The Negroni is one of the few cocktails named after a real person who actually invented it — most cocktail origin stories are disputed myths.",
+        "image": "https://www.liquor.com/thmb/DNlcQmIP9a1RXMaV3-SeDZx6PGs=/750x0/filters:no_upscale():max_bytes(150000):strip_icc():format(webp)/dutch-negroni-720x720-primary-f5660be0f0e6455398f0d702a4493484.jpg"
+    },
+    "manhattan": {
+        "name": "Manhattan",
+        "year": "1874",
+        "origin": "New York City, USA",
+        "era": "Gilded Age",
+        "summary": "The Manhattan is said to have been created at the Manhattan Club in New York City around 1874, allegedly for a banquet hosted by Lady Randolph Churchill — mother of Winston Churchill. However historians note she was likely in England at the time, pregnant. The true origin remains debated, but what is certain is that by the 1880s the Manhattan was already one of the most popular cocktails in America, setting the template for all stirred, spirit-forward cocktails.",
+        "fun_fact": "The Manhattan is believed to be the first cocktail to use vermouth as a key ingredient, sparking the entire vermouth cocktail category.",
+        "image": "https://www.liquor.com/thmb/gR-5gqkopJz_RJv2SLbSMrkefRk=/750x0/filters:no_upscale():max_bytes(150000):strip_icc():format(webp)/canadian-manhattan-720x720-primary-875aa449d1d44a6a99b200536778f46c.jpg"
+    },
+    "mojito": {
+        "name": "Mojito",
+        "year": "1500s",
+        "origin": "Havana, Cuba",
+        "era": "Colonial Era",
+        "summary": "The Mojito traces its roots to 16th century Cuba. Sir Francis Drake's crew used a primitive version called 'El Draque' — made with aguardiente, mint, lime, and sugar — to combat scurvy and dysentery. As Cuban rum improved in quality, aguardiente was replaced, and the modern Mojito was born. It became internationally famous when Ernest Hemingway adopted it as his drink of choice at La Bodeguita del Medio bar in Havana during the 1940s and 50s.",
+        "fun_fact": "Ernest Hemingway wrote on the wall of La Bodeguita del Medio: 'My mojito in La Bodeguita, my daiquiri in El Floridita' — though some historians believe this was a marketing invention.",
+        "image": "https://www.liquor.com/thmb/_n9KvoH9Asqqmk9P5CgY7m4rg8c=/750x0/filters:no_upscale():max_bytes(150000):strip_icc():format(webp)/winter-mojito-720x720-primary-8349af7d91964c7b99df103c59758193.jpg"
+    },
+    "daiquiri": {
+        "name": "Daiquiri",
+        "year": "1898",
+        "origin": "Daiquiri, Cuba",
+        "era": "Spanish-American War Era",
+        "summary": "The Daiquiri was invented by American mining engineer Jennings Cox near the town of Daiquiri, Cuba in 1898. Running low on gin to serve guests, Cox mixed local rum with lime juice and sugar — and the Daiquiri was born. Naval officer Lucius Johnson brought the recipe to the Army and Navy Club in Washington D.C., spreading it across the United States. During WWII, whisky and other spirits were rationed, making rum-based Daiquiris enormously popular.",
+        "fun_fact": "JFK was such a fan of Daiquiris that the drink reportedly became fashionable among Washington's political elite during his presidency.",
+        "image": "https://www.liquor.com/thmb/oxW0VcGagmzGWaAsEUZi1W-4arE=/750x0/filters:no_upscale():max_bytes(150000):strip_icc():format(webp)/Frozen-Daiquiri-1500x1500-hero-ee5a125ec0d04488a52a32db6278f3da.jpg"
+    },
+    "margarita": {
+        "name": "Margarita",
+        "year": "1938",
+        "origin": "Mexico / USA Border",
+        "era": "Prohibition Aftermath",
+        "summary": "The Margarita has at least seven disputed origin stories. The most widely accepted credits socialite Margarita Sames who created it at her Acapulco villa in 1948. Others credit Dallas restaurant owner Santos Cruz who made it for singer Peggy Lee in 1948, or bartender Danny Herrera who created it for actress Marjorie King in 1938. Regardless of origin, by the 1950s it was appearing in magazines, and by the 1970s it had become America's most ordered cocktail.",
+        "fun_fact": "The frozen Margarita machine was invented by Dallas restaurateur Mariano Martinez in 1971, inspired by a 7-Eleven Slurpee machine.",
+        "image": "https://www.liquor.com/thmb/V5L3hv-w8ph2_RQi_-simg-4Ris=/750x0/filters:no_upscale():max_bytes(150000):strip_icc():format(webp)/Frozen-Margarita-1500x1500-hero-191e49b3ab4f4781b93f3cfacac25136.jpg"
+    },
+    "singapore_sling": {
+        "name": "Singapore Sling",
+        "year": "1915",
+        "origin": "Singapore",
+        "era": "Colonial Era",
+        "summary": "The Singapore Sling was created around 1915 by bartender Ngiam Tong Boon at the Long Bar of Raffles Hotel in Singapore. At the time, it was considered improper for women to drink alcohol in public, so Ngiam crafted a cocktail that resembled fruit punch — allowing women to drink discreetly. The pink, fruity drink was a social revolution in its time. The original recipe was lost and rediscovered in the 1970s from a scribbled note found in the hotel's safe.",
+        "fun_fact": "Raffles Hotel still serves over 1,000 Singapore Slings per day, making it one of the most consistently ordered cocktails at a single venue in the world.",
+        "image": "https://www.liquor.com/thmb/g82LDbrf49zzbv9gHNnbouuaggE=/750x0/filters:no_upscale():max_bytes(150000):strip_icc():format(webp)/Singapore_Sling_3000x3000_primary-5fd9e3d361204753919604d123ca23f2.jpg"
+    },
+    "sazerac": {
+        "name": "Sazerac",
+        "year": "1838",
+        "origin": "New Orleans, USA",
+        "era": "Antebellum America",
+        "summary": "The Sazerac is often called America's first cocktail. It was created in New Orleans around 1838 by Antoine Amedie Peychaud, a Creole apothecary who served brandy toddies with his own bitters in an egg cup called a 'coquetier' — which Americans mispronounced as 'cocktay', possibly giving us the word 'cocktail'. The drink evolved to use rye whisky after a phylloxera epidemic wiped out European cognac production in the 1870s. New Orleans declared it the city's official cocktail in 2008.",
+        "fun_fact": "The Sazerac may have inadvertently given us the word 'cocktail' — Peychaud's egg cup coquetier allegedly became the mispronounced origin of the term.",
+        "image": "https://www.liquor.com/thmb/qAybJQUD4Cx2L1XvYj3HREQhXBQ=/750x0/filters:no_upscale():max_bytes(150000):strip_icc():format(webp)/sazerac-1500x1500-hero-62326d995cdb4a79a6a0a3bd4a98cef9.jpg"
+    },
+    "mai_tai": {
+        "name": "Mai Tai",
+        "year": "1944",
+        "origin": "Oakland, California, USA",
+        "era": "Post-WWII Tiki Era",
+        "summary": "The Mai Tai was invented in 1944 by Trader Vic (Victor Bergeron) at his restaurant in Oakland, California. He shook up the drink for two friends visiting from Tahiti — Ham and Carrie Guild. Upon tasting it, Carrie reportedly exclaimed 'Mai Tai — Roa Ae!' meaning 'Out of this world — the best!' in Tahitian, and the drink had its name. The Mai Tai became the signature drink of the entire Tiki cocktail movement that swept America in the post-WWII era.",
+        "fun_fact": "Donn Beach (Don the Beachcomber) claimed he invented the Mai Tai earlier, sparking a lifelong rivalry with Trader Vic that was never officially resolved.",
+        "image": "https://www.liquor.com/thmb/m6rry9JJhbW1yj70uzJzTXjwhW8=/750x0/filters:no_upscale():max_bytes(150000):strip_icc():format(webp)/__opt__aboutcom__coeus__resources__content_migration__liquor__2010__02__queen-elizabeth-08f5ffde13c14a57ab3ca9f32c724b2b.jpg"
+    }
+}
+
 # ─────────────────────────────────────────
 #  Background Media Data
 # ─────────────────────────────────────────
@@ -669,14 +752,18 @@ def home():
         "message": "🍹 Cocktail API is running!",
         "total_cocktails": len(cocktails),
         "total_backgrounds": len(background),
+        "total_histories": len(cocktail_history),
         "endpoints": {
             "GET /api/cocktails": "List all cocktails (supports ?search=, ?ingredient=, ?limit=, ?offset=)",
-            "GET /api/cocktail/<name>": "Get cocktail by name (random image)",
-            "GET /api/cocktail/<name>/images": "Get all images for a cocktail",
+            "GET /api/cocktail/<n>": "Get cocktail by name (random image)",
+            "GET /api/cocktail/<n>/images": "Get all images for a cocktail",
             "GET /api/cocktails/random": "Get a random cocktail",
             "GET /api/cocktails/names": "Get all cocktail names/IDs",
             "GET /api/backgrounds": "Get all background media",
-            "GET /api/background/<name>": "Get a specific background by name (e.g. hero, bar, pouring)"
+            "GET /api/background/<n>": "Get a specific background by name (e.g. hero, bar, pouring)",
+            "GET /api/histories": "Get all cocktail history entries",
+            "GET /api/history/<n>": "Get history for a specific cocktail (e.g. negroni, martini)",
+            "GET /api/histories/random": "Get a random cocktail history entry"
         }
     })
 
@@ -799,6 +886,37 @@ def get_background(name):
     })
 
 
+
+# ─────────────────────────────────────────
+#  Cocktail History Routes
+# ─────────────────────────────────────────
+
+@app.route("/api/histories")
+def get_all_histories():
+    return jsonify({
+        "total": len(cocktail_history),
+        "histories": list(cocktail_history.values())
+    })
+
+
+@app.route("/api/history/<n>")
+def get_history(name):
+    key = name.lower().replace(" ", "_").replace("-", "_")
+    history = cocktail_history.get(key)
+    if not history:
+        return jsonify({
+            "error": f"History for '{name}' not found.",
+            "available": list(cocktail_history.keys())
+        }), 404
+    return jsonify(history)
+
+
+@app.route("/api/histories/random")
+def get_random_history():
+    key = random.choice(list(cocktail_history.keys()))
+    return jsonify(cocktail_history[key])
+
+
 # ─────────────────────────────────────────
 #  404 fallback
 # ─────────────────────────────────────────
@@ -807,5 +925,7 @@ def not_found(e):
     return jsonify({"error": "Route not found. Visit / for available endpoints."}), 404
 
 
+
 if __name__ == "__main__":
-    app.run(debug=False)
+    port = int(os.environ.get("PORT", 10000))
+    app.run(host="0.0.0.0", port=port)
