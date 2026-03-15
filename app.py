@@ -584,7 +584,7 @@ cocktail_history = {
         "era": "19th Century",
         "summary": "The Old Fashioned is widely considered the original cocktail. The word 'cocktail' was first defined in 1806 as a mix of spirits, sugar, water, and bitters — which is exactly what an Old Fashioned is. By the 1880s, bartenders began adding unnecessary garnishes and liqueurs, prompting patrons to request their drink made the 'old fashioned' way. The name stuck. It remains one of the most ordered cocktails in the world.",
         "fun_fact": "President Franklin D. Roosevelt reportedly celebrated the end of Prohibition in 1933 by mixing Old Fashioneds for his staff.",
-        "image": "https://www.liquor.com/thmb/oatRTuOoMojsHW4-KydgBYh4uT4=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/old-fashioned-720x720-primary-6628052faee04b3a95f975b5ff1e2388.jpg"
+        "image": "https://www.liquor.com/thmb/oHAhWWVMt-7-zFf9TWgJkpKMw_Q=/750x0/filters:no_upscale():max_bytes(150000):strip_icc():format(webp)/jagermeister-old-fashioned-720x720-primary-9dfd85412af24f118ea5605fbe0456fd.jpg"
     },
     "martini": {
         "name": "Martini",
@@ -593,7 +593,7 @@ cocktail_history = {
         "era": "Gilded Age",
         "summary": "The Martini's exact origin is disputed — some trace it to Martinez, California in the 1860s, while others credit New York bartenders in the 1880s. Originally made with sweet vermouth and gin, it evolved into the drier version we know today. By the 1920s it became the defining drink of sophistication. Ernest Hemingway, Winston Churchill, and Dorothy Parker all had famously strong opinions about the perfect Martini ratio.",
         "fun_fact": "Winston Churchill's preferred method was to simply glance at a bottle of vermouth across the room while drinking his gin — he liked his Martini bone dry.",
-        "image": "https://www.liquor.com/thmb/oSRqGIJFhTAMKgUmHIKJj4S7JNQ=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/dry-martini-720x720-primary-6628052faee04b3a95f975b5ff1e2388.jpg"
+        "image": "https://www.liquor.com/thmb/js3M99n5Oz1C2WmNyX1idOAgZPw=/750x0/filters:no_upscale():max_bytes(150000):strip_icc():format(webp)/wet-martini-1500x1500-hero-9de0178e0e84444da2f6bcecf367e79d.jpg"
     },
     "negroni": {
         "name": "Negroni",
