@@ -584,7 +584,7 @@ cocktail_history = {
         "era": "19th Century",
         "summary": "The Old Fashioned is widely considered the original cocktail. The word 'cocktail' was first defined in 1806 as a mix of spirits, sugar, water, and bitters — which is exactly what an Old Fashioned is. By the 1880s, bartenders began adding unnecessary garnishes and liqueurs, prompting patrons to request their drink made the 'old fashioned' way. The name stuck. It remains one of the most ordered cocktails in the world.",
         "fun_fact": "President Franklin D. Roosevelt reportedly celebrated the end of Prohibition in 1933 by mixing Old Fashioneds for his staff.",
-        "image": "https://www.liquor.com/thmb/oHAhWWVMt-7-zFf9TWgJkpKMw_Q=/750x0/filters:no_upscale():max_bytes(150000):strip_icc():format(webp)/jagermeister-old-fashioned-720x720-primary-9dfd85412af24f118ea5605fbe0456fd.jpg"
+        "image": "https://www.liquor.com/thmb/oatRTuOoMojsHW4-KydgBYh4uT4=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/old-fashioned-720x720-primary-6628052faee04b3a95f975b5ff1e2388.jpg"
     },
     "martini": {
         "name": "Martini",
@@ -593,7 +593,7 @@ cocktail_history = {
         "era": "Gilded Age",
         "summary": "The Martini's exact origin is disputed — some trace it to Martinez, California in the 1860s, while others credit New York bartenders in the 1880s. Originally made with sweet vermouth and gin, it evolved into the drier version we know today. By the 1920s it became the defining drink of sophistication. Ernest Hemingway, Winston Churchill, and Dorothy Parker all had famously strong opinions about the perfect Martini ratio.",
         "fun_fact": "Winston Churchill's preferred method was to simply glance at a bottle of vermouth across the room while drinking his gin — he liked his Martini bone dry.",
-        "image": "https://www.liquor.com/thmb/js3M99n5Oz1C2WmNyX1idOAgZPw=/750x0/filters:no_upscale():max_bytes(150000):strip_icc():format(webp)/wet-martini-1500x1500-hero-9de0178e0e84444da2f6bcecf367e79d.jpg"
+        "image": "https://www.liquor.com/thmb/oSRqGIJFhTAMKgUmHIKJj4S7JNQ=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/dry-martini-720x720-primary-6628052faee04b3a95f975b5ff1e2388.jpg"
     },
     "negroni": {
         "name": "Negroni",
@@ -679,7 +679,7 @@ food_pairings = {
         "category": "Meat",
         "description": "Exceptionally marbled Japanese beef with an intensely buttery, umami-rich flavour and a melt-in-the-mouth texture. The high fat content calls for cocktails that cut through richness while complementing its depth.",
         "flavour_profile": ["Rich", "Buttery", "Umami", "Savoury"],
-        "image": "https://www.recipetineats.com/tachyon/2024/07/Japanese-Fusion-Menu-hero-photo.jpg?resize=1500%2C1875&zoom=0.43",
+        "image": "https://www.recipetineats.com/wp-content/uploads/2024/04/Wagyu-Steak_6.jpg",
         "pairings": [
             {
                 "cocktail": "Old Fashioned",
@@ -706,7 +706,7 @@ food_pairings = {
         "category": "Seafood",
         "description": "Thinly sliced raw fish of the highest quality — typically salmon, tuna, or yellowtail. Clean, delicate, and oceanic with a silky texture that demands equally clean, refreshing cocktails.",
         "flavour_profile": ["Clean", "Delicate", "Oceanic", "Umami"],
-        "image": "https://www.justonecookbook.com/wp-content/uploads/2023/12/How-to-Plate-Sashimi-5567-II.jpg",
+        "image": "https://www.justonecookbook.com/wp-content/uploads/2022/08/Sashimi-0070-I.jpg",
         "pairings": [
             {
                 "cocktail": "Martini",
@@ -733,7 +733,7 @@ food_pairings = {
         "category": "Soup",
         "description": "Thailand's iconic hot and sour soup, fragrant with lemongrass, kaffir lime, galangal, and chilli. Bold, aromatic, and intensely spiced — it calls for cocktails that cool and refresh.",
         "flavour_profile": ["Spicy", "Sour", "Aromatic", "Herbal"],
-        "image": "https://hot-thai-kitchen.com/wp-content/uploads/2013/03/tom-yum-goong-blog-720x540.jpg",
+        "image": "https://hot-thai-kitchen.com/wp-content/uploads/2022/01/Tom-yum-goong-sq.jpg",
         "pairings": [
             {
                 "cocktail": "Mojito",
@@ -760,7 +760,7 @@ food_pairings = {
         "category": "Pasta",
         "description": "Fresh pasta enveloped in a luxurious truffle cream sauce — earthy, deeply aromatic, and indulgently rich. The pungent umami of black truffle demands cocktails with complexity and structure.",
         "flavour_profile": ["Earthy", "Rich", "Aromatic", "Creamy"],
-        "image": "https://www.withspice.com/wp-content/uploads/2025/02/black-truffle-pasta.jpg",
+        "image": "https://www.sipandfeast.com/wp-content/uploads/2022/09/truffle-pasta-recipe-snippet.jpg",
         "pairings": [
             {
                 "cocktail": "Negroni",
@@ -787,7 +787,7 @@ food_pairings = {
         "category": "Seafood",
         "description": "Charred, tender octopus with smoky caramelised edges and a clean oceanic sweetness, typically served with citrus, herbs, or a Mediterranean salsa verde.",
         "flavour_profile": ["Smoky", "Oceanic", "Charred", "Tender"],
-        "image": "https://girlscangrill.com/wp-content/uploads/2015/09/grilled-octopus-hero-500x500.jpg",
+        "image": "https://www.themediterraneandish.com/wp-content/uploads/2020/07/grilled-octopus-recipe-3.jpg",
         "pairings": [
             {
                 "cocktail": "Aperol Spritz",
@@ -814,7 +814,7 @@ food_pairings = {
         "category": "Meat",
         "description": "Raw, hand-chopped premium beef seasoned with capers, shallots, Dijon mustard, and egg yolk. Bold, briny, and intensely savoury — a dish that commands equally bold cocktails.",
         "flavour_profile": ["Briny", "Savoury", "Bold", "Rich"],
-        "image": "https://static1.squarespace.com/static/5a6bc416a9db092faf63baf0/t/66c8e22b7d215d74becd4cef/1724441131835/classic-french-beef-tartare.jpg?format=1500w",
+        "image": "https://www.foodandwine.com/thmb/6-XXsGBGRxFrFKUXUGMGQI5O7Bc=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/classic-steak-tartare-FT-RECIPE0321-dad2692a3f6b45f8b6f38c6b72a11a22.jpg",
         "pairings": [
             {
                 "cocktail": "Martini",
@@ -841,7 +841,7 @@ food_pairings = {
         "category": "Soup",
         "description": "A velvety, cream-enriched shellfish soup with deep oceanic sweetness, a hint of brandy, and aromatic tarragon. Rich and luxurious — it needs cocktails with enough presence to stand alongside it.",
         "flavour_profile": ["Sweet", "Creamy", "Oceanic", "Luxurious"],
-        "image": "https://rasamalaysia.com/wp-content/uploads/2020/05/lobster-bisque-thumb.jpg",
+        "image": "https://www.spendwithpennies.com/wp-content/uploads/2022/01/Lobster-Bisque-SpendWithPennies-2.jpg",
         "pairings": [
             {
                 "cocktail": "French 75",
@@ -868,7 +868,7 @@ food_pairings = {
         "category": "Delicacy",
         "description": "Silky pan-seared duck liver with an extraordinary buttery richness and subtle sweetness, typically served with brioche and fruit compote. One of the world's most indulgent dishes.",
         "flavour_profile": ["Buttery", "Rich", "Sweet", "Silky"],
-        "image": "https://images.squarespace-cdn.com/content/v1/5021287084ae954efd31e9f4/1593659079681-ZB7F74AQDPQ6099EIFWD/IMG_3511.jpg?format=750w",
+        "image": "https://www.finedininglovers.com/sites/g/files/xknfdk626/files/styles/article_1200_800_fallback/public/2021-11/foie-gras%401200x800.jpg",
         "pairings": [
             {
                 "cocktail": "Sidecar",
@@ -895,7 +895,7 @@ food_pairings = {
         "category": "Sushi",
         "description": "Fresh tuna mixed with sriracha and sesame oil, rolled in seasoned rice and nori. A balance of oceanic tuna sweetness with a slow-building chilli heat and nutty sesame finish.",
         "flavour_profile": ["Spicy", "Oceanic", "Nutty", "Fresh"],
-        "image": "https://thesushiman.com/wp-content/uploads/2024/12/Spicy-Tuna-Roll-1-scaled.jpg",
+        "image": "https://www.justonecookbook.com/wp-content/uploads/2021/08/Spicy-Tuna-Roll-9018-I.jpg",
         "pairings": [
             {
                 "cocktail": "Paloma",
@@ -922,7 +922,7 @@ food_pairings = {
         "category": "Meat",
         "description": "Herb-crusted rack of lamb with a rosemary and garlic crust, perfectly pink in the centre. Gamey, rich, and aromatic — a dish that pairs beautifully with bold, complex cocktails.",
         "flavour_profile": ["Gamey", "Herbal", "Rich", "Aromatic"],
-        "image": "https://encrypted-tbn2.gstatic.com/shopping?q=tbn:ANd9GcSJcLUvf5SpjchJA9Q6szqNFMFGlgbftmvvJPuLEyVxpuTCjSNWAfBvkl7f6WlLq22dkIs8904hwaccoPGp7A-88KWrWHFMHK8vL5UtJ8K3O-4h8WSZKZpWXAb-QCJzAtfM7gnc06QsaIM&usqp=CAc",
+        "image": "https://www.recipetineats.com/wp-content/uploads/2020/12/Lamb-chops_1.jpg",
         "pairings": [
             {
                 "cocktail": "Rob Roy",
@@ -949,7 +949,7 @@ food_pairings = {
         "category": "Seafood",
         "description": "Fresh raw oysters served on ice with mignonette and lemon — briny, mineral, and oceanic with an incredibly clean finish. One of the most cocktail-friendly foods in existence.",
         "flavour_profile": ["Briny", "Mineral", "Oceanic", "Clean"],
-        "image": "https://encrypted-tbn0.gstatic.com/shopping?q=tbn:ANd9GcTSTLjqQivl-tGWKHrdKnV3AYN5ld3h-WILfwlP_j1DAegro3jeISiZ2k3g82PdTpMxzMoKO9VntWaN5Qz33snSluXUEiXNxe_oLc5rnJwJv3YK7wmtRm5aHGY7yhp-HAab7Ee3FP6EkA&usqp=CAc",
+        "image": "https://www.seriouseats.com/thmb/Z_mHIFe7h7J9mMaX4K5Q5t9X4gA=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/20211117-oysters-on-halfshell-vicky-wasik-seriouseats-1-735f42de66874f3d9ad2c0dc1faae600.jpg",
         "pairings": [
             {
                 "cocktail": "Martini",
@@ -976,7 +976,7 @@ food_pairings = {
         "category": "Meat",
         "description": "Duck leg slow-cooked in its own fat until the skin is shatteringly crisp and the meat is fall-off-the-bone tender. Rich, deeply savoury, and intensely flavoured.",
         "flavour_profile": ["Rich", "Crispy", "Savoury", "Deep"],
-        "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQSNJWqWdzSZw_tSDexsOokpS_D81cUYnOHNA&s",
+        "image": "https://www.recipetineats.com/wp-content/uploads/2021/08/Duck-Confit_6.jpg",
         "pairings": [
             {
                 "cocktail": "Vieux Carré",
@@ -1003,7 +1003,7 @@ food_pairings = {
         "category": "Dessert",
         "description": "Italy's iconic layered dessert of espresso-soaked ladyfingers and mascarpone cream, dusted with cocoa. Coffee-forward, gently sweet, and indulgently creamy.",
         "flavour_profile": ["Coffee", "Sweet", "Creamy", "Cocoa"],
-        "image": "https://www.inspiredtaste.net/wp-content/uploads/2024/07/How-to-Make-Tiramisu.jpg",
+        "image": "https://www.recipetineats.com/wp-content/uploads/2021/11/Tiramisu_1.jpg",
         "pairings": [
             {
                 "cocktail": "Espresso Martini",
@@ -1030,7 +1030,7 @@ food_pairings = {
         "category": "Salad",
         "description": "Crisp romaine lettuce dressed in an anchovy-rich, garlicky, lemony Caesar dressing with shaved Parmesan and house-made croutons. Bold umami with bright acidity.",
         "flavour_profile": ["Umami", "Tangy", "Savoury", "Crisp"],
-        "image": "https://www.onceuponachef.com/images/2010/08/Homemade-Caesar-Salad-Dressing-1200x1401.jpg",
+        "image": "https://www.recipetineats.com/wp-content/uploads/2016/08/Caesar-Salad_9.jpg",
         "pairings": [
             {
                 "cocktail": "Bloody Mary",
@@ -1057,7 +1057,7 @@ food_pairings = {
         "category": "Dessert",
         "description": "Warm dark chocolate fondant with a molten liquid centre that flows when cut — intense, bittersweet, and luxuriously rich. One of the world's most indulgent desserts.",
         "flavour_profile": ["Bittersweet", "Intense", "Rich", "Warm"],
-        "image": "https://images.getrecipekit.com/20250325120225-how-20to-20make-20chocolate-20molten-20lava-20cake-20in-20the-20microwave.png?width=650&quality=90&",
+        "image": "https://www.recipetineats.com/wp-content/uploads/2020/01/Chocolate-Lava-Cake_5.jpg",
         "pairings": [
             {
                 "cocktail": "Oaxacan Old Fashioned",
@@ -1084,7 +1084,7 @@ food_pairings = {
         "category": "Noodles",
         "description": "Thailand's beloved stir-fried rice noodles with tamarind, fish sauce, eggs, bean sprouts, and peanuts. Sweet, sour, salty, and savoury in perfect balance with a subtle wok smokiness.",
         "flavour_profile": ["Sweet", "Sour", "Salty", "Nutty"],
-        "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQnJKrX5fOi9dvZnvtCBE9wsNkvXiBNBAt3Kw&s",
+        "image": "https://hot-thai-kitchen.com/wp-content/uploads/2015/02/pad-thai-new-sq.jpg",
         "pairings": [
             {
                 "cocktail": "Singapore Sling",
@@ -1138,7 +1138,7 @@ food_pairings = {
         "category": "Meat",
         "description": "Ceremonial Chinese roasted duck with lacquered, mahogany-crisp skin, served with thin pancakes, hoisin sauce, cucumber, and spring onion. Sweet, smoky, and intensely savoury.",
         "flavour_profile": ["Smoky", "Sweet", "Crispy", "Savoury"],
-        "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSP4VRtvFKzGVBX_lmz_wDSo8AvU0HEMLdXaw&s",
+        "image": "https://omnivorescookbook.com/wp-content/uploads/2022/11/221101_Peking-Duck_01.jpg",
         "pairings": [
             {
                 "cocktail": "Oaxacan Old Fashioned",
@@ -1165,7 +1165,7 @@ food_pairings = {
         "category": "Cheese",
         "description": "A curated selection of artisan cheeses — typically spanning soft brie, aged cheddar, blue cheese, and hard manchego — served with crackers, honey, and fruit.",
         "flavour_profile": ["Varied", "Rich", "Funky", "Complex"],
-        "image": "https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcQAkdBTlOUE8BgzU2i13YSrepZ4ZjnMS8AriI7-s1SndmJl9buN",
+        "image": "https://www.recipetineats.com/wp-content/uploads/2020/12/Cheese-Board_5.jpg",
         "pairings": [
             {
                 "cocktail": "Last Word",
@@ -1192,7 +1192,7 @@ food_pairings = {
         "category": "Seafood",
         "description": "Fresh raw fish cured in citrus juice — intensely bright, acidic, and fresh with a slight heat from ají amarillo chilli. A Peruvian icon that is clean, vibrant, and punchy.",
         "flavour_profile": ["Acidic", "Bright", "Spicy", "Fresh"],
-        "image": "https://www.feastingathome.com/wp-content/uploads/2024/01/image-1.jpeg",
+        "image": "https://www.recipetineats.com/wp-content/uploads/2021/03/Ceviche_5.jpg",
         "pairings": [
             {
                 "cocktail": "Pisco Sour",
@@ -1246,7 +1246,7 @@ food_pairings = {
         "category": "Rice",
         "description": "Slow-stirred Arborio rice with porcini and cremini mushrooms in a rich parmesan-enriched stock. Deeply earthy, umami-laden, and luxuriously creamy with a gentle nuttiness.",
         "flavour_profile": ["Earthy", "Umami", "Creamy", "Nutty"],
-        "image": "https://www.aussiemeat.hk/cdn/shop/articles/24xxxx-Recipes-Shopify1080_520x500_085eff37-c277-4b67-88d2-f9bf22f147cf_600x.png?v=1750237761",
+        "image": "https://www.recipetineats.com/wp-content/uploads/2018/10/Mushroom-Risotto_5.jpg",
         "pairings": [
             {
                 "cocktail": "Toronto",
@@ -1273,7 +1273,7 @@ food_pairings = {
         "category": "Street Food",
         "description": "Marinated pork cooked on a vertical spit, served in soft corn tortillas with pineapple, cilantro, and onion. Smoky, sweet, citrusy, and boldly spiced.",
         "flavour_profile": ["Smoky", "Sweet", "Spicy", "Citrusy"],
-        "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTXiNsnnAfPLpQdWnxXVBCSpen0f_Prp31lig&s",
+        "image": "https://www.isabeleats.com/wp-content/uploads/2020/01/tacos-al-pastor-small-3.jpg",
         "pairings": [
             {
                 "cocktail": "Margarita",
@@ -1300,7 +1300,7 @@ food_pairings = {
         "category": "Appetiser",
         "description": "Grilled sourdough rubbed with garlic and topped with fresh heirloom tomatoes, basil, olive oil, and sea salt. Simple, bright, and intensely flavourful — quintessential Italian summer eating.",
         "flavour_profile": ["Fresh", "Bright", "Herbal", "Garlicky"],
-        "image": "https://feelgoodfoodie.net/wp-content/uploads/2025/07/Tomato-Basil-Bruschetta-08.jpg",
+        "image": "https://www.recipetineats.com/wp-content/uploads/2020/07/Bruschetta_5.jpg",
         "pairings": [
             {
                 "cocktail": "Aperol Spritz",
@@ -1327,7 +1327,7 @@ food_pairings = {
         "category": "Dessert",
         "description": "Thai dessert of sweet glutinous rice cooked in coconut milk, served warm with fresh ripe mango and a drizzle of coconut cream. Sweet, tropical, and fragrant with pandan.",
         "flavour_profile": ["Sweet", "Tropical", "Coconut", "Fragrant"],
-        "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRN35wnHmrY5h14DChWbV-aPYvwBoS0jfvp-w&s",
+        "image": "https://hot-thai-kitchen.com/wp-content/uploads/2015/04/mango-sticky-rice-sq.jpg",
         "pairings": [
             {
                 "cocktail": "Pina Colada",
@@ -1348,6 +1348,521 @@ food_pairings = {
                 "match_level": "Excellent"
             }
         ]
+    }
+}
+
+
+# ─────────────────────────────────────────
+#  Mocktails & Zero-Proof Data (20 drinks)
+# ─────────────────────────────────────────
+mocktails = {
+    "virgin_mojito": {
+        "description": "A refreshing alcohol-free take on the Cuban classic — muddled fresh mint, lime juice, and sugar topped with sparkling water for a lively, cooling effervescence.",
+        "ingredients": ["Fresh Mint", "Lime Juice", "Simple Syrup", "Soda Water", "Crushed Ice"],
+        "images": ["https://www.recipetineats.com/wp-content/uploads/2021/07/Virgin-Mojito_4.jpg"],
+        "zero_proof": True,
+        "flavour_profile": ["Minty", "Citrusy", "Refreshing", "Light"]
+    },
+    "virgin_mary": {
+        "description": "The bold, savoury alcohol-free version of the Bloody Mary — tomato juice with Worcestershire, Tabasco, lemon, and a celery salt rim. Every bit as punchy as the original.",
+        "ingredients": ["Tomato Juice", "Worcestershire Sauce", "Tabasco", "Lemon Juice", "Celery Salt", "Pepper", "Horseradish"],
+        "images": ["https://www.recipetineats.com/wp-content/uploads/2021/09/Virgin-Mary_4.jpg"],
+        "zero_proof": True,
+        "flavour_profile": ["Savoury", "Spicy", "Tangy", "Bold"]
+    },
+    "nojito": {
+        "description": "A sophisticated zero-proof Negroni alternative — bitter botanical shrub, non-alcoholic aperitivo, and a hint of citrus peel. The full Negroni complexity without any alcohol.",
+        "ingredients": ["Non-Alcoholic Aperitivo", "Bitter Botanical Shrub", "Orange Peel", "Soda Water"],
+        "images": ["https://www.thecocktailacademy.com/wp-content/uploads/2022/03/nojito-mocktail.jpg"],
+        "zero_proof": True,
+        "flavour_profile": ["Bitter", "Herbal", "Complex", "Aromatic"]
+    },
+    "sparkling_elderflower_lemonade": {
+        "description": "A delicate and floral zero-proof drink blending elderflower cordial with fresh lemon juice and sparkling water — light, fragrant, and perfect for warm evenings.",
+        "ingredients": ["Elderflower Cordial", "Lemon Juice", "Sparkling Water", "Fresh Mint", "Cucumber Slice"],
+        "images": ["https://www.recipetineats.com/wp-content/uploads/2021/06/Elderflower-Lemonade_4.jpg"],
+        "zero_proof": True,
+        "flavour_profile": ["Floral", "Citrusy", "Delicate", "Refreshing"]
+    },
+    "watermelon_mint_cooler": {
+        "description": "Freshly blended watermelon juice shaken with mint, lime, and a pinch of sea salt — vibrantly pink, naturally sweet, and incredibly refreshing.",
+        "ingredients": ["Fresh Watermelon Juice", "Fresh Mint", "Lime Juice", "Sea Salt", "Soda Water"],
+        "images": ["https://www.recipetineats.com/wp-content/uploads/2022/01/Watermelon-Juice_4.jpg"],
+        "zero_proof": True,
+        "flavour_profile": ["Sweet", "Fruity", "Minty", "Vibrant"]
+    },
+    "ginger_lemon_fizz": {
+        "description": "Freshly pressed ginger juice combined with honey, lemon, and topped with ginger beer — spicy, zingy, and deeply warming with a natural effervescence.",
+        "ingredients": ["Fresh Ginger Juice", "Lemon Juice", "Honey Syrup", "Ginger Beer", "Lemon Slice"],
+        "images": ["https://www.recipetineats.com/wp-content/uploads/2022/08/Ginger-Lemonade_4.jpg"],
+        "zero_proof": True,
+        "flavour_profile": ["Spicy", "Zingy", "Sweet", "Warming"]
+    },
+    "hibiscus_spritz": {
+        "description": "A stunning ruby-red zero-proof spritz made from hibiscus flower tea, fresh orange juice, and sparkling water — tart, floral, and visually dramatic.",
+        "ingredients": ["Hibiscus Tea", "Orange Juice", "Honey Syrup", "Sparkling Water", "Orange Slice"],
+        "images": ["https://www.loveandlemons.com/wp-content/uploads/2021/07/hibiscus-drink.jpg"],
+        "zero_proof": True,
+        "flavour_profile": ["Tart", "Floral", "Fruity", "Vibrant"]
+    },
+    "virgin_pina_colada": {
+        "description": "Creamy, tropical, and utterly indulgent — blended coconut cream and fresh pineapple juice served over ice. All the sunshine of the Caribbean, zero alcohol.",
+        "ingredients": ["Pineapple Juice", "Coconut Cream", "Lime Juice", "Crushed Ice"],
+        "images": ["https://www.recipetineats.com/wp-content/uploads/2021/07/Virgin-Pina-Colada_4.jpg"],
+        "zero_proof": True,
+        "flavour_profile": ["Tropical", "Creamy", "Sweet", "Rich"]
+    },
+    "passionfruit_cooler": {
+        "description": "Fresh passion fruit pulp shaken with lime, vanilla syrup, and topped with soda — exotic, tangy, and beautifully balanced between sweet and sour.",
+        "ingredients": ["Passion Fruit Pulp", "Lime Juice", "Vanilla Syrup", "Soda Water", "Mint Sprig"],
+        "images": ["https://www.recipetineats.com/wp-content/uploads/2022/04/Passionfruit-Drink_4.jpg"],
+        "zero_proof": True,
+        "flavour_profile": ["Exotic", "Tangy", "Sweet", "Tropical"]
+    },
+    "cucumber_basil_smash": {
+        "description": "Muddled cucumber and fresh basil shaken with lemon juice and honey, topped with sparkling water — clean, herbal, and incredibly sophisticated for a zero-proof drink.",
+        "ingredients": ["Fresh Cucumber", "Fresh Basil", "Lemon Juice", "Honey Syrup", "Sparkling Water"],
+        "images": ["https://www.loveandlemons.com/wp-content/uploads/2020/07/cucumber-basil-smash.jpg"],
+        "zero_proof": True,
+        "flavour_profile": ["Herbal", "Clean", "Refreshing", "Sophisticated"]
+    },
+    "mango_chilli_limeade": {
+        "description": "Fresh mango purée blended with lime juice and a rim of chilli salt — sweet tropical mango with a fiery kick that builds slowly on the finish.",
+        "ingredients": ["Mango Puree", "Lime Juice", "Chilli Salt", "Simple Syrup", "Soda Water"],
+        "images": ["https://www.isabeleats.com/wp-content/uploads/2021/07/mango-agua-fresca-small-3.jpg"],
+        "zero_proof": True,
+        "flavour_profile": ["Spicy", "Tropical", "Sour", "Bold"]
+    },
+    "rose_lychee_fizz": {
+        "description": "A delicate and feminine zero-proof cocktail — lychee juice and rose water shaken with lemon and served with sparkling water for a luxurious, floral finish.",
+        "ingredients": ["Lychee Juice", "Rose Water", "Lemon Juice", "Simple Syrup", "Sparkling Water"],
+        "images": ["https://www.loveandlemons.com/wp-content/uploads/2021/05/lychee-mocktail.jpg"],
+        "zero_proof": True,
+        "flavour_profile": ["Floral", "Sweet", "Delicate", "Exotic"]
+    },
+    "spiced_apple_cider": {
+        "description": "Warm or chilled spiced apple cider simmered with cinnamon, star anise, and cloves — deeply aromatic, comforting, and the perfect zero-proof autumn drink.",
+        "ingredients": ["Apple Cider", "Cinnamon Stick", "Star Anise", "Cloves", "Orange Peel", "Honey"],
+        "images": ["https://www.recipetineats.com/wp-content/uploads/2021/10/Mulled-Cider_4.jpg"],
+        "zero_proof": True,
+        "flavour_profile": ["Spiced", "Warm", "Sweet", "Aromatic"]
+    },
+    "blue_lagoon_zero": {
+        "description": "A vivid electric-blue zero-proof cooler with blue curacao syrup, lemon juice, and lemonade — visually stunning and refreshingly tropical.",
+        "ingredients": ["Blue Curacao Syrup", "Lemon Juice", "Lemonade", "Soda Water"],
+        "images": ["https://frobishers.com/cdn/shop/articles/blue_lagoon_3.png?v=1695025795"],
+        "zero_proof": True,
+        "flavour_profile": ["Tropical", "Sweet", "Citrusy", "Vibrant"]
+    },
+    "pineapple_turmeric_fizz": {
+        "description": "A health-forward zero-proof cocktail blending fresh pineapple juice with turmeric, ginger, and black pepper — golden, anti-inflammatory, and surprisingly complex.",
+        "ingredients": ["Pineapple Juice", "Fresh Turmeric", "Fresh Ginger", "Black Pepper", "Honey", "Sparkling Water"],
+        "images": ["https://www.loveandlemons.com/wp-content/uploads/2021/03/turmeric-drink.jpg"],
+        "zero_proof": True,
+        "flavour_profile": ["Earthy", "Tropical", "Spiced", "Bright"]
+    },
+    "virgin_cosmopolitan": {
+        "description": "The glamorous zero-proof version of the iconic cosmo — cranberry juice, fresh lime, orange juice, and a hint of grenadine for that signature pink blush.",
+        "ingredients": ["Cranberry Juice", "Lime Juice", "Orange Juice", "Grenadine", "Orange Peel"],
+        "images": ["https://www.recipetineats.com/wp-content/uploads/2021/08/Virgin-Cosmopolitan_4.jpg"],
+        "zero_proof": True,
+        "flavour_profile": ["Tart", "Fruity", "Bright", "Elegant"]
+    },
+    "cucumber_mint_cooler": {
+        "description": "A light and refreshing zero-proof mocktail with fresh cucumber, mint, and a hint of lime — clean, cool, and effortlessly sophisticated.",
+        "ingredients": ["Cucumber", "Fresh Mint", "Lime Juice", "Soda Water", "Simple Syrup"],
+        "images": ["https://empirewine.imgix.net/recipes/203_1723664773009.jpg?w=1200"],
+        "zero_proof": True,
+        "flavour_profile": ["Cool", "Herbal", "Light", "Clean"]
+    },
+    "coconut_lime_refresher": {
+        "description": "Chilled coconut water with fresh lime juice, a touch of agave, and a pinch of sea salt — hydrating, subtly sweet, and perfectly balanced with a tropical finish.",
+        "ingredients": ["Coconut Water", "Lime Juice", "Agave Nectar", "Sea Salt", "Lime Wheel"],
+        "images": ["https://www.loveandlemons.com/wp-content/uploads/2020/06/coconut-water-drink.jpg"],
+        "zero_proof": True,
+        "flavour_profile": ["Tropical", "Light", "Refreshing", "Balanced"]
+    },
+    "strawberry_basil_lemonade": {
+        "description": "Freshly muddled strawberries and basil shaken with lemon juice and honey syrup — vibrant red, sweetly aromatic, and full of summer energy.",
+        "ingredients": ["Fresh Strawberries", "Fresh Basil", "Lemon Juice", "Honey Syrup", "Soda Water"],
+        "images": ["https://www.recipetineats.com/wp-content/uploads/2021/07/Strawberry-Lemonade_4.jpg"],
+        "zero_proof": True,
+        "flavour_profile": ["Sweet", "Herbal", "Fruity", "Bright"]
+    },
+    "virgin_dark_and_stormy": {
+        "description": "All the drama of the original — spicy ginger beer poured over a float of dark molasses syrup with fresh lime and a pinch of sea salt. Bold and stormy without the rum.",
+        "ingredients": ["Ginger Beer", "Molasses Syrup", "Lime Juice", "Sea Salt", "Lime Wedge"],
+        "images": ["https://www.recipetineats.com/wp-content/uploads/2022/03/Mocktail_4.jpg"],
+        "zero_proof": True,
+        "flavour_profile": ["Spicy", "Bold", "Dark", "Zingy"]
+    }
+}
+
+
+# ─────────────────────────────────────────
+#  Cocktail Videos (38 videos)
+#
+#  HOW TO USE:
+#  Store your .mp4 files in a static folder
+#  or upload to a CDN/cloud storage.
+#  Update VIDEO_BASE_URL to your actual URL.
+#
+#  Local dev:   http://localhost:5000/static/videos/
+#  Render CDN:  https://your-app.onrender.com/static/videos/
+#  Cloud (R2/S3/Cloudinary): your CDN URL
+# ─────────────────────────────────────────
+VIDEO_BASE_URL = "/static/videos/"   # ← change this to your CDN/hosting URL
+
+cocktail_videos = {
+    # ── Classic Cocktails ──────────────────
+    "espresso_martini": {
+        "title": "Espresso Martini",
+        "filename": "espresso_martini.mp4",
+        "category": "Classic",
+        "description": "A step-by-step guide to the perfect espresso martini — shaken hard for that iconic frothy crema on top.",
+        "cocktail_id": "espresso_martini",
+        "tags": ["Coffee", "Vodka", "Shaken", "Date Night"],
+        "difficulty": "Easy"
+    },
+    "aperol_spritz": {
+        "title": "Aperol Spritz",
+        "filename": "aperol_spritz.mp4",
+        "category": "Classic",
+        "description": "The ultimate Italian aperitivo — a vibrant orange spritz that is the definition of effortless elegance.",
+        "cocktail_id": "aperol_spritz",
+        "tags": ["Aperol", "Prosecco", "Spritz", "Aperitivo"],
+        "difficulty": "Easy"
+    },
+    "margarita": {
+        "title": "Margarita",
+        "filename": "margarita.mp4",
+        "category": "Classic",
+        "description": "The world's favourite tequila cocktail — shaken with fresh lime and triple sec, served with a perfectly salted rim.",
+        "cocktail_id": "margarita",
+        "tags": ["Tequila", "Lime", "Shaken", "Mexican"],
+        "difficulty": "Easy"
+    },
+    "daiquiri": {
+        "title": "Daiquiri",
+        "filename": "daiquiri.mp4",
+        "category": "Classic",
+        "description": "Three ingredients, shaken perfectly — rum, lime, and sugar. The Daiquiri is the ultimate test of a bartender's technique.",
+        "cocktail_id": "daiquiri",
+        "tags": ["Rum", "Lime", "Shaken", "Simple"],
+        "difficulty": "Easy"
+    },
+    "mojito": {
+        "title": "Mojito",
+        "filename": "mojito.mp4",
+        "category": "Classic",
+        "description": "Cuba's most iconic export — fresh mint muddled with lime and sugar, topped with rum and soda. Pure refreshment.",
+        "cocktail_id": "mojito",
+        "tags": ["Rum", "Mint", "Muddled", "Refreshing"],
+        "difficulty": "Easy"
+    },
+    "cosmopolitan": {
+        "title": "Cosmopolitan",
+        "filename": "cosmopolitan.mp4",
+        "category": "Classic",
+        "description": "The chic pink cocktail that defined an era — vodka, cranberry, triple sec, and lime shaken to a gorgeous blush.",
+        "cocktail_id": "cosmopolitan",
+        "tags": ["Vodka", "Cranberry", "Shaken", "Elegant"],
+        "difficulty": "Easy"
+    },
+    "long_island_iced_tea": {
+        "title": "Long Island Iced Tea",
+        "filename": "long_island_iced_tea.mp4",
+        "category": "Classic",
+        "description": "Five spirits, one legendary cocktail. Built tall over ice with cola — it looks like iced tea and hits like a freight train.",
+        "cocktail_id": "long_island_iced_tea",
+        "tags": ["Multi-Spirit", "Built", "Party", "Strong"],
+        "difficulty": "Medium"
+    },
+    "bloody_mary": {
+        "title": "Bloody Mary",
+        "filename": "bloody_mary.mp4",
+        "category": "Classic",
+        "description": "The ultimate brunch cocktail — rich tomato, Worcestershire, Tabasco, and vodka with a dramatic garnish.",
+        "cocktail_id": "bloody_mary",
+        "tags": ["Vodka", "Tomato", "Brunch", "Savoury"],
+        "difficulty": "Medium"
+    },
+    "pina_colada": {
+        "title": "Piña Colada",
+        "filename": "pina_colada.mp4",
+        "category": "Classic",
+        "description": "Blended coconut cream and pineapple with rum — the tropical classic that tastes like a holiday in a glass.",
+        "cocktail_id": "pina_colada",
+        "tags": ["Rum", "Coconut", "Blended", "Tropical"],
+        "difficulty": "Easy"
+    },
+    "martini": {
+        "title": "Martini",
+        "filename": "martini.mp4",
+        "category": "Classic",
+        "description": "The king of cocktails — cold, clean, and perfectly stirred. The Martini separates the great bartenders from the good ones.",
+        "cocktail_id": "martini",
+        "tags": ["Gin", "Stirred", "Elegant", "Classic"],
+        "difficulty": "Medium"
+    },
+    "old_fashioned": {
+        "title": "Old Fashioned",
+        "filename": "old_fashioned.mp4",
+        "category": "Classic",
+        "description": "The original cocktail — whisky, sugar, and bitters stirred over one large ice cube. Timeless, bold, and perfect.",
+        "cocktail_id": "old_fashioned",
+        "tags": ["Whisky", "Stirred", "Bitters", "Classic"],
+        "difficulty": "Easy"
+    },
+    "negroni": {
+        "title": "Negroni",
+        "filename": "negroni.mp4",
+        "category": "Classic",
+        "description": "Equal parts gin, Campari, and sweet vermouth — stirred until ice cold and garnished with an orange peel.",
+        "cocktail_id": "negroni",
+        "tags": ["Gin", "Campari", "Stirred", "Bitter"],
+        "difficulty": "Easy"
+    },
+    # ── Whisky & Spirit-Forward ────────────
+    "revolver": {
+        "title": "Revolver",
+        "filename": "revolver.mp4",
+        "category": "Whisky",
+        "description": "A bold, coffee-forward Bourbon cocktail with Kahlua and orange bitters — stirred smooth for a rich, warming nightcap.",
+        "cocktail_id": "revolver",
+        "tags": ["Bourbon", "Coffee", "Stirred", "Nightcap"],
+        "difficulty": "Easy"
+    },
+    "godfather": {
+        "title": "Godfather",
+        "filename": "godfather.mp4",
+        "category": "Whisky",
+        "description": "Scotch whisky softened with Disaronno Amaretto — two ingredients, served over ice. An offer you cannot refuse.",
+        "cocktail_id": "godfather",
+        "tags": ["Scotch", "Amaretto", "Built", "Strong"],
+        "difficulty": "Easy"
+    },
+    "smoked_old_fashioned": {
+        "title": "Smoked Old Fashioned",
+        "filename": "smoked_old_fashioned.mp4",
+        "category": "Whisky",
+        "description": "The classic Old Fashioned elevated — a dramatic smoke dome fills the glass before the cocktail is poured. Spectacular showmanship.",
+        "cocktail_id": "old_fashioned",
+        "tags": ["Whisky", "Smoked", "Theatrical", "Stirred"],
+        "difficulty": "Advanced"
+    },
+    "next_level_old_fashioned": {
+        "title": "Next Level Old Fashioned",
+        "filename": "next_level_old_fashioned.mp4",
+        "category": "Whisky",
+        "description": "An elevated take on the classic — featuring barrel-aged bitters, hand-cut ice, and an orange oil spray for a modern twist.",
+        "cocktail_id": "old_fashioned",
+        "tags": ["Whisky", "Advanced", "Stirred", "Elevated"],
+        "difficulty": "Advanced"
+    },
+    # ── Signature & Creative ───────────────
+    "irish_buck": {
+        "title": "Irish Buck",
+        "filename": "irish_buck.mp4",
+        "category": "Signature",
+        "description": "Irish whiskey with ginger beer and a squeeze of lime — a smooth, warming highball that is dangerously easy to drink.",
+        "cocktail_id": None,
+        "tags": ["Irish Whiskey", "Ginger Beer", "Highball", "Easy Drinking"],
+        "difficulty": "Easy"
+    },
+    "gold_rush": {
+        "title": "Gold Rush",
+        "filename": "gold_rush.mp4",
+        "category": "Signature",
+        "description": "Bourbon, honey syrup, and fresh lemon — a beautifully simple modern classic that balances sweet, sour, and spirit.",
+        "cocktail_id": None,
+        "tags": ["Bourbon", "Honey", "Shaken", "Citrus"],
+        "difficulty": "Easy"
+    },
+    "hot_boys_summer": {
+        "title": "Hot Boys Summer",
+        "filename": "hot_boys_summer.mp4",
+        "category": "Signature",
+        "description": "A bold, spicy summer cocktail — infused chilli tequila with mango and lime for a drink that is hot in every sense of the word.",
+        "cocktail_id": None,
+        "tags": ["Tequila", "Spicy", "Mango", "Summer"],
+        "difficulty": "Medium"
+    },
+    "solo_tu_y_yo": {
+        "title": "Solo Tú y Yo",
+        "filename": "solo_tu_y_yo.mp4",
+        "category": "Signature",
+        "description": "A romantic Spanish-inspired cocktail — floral and citrusy with a lingering finish that translates as 'just you and me'.",
+        "cocktail_id": None,
+        "tags": ["Floral", "Citrus", "Romantic", "Elegant"],
+        "difficulty": "Medium"
+    },
+    "simple_cocktail": {
+        "title": "Simple Cocktail",
+        "filename": "simple_cocktail.mp4",
+        "category": "Signature",
+        "description": "Proof that the best cocktails need only a few ingredients — a perfectly balanced drink that lets quality spirits shine.",
+        "cocktail_id": None,
+        "tags": ["Simple", "Beginner", "Spirit-Forward", "Quick"],
+        "difficulty": "Easy"
+    },
+    # ── French & Continental ───────────────
+    "french_martini": {
+        "title": "French Martini",
+        "filename": "french_martini.mp4",
+        "category": "Martini",
+        "description": "Vodka, Chambord raspberry liqueur, and pineapple juice — shaken to a gorgeous pink froth. Fruity, elegant, and deeply satisfying.",
+        "cocktail_id": None,
+        "tags": ["Vodka", "Raspberry", "Shaken", "Fruity"],
+        "difficulty": "Easy"
+    },
+    # ── Blue & Tropical ────────────────────
+    "blue_paradise": {
+        "title": "Blue Paradise",
+        "filename": "blue_paradise.mp4",
+        "category": "Tropical",
+        "description": "A vibrant ocean-blue tropical cocktail — light rum, blue curacao, and coconut water shaken over ice. Paradise in a glass.",
+        "cocktail_id": None,
+        "tags": ["Rum", "Blue Curacao", "Tropical", "Vibrant"],
+        "difficulty": "Easy"
+    },
+    "blue_lagoon": {
+        "title": "Blue Lagoon",
+        "filename": "blue_lagoon.mp4",
+        "category": "Tropical",
+        "description": "Electric blue and refreshingly tropical — vodka, blue curacao, and lemonade create a drink as beautiful as a Caribbean lagoon.",
+        "cocktail_id": None,
+        "tags": ["Vodka", "Blue Curacao", "Built", "Tropical"],
+        "difficulty": "Easy"
+    },
+    "blue_lagoon_classic": {
+        "title": "Blue Lagoon Classic",
+        "filename": "blue_lagoon_classic.mp4",
+        "category": "Tropical",
+        "description": "The original Blue Lagoon recipe — a stunning azure cocktail that has been delighting guests since the 1970s.",
+        "cocktail_id": None,
+        "tags": ["Vodka", "Blue Curacao", "Classic", "Retro"],
+        "difficulty": "Easy"
+    },
+    "blue_lagoon_frosty": {
+        "title": "Blue Lagoon Frosty",
+        "filename": "blue_lagoon_frosty.mp4",
+        "category": "Tropical",
+        "description": "A frozen blended version of the Blue Lagoon — icy, slushy, and impossibly refreshing for hot days by the pool.",
+        "cocktail_id": None,
+        "tags": ["Blended", "Frozen", "Blue Curacao", "Party"],
+        "difficulty": "Easy"
+    },
+    "blue_lady": {
+        "title": "Blue Lady",
+        "filename": "blue_lady.mp4",
+        "category": "Tropical",
+        "description": "A sophisticated blue gin cocktail — blue curacao, lemon, and gin shaken to a gorgeous sapphire hue with a silky texture.",
+        "cocktail_id": None,
+        "tags": ["Gin", "Blue Curacao", "Shaken", "Elegant"],
+        "difficulty": "Medium"
+    },
+    # ── Strawberry & Fruit ─────────────────
+    "strawberry_cocktail": {
+        "title": "Strawberry Cocktail",
+        "filename": "strawberry_cocktail.mp4",
+        "category": "Fruit",
+        "description": "Fresh muddled strawberries shaken with vodka, lemon, and a touch of vanilla — summery, vibrant, and beautifully pink.",
+        "cocktail_id": None,
+        "tags": ["Vodka", "Strawberry", "Muddled", "Summer"],
+        "difficulty": "Easy"
+    },
+    "coconut_sunset": {
+        "title": "Coconut Sunset",
+        "filename": "coconut_sunset.mp4",
+        "category": "Fruit",
+        "description": "Layers of coconut rum, pineapple juice, and grenadine create a breathtaking sunset gradient — tropical and deeply indulgent.",
+        "cocktail_id": None,
+        "tags": ["Coconut Rum", "Pineapple", "Layered", "Tropical"],
+        "difficulty": "Medium"
+    },
+    # ── Social & Trending ──────────────────
+    "fresh_cocktail": {
+        "title": "Fresh Cocktail",
+        "filename": "fresh_cocktail.mp4",
+        "category": "Trending",
+        "description": "A vibrant, herb-forward cocktail built around the freshest seasonal ingredients — the kind of drink that photographs beautifully.",
+        "cocktail_id": None,
+        "tags": ["Fresh", "Herbs", "Seasonal", "Instagram"],
+        "difficulty": "Medium"
+    },
+    "garibaldi": {
+        "title": "Garibaldi",
+        "filename": "garibaldi.mp4",
+        "category": "Trending",
+        "description": "Italy's cult two-ingredient cocktail — Campari topped with fluffy, freshly juiced orange juice. Simple, bitter, and sensational.",
+        "cocktail_id": None,
+        "tags": ["Campari", "Orange Juice", "Built", "Italian"],
+        "difficulty": "Easy"
+    },
+    "hot_girl_summer_spritz": {
+        "title": "Hot Girl Summer Spritz",
+        "filename": "hot_girl_summer_spritz.mp4",
+        "category": "Trending",
+        "description": "A pastel pink summer spritz built for golden hour — Aperol, rose wine, peach, and prosecco in a tall ice-filled glass.",
+        "cocktail_id": None,
+        "tags": ["Aperol", "Rose", "Spritz", "Summer"],
+        "difficulty": "Easy"
+    },
+    "delicious_cocktail": {
+        "title": "Delicious Cocktail",
+        "filename": "delicious_cocktail.mp4",
+        "category": "Trending",
+        "description": "A crowd-pleasing, well-balanced cocktail that proves great drinks don't have to be complicated — just delicious.",
+        "cocktail_id": None,
+        "tags": ["Easy", "Balanced", "Crowd Pleaser", "Beginner"],
+        "difficulty": "Easy"
+    },
+    "cocktail_reply": {
+        "title": "Cocktail Reply",
+        "filename": "cocktail_reply.mp4",
+        "category": "Trending",
+        "description": "A viral social media cocktail created in direct response to a viewer request — community-driven and full of character.",
+        "cocktail_id": None,
+        "tags": ["Viral", "Social Media", "Community", "Trending"],
+        "difficulty": "Medium"
+    },
+    # ── Special & Artisan ──────────────────
+    "ramos_gin": {
+        "title": "Ramos Gin Fizz",
+        "filename": "Ramos_Gin.mp4",
+        "category": "Artisan",
+        "description": "New Orleans' most legendary cocktail — gin, cream, egg white, orange blossom water, and citrus shaken for a full 12 minutes to achieve its iconic cloud-like foam.",
+        "cocktail_id": None,
+        "tags": ["Gin", "Egg White", "Cream", "New Orleans"],
+        "difficulty": "Advanced"
+    },
+    "bees_knees": {
+        "title": "Bee's Knees",
+        "filename": "bees_knees.mp4",
+        "category": "Artisan",
+        "description": "A Prohibition-era gin cocktail sweetened with honey syrup and balanced with fresh lemon — smooth, aromatic, and timeless.",
+        "cocktail_id": "bees_knees",
+        "tags": ["Gin", "Honey", "Shaken", "Prohibition"],
+        "difficulty": "Easy"
+    },
+    "arctic_glow": {
+        "title": "Arctic Glow",
+        "filename": "Arctic_Glow.mp4",
+        "category": "Artisan",
+        "description": "A visually stunning ice-blue cocktail — gin, elderflower, and butterfly pea flower create a luminous arctic shimmer that changes colour with citrus.",
+        "cocktail_id": None,
+        "tags": ["Gin", "Elderflower", "Butterfly Pea", "Colour Changing"],
+        "difficulty": "Advanced"
+    },
+    "sex_on_the_beach": {
+        "title": "Sex on the Beach",
+        "filename": "sex_on_the_beach.mp4",
+        "category": "Classic",
+        "description": "A fruity and fun classic — vodka, peach schnapps, cranberry, and orange juice layered in a tall glass. The ultimate 90s party cocktail.",
+        "cocktail_id": "sex_on_the_beach",
+        "tags": ["Vodka", "Peach", "Fruity", "Party"],
+        "difficulty": "Easy"
     }
 }
 
@@ -1450,6 +1965,8 @@ def home():
         "total_backgrounds": len(background),
         "total_histories": len(cocktail_history),
         "total_pairings": len(food_pairings),
+        "total_mocktails": len(mocktails),
+        "total_videos": len(cocktail_videos),
         "endpoints": {
             "GET /api/cocktails": "List all cocktails (supports ?search=, ?ingredient=, ?limit=, ?offset=)",
             "GET /api/cocktail/<n>": "Get cocktail by name (random image)",
@@ -1464,7 +1981,14 @@ def home():
             "GET /api/pairings": "Get all food pairing entries (supports ?category=)",
             "GET /api/pairing/<n>": "Get cocktail pairings for a specific dish (e.g. wagyu_beef, sashimi)",
             "GET /api/pairings/random": "Get a random food pairing entry",
-            "GET /api/pairings/categories": "Get all available food categories"
+            "GET /api/pairings/categories": "Get all available food categories",
+            "GET /api/mocktails": "Get all mocktails & zero-proof drinks (supports ?flavour=)",
+            "GET /api/mocktail/<n>": "Get a specific mocktail (e.g. virgin_mojito, hibiscus_spritz)",
+            "GET /api/mocktails/random": "Get a random mocktail",
+            "GET /api/videos": "Get all cocktail videos (supports ?category=, ?difficulty=, ?tag=)",
+            "GET /api/video/<n>": "Get a specific video entry (e.g. negroni, smoked_old_fashioned)",
+            "GET /api/videos/random": "Get a random video entry",
+            "GET /api/videos/categories": "Get all video categories"
         }
     })
 
@@ -1663,6 +2187,139 @@ def get_pairing_categories():
         if cat not in categories:
             categories[cat] = []
         categories[cat].append({"id": key, "name": pairing["name"]})
+    return jsonify({
+        "total_categories": len(categories),
+        "categories": categories
+    })
+
+
+
+# ─────────────────────────────────────────
+#  Mocktail & Zero-Proof Routes
+# ─────────────────────────────────────────
+
+def format_mocktail(key, drink):
+    return {
+        "id": key,
+        "name": key.replace("_", " ").title(),
+        "description": drink["description"],
+        "ingredients": drink["ingredients"],
+        "image": random.choice(drink["images"]) if drink["images"] else None,
+        "zero_proof": drink["zero_proof"],
+        "flavour_profile": drink["flavour_profile"],
+        "total_ingredients": len(drink["ingredients"])
+    }
+
+
+@app.route("/api/mocktails")
+def get_all_mocktails():
+    flavour_filter = request.args.get("flavour", "").lower()
+    results = []
+    for key, drink in mocktails.items():
+        if flavour_filter:
+            profiles_lower = [f.lower() for f in drink["flavour_profile"]]
+            if not any(flavour_filter in f for f in profiles_lower):
+                continue
+        results.append(format_mocktail(key, drink))
+    return jsonify({
+        "total": len(results),
+        "mocktails": results
+    })
+
+
+@app.route("/api/mocktail/<n>")
+def get_mocktail(name):
+    key = name.lower().replace(" ", "_").replace("-", "_")
+    drink = mocktails.get(key)
+    if not drink:
+        return jsonify({
+            "error": f"Mocktail '{name}' not found.",
+            "available": list(mocktails.keys())
+        }), 404
+    return jsonify(format_mocktail(key, drink))
+
+
+@app.route("/api/mocktails/random")
+def get_random_mocktail():
+    key = random.choice(list(mocktails.keys()))
+    return jsonify(format_mocktail(key, mocktails[key]))
+
+
+
+# ─────────────────────────────────────────
+#  Cocktail Video Routes
+# ─────────────────────────────────────────
+
+def format_video(key, video):
+    return {
+        "id": key,
+        "title": video["title"],
+        "filename": video["filename"],
+        "url": VIDEO_BASE_URL + video["filename"],
+        "category": video["category"],
+        "description": video["description"],
+        "cocktail_id": video.get("cocktail_id"),
+        "tags": video["tags"],
+        "difficulty": video["difficulty"]
+    }
+
+
+@app.route("/api/videos")
+def get_all_videos():
+    category_filter  = request.args.get("category",   "").lower()
+    difficulty_filter = request.args.get("difficulty", "").lower()
+    tag_filter       = request.args.get("tag",        "").lower()
+
+    results = []
+    for key, video in cocktail_videos.items():
+        if category_filter and category_filter not in video["category"].lower():
+            continue
+        if difficulty_filter and difficulty_filter not in video["difficulty"].lower():
+            continue
+        if tag_filter:
+            tags_lower = [t.lower() for t in video["tags"]]
+            if not any(tag_filter in t for t in tags_lower):
+                continue
+        results.append(format_video(key, video))
+
+    return jsonify({
+        "total": len(results),
+        "video_base_url": VIDEO_BASE_URL,
+        "videos": results
+    })
+
+
+@app.route("/api/video/<n>")
+def get_video(name):
+    key = name.lower().replace(" ", "_").replace("-", "_")
+    video = cocktail_videos.get(key)
+    if not video:
+        return jsonify({
+            "error": f"Video for '{name}' not found.",
+            "available": list(cocktail_videos.keys())
+        }), 404
+    return jsonify(format_video(key, video))
+
+
+@app.route("/api/videos/random")
+def get_random_video():
+    key = random.choice(list(cocktail_videos.keys()))
+    return jsonify(format_video(key, cocktail_videos[key]))
+
+
+@app.route("/api/videos/categories")
+def get_video_categories():
+    categories = {}
+    for key, video in cocktail_videos.items():
+        cat = video["category"]
+        if cat not in categories:
+            categories[cat] = []
+        categories[cat].append({
+            "id": key,
+            "title": video["title"],
+            "difficulty": video["difficulty"],
+            "url": VIDEO_BASE_URL + video["filename"]
+        })
     return jsonify({
         "total_categories": len(categories),
         "categories": categories
