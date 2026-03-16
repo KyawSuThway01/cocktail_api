@@ -5,35 +5,6 @@ import requests as req
 app = Flask(__name__)
 
 # ─────────────────────────────────────────
-#  TheCocktailDB Fallback Image Cache
-#  Fetches a real image for any cocktail
-#  that has an empty images list.
-#  Results are cached in memory so we only
-#  hit the external API once per cocktail.
-# ─────────────────────────────────────────
-_image_cache = {}
-
-def get_fallback_image(key):
-    """Return a live image URL from TheCocktailDB for cocktails with no local images."""
-    if key in _image_cache:
-        return _image_cache[key]
-
-    name = key.replace("_", " ")
-    url = f"https://www.thecocktaildb.com/api/json/v1/1/search.php?s={name}"
-    try:
-        r = req.get(url, timeout=5)
-        data = r.json()
-        if data.get("drinks"):
-            img = data["drinks"][0].get("strDrinkThumb", "")
-            _image_cache[key] = img
-            return img
-    except Exception:
-        pass
-
-    _image_cache[key] = None
-    return None
-
-# ─────────────────────────────────────────
 #  CORS — allow all origins for frontend access
 # ─────────────────────────────────────────
 @app.after_request
@@ -43,539 +14,7 @@ def add_cors_headers(response):
     response.headers["Access-Control-Allow-Methods"] = "GET,OPTIONS"
     return response
 
-# ─────────────────────────────────────────
-#  Cocktail Data (100 cocktails)
-# ─────────────────────────────────────────
-cocktails = {
-    "bukit_highball": {
-        "description": "A whisky-based Mule-style drink enriched with sweet bitterness from Dubonnet, herbs and botanicals from Benedictine, topped with Ginger Beer and a dash of citrus.",
-        "ingredients": ["Whisky", "Dubonnet", "Benedictine", "Ginger Beer", "Citrus"],
-        "images": ["https://citynomads.com/wp-content/uploads/2023/10/Highballs-Feature-767x628.jpg",
-                   "https://1.bp.blogspot.com/-u3ds7NAHFGg/XNJVjnI9BoI/AAAAAAACgAQ/pO0x_Fj4fuAECSvT-KNBmByI_c9Qfqq-QCLcBGAs/s1600/Highball.jpg"
-                   ]
-    },
-    "braids_boulevardier": {
-        "description": "A contemporary Coffee Negroni twist with Dark Rum, a nutty essence from Disaronno, and sesame infused through a meticulous Fat Wash process.",
-        "ingredients": ["Dark Rum", "Coffee", "Disaronno", "Sesame (Fat Wash)"],
-        "images": ["https://ichef.bbci.co.uk/food/ic/food_16x9_1600/recipes/boulevardier_45459_16x9.jpg",
-                   "https://static01.nyt.com/images/2018/01/25/dining/25COOKING-Boulevardier1/25COOKING-Boulevardier1-jumbo.jpg",
-                   "https://candradrinks.com/wp-content/uploads/2022/08/Boulevardier-2-min-scaled.jpg"]
-    },
-    "club_maker": {
-        "description": "An Old Fashioned-style elixir combining Coconut-infused Whisky and Sweet Vermouth, simmered with spices and enhanced with Homemade Chocolate Bitters.",
-        "ingredients": ["Coconut-infused Whisky", "Sweet Vermouth", "Spices", "Homemade Chocolate Bitters"],
-        "images": ["https://www.thebottleclub.com/cdn/shop/articles/Classic_Club_Cocktail_Recipe.jpg?v=1703659568&width=1024",
-                   "https://www.wellseasonedstudio.com/wp-content/uploads/2022/05/A-clover-club-cocktail-with-raspberries.jpg"
-                   "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRVXAsgbcyiUu7ddPV2h3GIIb8BP4C71iEiLA&s"
-                   ]
-    },
-    "amaro": {
-        "description": "A sweet and sour Negroni variation with a hint of vanilla and silky egg white texture, transforming a traditionally bitter cocktail into an approachable drink.",
-        "ingredients": ["Gin", "Amaro", "Vanilla", "Egg White"],
-        "images": ["https://theepicureantrader.com/cdn/shop/articles/top-10-amaro-cocktails-you-need-to-try-833477.jpg?v=1737431882",
-                   "https://punchdrink.com/wp-content/uploads/2018/11/Slide4-Amaro-Cynar-Averna-Braulio-Cocktail-Recipe.jpg",
-                   "https://www.add1tbsp.com/wp-content/uploads/2018/09/20180506-italian-amaro-cocktail-1.jpg"]
-    },
-    "flora": {
-        "description": "A highly floral and fruity gin cocktail infused with Rose Water and Lychee, customisable between sweet or tangy, finished with a silky egg white texture.",
-        "ingredients": ["Gin", "Rose Water", "Lychee or Passion Fruit", "Egg White"],
-        "images": [ "https://putneyfarm.com/wp-content/uploads/2019/05/img_0316-e1558130367954.jpg",
-                    "https://craftandcocktails.co/wp-content/uploads/2018/04/Flora-and-Juniper-1-of-9.jpg"
-        ]
-    },
-    "cupid": {
-        "description": "A refreshing Shrub cordial gin drink with strawberry and vinegar for revitalising acidity, topped with soda for a lively effervescence.",
-        "ingredients": ["Gin", "Strawberry Shrub", "Vinegar", "Soda"],
-        "images": ["https://www.finamill.com/cdn/shop/articles/cupid_kiss_b20c04d7-bb04-4a52-ad95-66c102017390.jpg?v=1745506834"]
-    },
-    "immortal_khaya": {
-        "description": "Inspired by the 100-year-old Khaya tree, this vibrant green vodka cocktail blends sourness, sweetness, and subtle peppery undertones.",
-        "ingredients": ["Vodka", "Pepper", "Honey", "Green Apple"],
-        "images": ["https://www.epicureasia.com/wp-content/uploads/2024/06/X7V05586-HD-Fits.jpg"]
-    },
-    "albatross": {
-        "description": "A milk punch clarified for a pristine appearance, with an exceptionally gentle and velvety texture derived from Cognac, Fino Sherry, and Honey.",
-        "ingredients": ["Cognac", "Fino Sherry", "Vermouth", "Honey", "Milk"],
-        "images": ["https://www.bcliquorstores.com/sites/default/files/recipe/BarStar_Albatross_KI.jpg"]
-    },
-    "the_braid_martini": {
-        "description": "A timeless Dry Martini crafted from the house 1924 Gin and dry vermouth, personalised with aromatic botanical options of lavender, rose, or jasmine.",
-        "ingredients": ["1924 Gin", "Dry Vermouth", "Lavender / Rose / Jasmine"],
-        "images": ["https://www.cocktailicious.nl/wp-content/uploads/2019/12/Pornstar_Martini_cocktail.jpg"]
-    },
-    "1924": {
-        "description": "The Braid Bar's signature Tiki-style cocktail, a fruity and refreshing homage to the house 1924 Gin, maintaining its full alcoholic strength.",
-        "ingredients": ["1924 Gin", "Rosemary", "Orange"],
-        "images": ["https://pentrubar.ro/2781-large_default/vintage-1924-cocktail-coupe-glass-libbey-245ml.jpg"]
-    },
-    "negroni": {
-        "description": "A classic bitter Italian cocktail with equal parts gin, Campari, and sweet vermouth, balanced and aromatic.",
-        "ingredients": ["Gin", "Campari", "Sweet Vermouth"],
-        "images": ["https://www.liquor.com/thmb/KPTRXSVO7vyx7O2fPyNkLh9JQPo=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/mezcal-negroni-1500x1500-primary-6f6c472050a949c8a55aa07e1b5a2d1b.jpg"]
-    },
-    "old_fashioned": {
-        "description": "A timeless whisky cocktail gently sweetened with brown sugar and balanced with aromatic bitters.",
-        "ingredients": ["Whisky", "Bitters", "Brown Sugar", "Orange Peel"],
-        "images": ["https://www.simplyrecipes.com/thmb/s_de1Nuw4ULiHNECVHOCBY5u5Wk=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/__opt__aboutcom__coeus__resources__content_migration__simply_recipes__uploads__2020__01__Old-Fashioned-Cocktail-LEAD-5-1024x681-aa81a798a156453d80d1f7d41de893ff.jpg"]
-    },
-    "manhattan": {
-        "description": "A sophisticated whisky cocktail stirred with sweet vermouth and bitters, elegant and spirit-forward.",
-        "ingredients": ["Whisky", "Sweet Vermouth", "Bitters"],
-        "images": ["https://www.liquor.com/thmb/DR2UAsRlu-YCVn9r_iLJCmOvzlg=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/manhattan-4000x4000-primary-ig-9c3d894510284e9d8fbd9c518d00790b.jpg"]
-    },
-    "martini": {
-        "description": "The ultimate classic cocktail — clean, cold, and elegant with gin or vodka and a whisper of dry vermouth.",
-        "ingredients": ["Gin or Vodka", "Dry Vermouth"],
-        "images": ["https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQtGSduNnEAMfKdIUFp8VRJIJknw-14tKsLEA&s"]
-    },
-    "bloody_mary": {
-        "description": "A bold and savoury classic brunch cocktail with a spicy kick from Tabasco and depth from Worcestershire sauce.",
-        "ingredients": ["Vodka", "Worcestershire Sauce", "Tabasco", "Lemon Juice", "Pepper", "Tomato Juice"],
-        "images": ["https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR2iJJBpAXlbBrElkFzuu8_eFvdP-ukhUVzCQ&s"]
-    },
-    "pina_colada": {
-        "description": "A tropical classic blending creamy coconut and sweet pineapple with rum for a lush, island-inspired refreshment.",
-        "ingredients": ["Rum", "Coconut Cream", "Pineapple Juice"],
-        "images": ["https://salimaskitchen.com/wp-content/uploads/2024/07/10-Minute-Pina-Colada-Recipe-A-Classic-Puerto-Rican-Cocktail-Salimas-Kitchen-4-3.jpg"]
-    },
-    "whisky_sour": {
-        "description": "A perfectly balanced whisky cocktail with a bright citrus tang from lemon juice and a touch of sweetness.",
-        "ingredients": ["Whisky", "Lemon Juice", "Sugar", "Egg White"],
-        "images": ["https://www.urbanbar.com/cdn/shop/articles/Whisky_sour.jpg?v=1671203012&width=1500"]
-    },
-    "singapore_sling": {
-        "description": "Singapore's iconic gin cocktail, fruity and tropical with Cointreau, grenadine, and pineapple juice.",
-        "ingredients": ["Gin", "Cointreau", "Grenadine", "Pineapple Juice"],
-        "images": ["https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSJbCKTlONdRoBStZRUY03uqeS8252FEScn0g&s"]
-    },
-    "long_island_iced_tea": {
-        "description": "A potent party favourite combining five spirits with lime and cola for a surprisingly refreshing yet strong drink.",
-        "ingredients": ["Gin", "Rum", "Vodka", "Tequila", "Cointreau", "Lime", "Coke"],
-        "images": ["https://www.supergoldenbakes.com/wordpress/wp-content/uploads/2019/07/Long_island_iced_tea-1-4s.jpg"]
-    },
-    "cosmopolitan": {
-        "description": "A chic and vibrant vodka cocktail made famous by its striking pink hue and balance of tart cranberry and citrus.",
-        "ingredients": ["Vodka", "Orange Liqueur", "Cranberry Juice", "Lime Juice"],
-        "images": ["https://assets.bonappetit.com/photos/650df690c94ec4218673b45a/6:9/w_1300,h_1950,c_limit/20230915-WEB-SEO-0882_update%20copy.jpg"]
-    },
-    "rob_roy": {
-        "description": "A Scottish twist on the Manhattan using Scotch whisky, sweet vermouth, and bitters for a smooth, peaty depth.",
-        "ingredients": ["Scotch Whisky", "Sweet Vermouth", "Bitters"],
-        "images": ["https://www.wineenthusiast.com/wp-content/uploads/2023/06/06_23_Rob_Roy_HERO_GlenDronach_Distillery_1920x1280.jpg"]
-    },
-    "mary_pickford": {
-        "description": "A Prohibition-era classic blending rum, cherry liqueur, and pineapple for a sweet and fruity tropical experience.",
-        "ingredients": ["Rum", "Cherry Liqueur", "Pineapple Juice", "Grenadine"],
-        "images": ["https://upload.wikimedia.org/wikipedia/commons/1/1a/Mary_Pickford_Cocktail.jpg"]
-    },
-    "sidecar": {
-        "description": "A refined Cognac classic with bright citrus from orange liqueur and a sour punch from lemon juice.",
-        "ingredients": ["Cognac", "Orange Liqueur", "Lemon Juice"],
-        "images": ["https://upload.wikimedia.org/wikipedia/commons/9/94/Sidecar-cocktail.jpg"]
-    },
-    "sazerac": {
-        "description": "One of the oldest known cocktails, a bold rye whisky drink with absinthe rinse and aromatic bitters.",
-        "ingredients": ["Rye Whisky", "Bitters", "Absinthe", "Sugar"],
-        "images": ["https://static-prod.remymartin.com/app/uploads/2024/06/remy-martin-cocktails-sazerac-1x1-250716-02.jpg"]
-    },
-    "martinez": {
-        "description": "The forefather of the modern martini, combining gin and sweet vermouth with a hint of orange bitters.",
-        "ingredients": ["Gin", "Sweet Vermouth", "Orange Bitters"],
-        "images": ["https://punchdrink.com/wp-content/uploads/2013/12/Social-Martini-Cocktail-Recipe-Martinez.jpg"]
-    },
-    "mojito": {
-        "description": "A refreshing Cuban classic bursting with fresh mint, lime, and light rum, topped with soda for effervescence.",
-        "ingredients": ["White Rum", "Fresh Mint", "Lime Juice", "Sugar", "Soda Water"],
-        "images": ["https://www.liquor.com/thmb/MJRVqf-itJGY90nwUOYGXnyG-HA=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/mojito-720x720-primary-6a57f80e200c412e9a77a1687f312ff7.jpg"]
-    },
-    "daiquiri": {
-        "description": "A beautifully simple rum cocktail with a perfect balance of sweet and sour, crisp and refreshing.",
-        "ingredients": ["White Rum", "Lime Juice", "Simple Syrup"],
-        "images": ["https://www.liquor.com/thmb/WjUD7EuXuhZ98tfYtOjdfmuA-y4=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/Strawberry_Daquiri_1800x1800_primary-63c25c677616479da2d08767b3b4ee8a.jpg"]
-    },
-    "margarita": {
-        "description": "The world's most popular tequila cocktail, bright and tangy with a salted rim and fresh lime juice.",
-        "ingredients": ["Tequila", "Triple Sec", "Lime Juice", "Salt"],
-        "images": ["https://soufflebombay.com/wp-content/uploads/2017/05/Classic-Margarita-Recipe.jpg"]
-    },
-    "aperol_spritz": {
-        "description": "A light and bittersweet Italian aperitivo, effervescent and vibrant with Aperol, prosecco, and soda.",
-        "ingredients": ["Aperol", "Prosecco", "Soda Water", "Orange Slice"],
-        "images": ["https://www.liquor.com/thmb/1ZharnCZtEmyUkKfEm8dh07MV8g=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/aperol-spritz-720x720-primary-985457b239d7427da2f8b4be17131caa.jpg"]
-    },
-    "espresso_martini": {
-        "description": "A sophisticated coffee cocktail that delivers a caffeinated kick with a velvety, frothy finish.",
-        "ingredients": ["Vodka", "Espresso", "Coffee Liqueur", "Simple Syrup"],
-        "images": ["https://barossadistilling.com/wp-content/uploads/2024/05/Espresso-Martini-Cocktail.png"]
-    },
-    "tom_collins": {
-        "description": "A tall, refreshing gin cocktail with lemon juice and soda water, light and effervescent for warm days.",
-        "ingredients": ["Gin", "Lemon Juice", "Simple Syrup", "Soda Water"],
-        "images": ["https://assets.epicurious.com/photos/642da48f6f7f88309f457815/1:1/w_4634,h_4634,c_limit/TomCollins_RECIPE_033123_50633.jpg"]
-    },
-    "french_75": {
-        "description": "An elegant celebratory cocktail combining gin and lemon juice topped with champagne for a sparkling finish.",
-        "ingredients": ["Gin", "Lemon Juice", "Simple Syrup", "Champagne"],
-        "images": ["https://images.ctfassets.net/hs93c4k6gio0/Qh3XDKsj9fkaFAPbIcLXR/43bcbac62e7807e55e7a5c91b822e79b/_images_us-cocktails_French75_0412_2.jpg.jpg"]
-    },
-    "gimlet": {
-        "description": "A clean and sharp gin cocktail with a balance of citrus and sweetness, timeless and easy to drink.",
-        "ingredients": ["Gin", "Lime Juice", "Simple Syrup"],
-        "images": ["https://punchdrink.com/wp-content/uploads/2013/09/Gimlet.jpg"]
-    },
-    "dark_and_stormy": {
-        "description": "A bold and spicy highball pairing dark rum with fiery ginger beer and a squeeze of lime.",
-        "ingredients": ["Dark Rum", "Ginger Beer", "Lime Juice"],
-        "images": ["https://www.foodandwine.com/thmb/q-xC6FQ9lRW19WmlNmyydrPGmko=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/FAW-recipes-dark-n-stormy-hero-c4c68e82794f409fa86c6dbc14f5a350.jpg"]
-    },
-    "paloma": {
-        "description": "Mexico's most beloved tequila cocktail, bright and tart with grapefruit soda and a salted rim.",
-        "ingredients": ["Tequila", "Grapefruit Juice", "Lime Juice", "Salt", "Soda Water"],
-        "images": ["https://imbibemagazine.com/wp-content/uploads/2025/07/Puesto_PoblanoPaloma-crdt-Mandie-Geller.jpg"]
-    },
-    "whisky_highball": {
-        "description": "A simple and endlessly satisfying Japanese-style whisky drink with chilled soda water over ice.",
-        "ingredients": ["Whisky", "Soda Water"],
-        "images": ["https://www.liquor.com/thmb/1wYZ_FaWjTxLHBE9fadgvuTbFLM=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/whiskey-highball-1500x1500-hero-aa13a49019364fab8c94b53861aeb182.jpg"]
-    },
-    "clover_club": {
-        "description": "A pre-Prohibition classic with a gorgeous pink hue from raspberry syrup and a silky texture from egg white.",
-        "ingredients": ["Gin", "Lemon Juice", "Raspberry Syrup", "Egg White"],
-        "images": ["https://www.foodandwine.com/thmb/cohxXZsvVl5sPfAZ702iNWyEY44=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/Clover_Club_Cocktail_Credit_Tim_Nusog_4000x2667-e52131de178048e784ecfdd25b586daf.jpg"]
-    },
-    "bees_knees": {
-        "description": "A Prohibition-era gin cocktail sweetened with honey and brightened with fresh lemon, smooth and aromatic.",
-        "ingredients": ["Gin", "Honey Syrup", "Lemon Juice"],
-        "images": ["https://www.girlversusdough.com/wp-content/uploads/2021/04/bees-knees-cocktail-3-600x900.jpg"]
-    },
-    "penicillin": {
-        "description": "A modern classic combining blended Scotch, honey-ginger syrup, and lemon juice with a smoky Islay float.",
-        "ingredients": ["Blended Scotch Whisky", "Islay Single Malt", "Honey-Ginger Syrup", "Lemon Juice"],
-        "images": ["https://www.thespruceeats.com/thmb/kZ8yHPOE-rSmbsYrFYIw6caHzF8=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/SES-penicillin-cocktail-recipe-7374904-hero-01-31bce98ad0194410b3fd41c318206dad.jpg"]
-    },
-    "paper_plane": {
-        "description": "A modern equal-parts cocktail that is simultaneously bitter, sweet, and sour with a beautiful amber hue.",
-        "ingredients": ["Bourbon", "Aperol", "Amaro Nonino", "Lemon Juice"],
-        "images": ["https://www.liquor.com/thmb/JHYqlZiH5R0pbhUQCIho5QTxC6Q=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/paper-plane-720x720-primary-3e0b79b1d81c4e7e8f017093d4b27f12.jpg"]
-    },
-    "jungle_bird": {
-        "description": "A Tiki classic from Kuala Lumpur featuring the unexpected bitterness of Campari balanced with rum and tropical fruits.",
-        "ingredients": ["Dark Rum", "Campari", "Pineapple Juice", "Lime Juice", "Simple Syrup"],
-        "images": ["https://punchdrink.com/wp-content/uploads/2021/09/Social2-Mastering-the-Jungle-Bird-Cocktail-Recipe-Fanny-Chu.jpg"]
-    },
-    "amaretto_sour": {
-        "description": "A sweet and tangy cocktail with the distinctive almond flavour of Amaretto, lifted by bright lemon juice and frothy egg white.",
-        "ingredients": ["Amaretto", "Lemon Juice", "Simple Syrup", "Egg White"],
-        "images": ["https://www.realsimple.com/thmb/Tci1QDDA5BmOUAUfGZqcvueI7ms=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/RealSimple_amaretto-sour_Step-3-16746e54b17640b5bc2c075f90fd9b1e.jpg"]
-    },
-    "aviation": {
-        "description": "A stunning violet-hued classic gin cocktail with floral notes from creme de violette and bright maraschino cherry liqueur.",
-        "ingredients": ["Gin", "Maraschino Liqueur", "Creme de Violette", "Lemon Juice"],
-        "images": ["https://www.thespruceeats.com/thmb/CHRUnCNBw3TdWNVIvSK_OgJ7QJw=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/aviation-cocktail-recipe-760055-hero-01-af5233300c184476b02891de2c685b2a.jpg"]
-    },
-    "last_word": {
-        "description": "A Prohibition-era equal-parts cocktail with herbal green Chartreuse, gin, maraschino, and lime — perfectly balanced.",
-        "ingredients": ["Gin", "Green Chartreuse", "Maraschino Liqueur", "Lime Juice"],
-        "images": ["https://kitchenswagger.com/wp-content/uploads/2018/09/last-word-1-1.jpg"]
-    },
-    "corpse_reviver_no2": {
-        "description": "A classic hangover cure combining gin, lemon, Cointreau, and Lillet Blanc with a hint of absinthe.",
-        "ingredients": ["Gin", "Cointreau", "Lillet Blanc", "Lemon Juice", "Absinthe"],
-        "images": ["https://www.supergoldenbakes.com/wordpress/wp-content/uploads/2019/12/Corpse_Reviver_No2.jpg"]
-    },
-    "pornstar_martini": {
-        "description": "A fruity and indulgent modern classic with vanilla vodka and passion fruit, served alongside a shot of Prosecco.",
-        "ingredients": ["Vanilla Vodka", "Passion Fruit Puree", "Passion Fruit Liqueur", "Lime Juice", "Prosecco"],
-        "images": ["https://punchdrink.com/wp-content/uploads/2023/06/Article-Ultimate-Porn-Star-Martini-Recpie.jpg?w=800"]
-    },
-    "sex_on_the_beach": {
-        "description": "A fruity and fun vodka cocktail combining peach schnapps with cranberry and orange juice for a tropical vibe.",
-        "ingredients": ["Vodka", "Peach Schnapps", "Cranberry Juice", "Orange Juice"],
-        "images": ["https://images.immediate.co.uk/production/volatile/sites/2/2022/05/sex-on-the-beach-0026fb2.jpg"]
-    },
-    "tequila_sunrise": {
-        "description": "A visually stunning cocktail with a gradient of orange juice and grenadine resembling a beautiful sunrise.",
-        "ingredients": ["Tequila", "Orange Juice", "Grenadine"],
-        "images": []
-    },
-    "harvey_wallbanger": {
-        "description": "A groovy 1970s classic layering Galliano herbal liqueur over a simple vodka and orange juice combination.",
-        "ingredients": ["Vodka", "Orange Juice", "Galliano"],
-        "images": ["https://images.immediate.co.uk/production/volatile/sites/2/2022/05/tequila-sunrise-a164206.jpg"]
-    },
-    "bahama_mama": {
-        "description": "A fruity tropical rum cocktail bursting with pineapple, coconut, and a hint of coffee liqueur.",
-        "ingredients": ["Dark Rum", "Coconut Rum", "Coffee Liqueur", "Pineapple Juice", "Orange Juice", "Lime Juice"],
-        "images": ["https://www.liquor.com/thmb/mQ16ZSRMMjwmxoKtwHCINvk3RmU=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/bahama-mama-720x720-primary-155c67b9c3bb41f4bac182875c904518.jpg"]
-    },
-    "moscow_mule": {
-        "description": "A refreshing and zingy vodka cocktail served in its iconic copper mug with spicy ginger beer and lime.",
-        "ingredients": ["Vodka", "Ginger Beer", "Lime Juice"],
-        "images": ["https://www.liquor.com/thmb/G5R_Y6cS-voBV1hYqI2mtoovoTQ=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/moscow-mule-4000x4000-primary-ig-3a364d63e57b4a9b8cf82ec1dc54eb30.jpg"]
-    },
-    "mint_julep": {
-        "description": "The quintessential Kentucky Derby cocktail — bourbon over crushed ice with fresh mint and a touch of sugar.",
-        "ingredients": ["Bourbon", "Fresh Mint", "Simple Syrup", "Crushed Ice"],
-        "images": ["https://www.liquor.com/thmb/EJQYiAb0wheEgC5VfuoTph3mTkw=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/__opt__aboutcom__coeus__resources__content_migration__liquor__2019__09__03134428__Miamians-Julep-720x720-recipe-fb97ac8873054d3487ecb2bbb26e94be.jpg"]
-    },
-    "french_connection": {
-        "description": "A simple yet indulgent after-dinner drink combining Cognac and Amaretto in a smooth, nutty pairing.",
-        "ingredients": ["Cognac", "Amaretto"],
-        "images": ["https://ik.imagekit.io/vjt1kualr/drinks/french_connection/main-image.jpg"]
-    },
-    "stinger": {
-        "description": "A classic digestif pairing smooth Cognac with refreshing white crème de menthe for a cooling finish.",
-        "ingredients": ["Cognac", "White Creme de Menthe"],
-        "images": []
-    },
-    "rusty_nail": {
-        "description": "A warming Scottish duo of Scotch whisky and Drambuie, honeyed and herbal with a smooth lingering finish.",
-        "ingredients": ["Scotch Whisky", "Drambuie"],
-        "images": []
-    },
-    "godfather": {
-        "description": "A bold and nutty two-ingredient Scotch cocktail softened by the sweet almond notes of Disaronno Amaretto.",
-        "ingredients": ["Scotch Whisky", "Amaretto"],
-        "images": []
-    },
-    "black_russian": {
-        "description": "A simple and strong Soviet-inspired cocktail pairing vodka with rich coffee liqueur over ice.",
-        "ingredients": ["Vodka", "Coffee Liqueur"],
-        "images": []
-    },
-    "white_russian": {
-        "description": "A creamy, indulgent twist on the Black Russian made famous by The Big Lebowski, topped with heavy cream.",
-        "ingredients": ["Vodka", "Coffee Liqueur", "Heavy Cream"],
-        "images": []
-    },
-    "grasshopper": {
-        "description": "A sweet and minty dessert cocktail with a vibrant green colour from creme de menthe and creamy texture.",
-        "ingredients": ["Green Creme de Menthe", "White Creme de Cacao", "Heavy Cream"],
-        "images": []
-    },
-    "hurricane": {
-        "description": "A bold New Orleans Tiki classic loaded with passion fruit, citrus, and two kinds of rum for tropical indulgence.",
-        "ingredients": ["Dark Rum", "White Rum", "Passion Fruit Syrup", "Orange Juice", "Lime Juice", "Grenadine"],
-        "images": []
-    },
-    "zombie": {
-        "description": "A legendary and dangerously strong Tiki cocktail blending three types of rum with tropical fruits and spice.",
-        "ingredients": ["White Rum", "Dark Rum", "Overproof Rum", "Apricot Brandy", "Pineapple Juice", "Lime Juice", "Grenadine"],
-        "images": []
-    },
-    "mai_tai": {
-        "description": "The king of Tiki cocktails — a rum-forward blend of orange liqueur, orgeat, and lime with an exotic tropical flair.",
-        "ingredients": ["White Rum", "Dark Rum", "Orange Liqueur", "Orgeat Syrup", "Lime Juice"],
-        "images": []
-    },
-    "blue_hawaii": {
-        "description": "A vibrant electric-blue Tiki cocktail with vodka, rum, blue curacao, and tropical pineapple juice.",
-        "ingredients": ["Vodka", "White Rum", "Blue Curacao", "Pineapple Juice", "Sweet and Sour Mix"],
-        "images": []
-    },
-    "lemon_drop": {
-        "description": "A bright and citrusy vodka martini with a sugar-rimmed glass and a sharp lemon punch.",
-        "ingredients": ["Vodka", "Triple Sec", "Lemon Juice", "Simple Syrup", "Sugar"],
-        "images": []
-    },
-    "kamikaze": {
-        "description": "A sharp and tangy vodka shooter with triple sec and lime, clean and easy to throw back.",
-        "ingredients": ["Vodka", "Triple Sec", "Lime Juice"],
-        "images": []
-    },
-    "between_the_sheets": {
-        "description": "A cheeky Prohibition-era cocktail blending rum, Cognac, and Cointreau with bright lemon for a balanced sip.",
-        "ingredients": ["White Rum", "Cognac", "Cointreau", "Lemon Juice"],
-        "images": []
-    },
-    "bramble": {
-        "description": "A modern British classic by Dick Bradsell — gin sour drizzled with blackberry liqueur for a fruity forest finish.",
-        "ingredients": ["Gin", "Lemon Juice", "Simple Syrup", "Creme de Mure"],
-        "images": []
-    },
-    "southside": {
-        "description": "A refreshing Prohibition-era gin cocktail similar to a mojito, with bright mint and citrus notes.",
-        "ingredients": ["Gin", "Fresh Mint", "Lime Juice", "Simple Syrup"],
-        "images": []
-    },
-    "naked_and_famous": {
-        "description": "A bold and equal-parts modern classic balancing smoky mezcal with Aperol, yellow Chartreuse, and lime.",
-        "ingredients": ["Mezcal", "Aperol", "Yellow Chartreuse", "Lime Juice"],
-        "images": []
-    },
-    "mezcal_negroni": {
-        "description": "A smoky and complex twist on the classic Negroni swapping gin for earthy mezcal for added depth.",
-        "ingredients": ["Mezcal", "Campari", "Sweet Vermouth"],
-        "images": []
-    },
-    "tommy_s_margarita": {
-        "description": "A purist tequila-forward Margarita using agave nectar instead of triple sec to let the tequila shine.",
-        "ingredients": ["Tequila", "Lime Juice", "Agave Nectar"],
-        "images": []
-    },
-    "spicy_margarita": {
-        "description": "A fiery twist on the classic Margarita with fresh jalapeño and chilli-infused tequila for a bold kick.",
-        "ingredients": ["Tequila", "Triple Sec", "Lime Juice", "Jalapeño", "Salt"],
-        "images": []
-    },
-    "frozen_daiquiri": {
-        "description": "A slushy and refreshing blended version of the classic daiquiri, perfect for hot tropical days.",
-        "ingredients": ["White Rum", "Lime Juice", "Simple Syrup", "Crushed Ice"],
-        "images": []
-    },
-    "strawberry_daiquiri": {
-        "description": "A fruity and sweet blended cocktail with fresh strawberries, rum, and lime for a summery treat.",
-        "ingredients": ["White Rum", "Fresh Strawberries", "Lime Juice", "Simple Syrup"],
-        "images": []
-    },
-    "mango_margarita": {
-        "description": "A tropical twist on the classic Margarita bursting with fresh mango sweetness and zesty lime.",
-        "ingredients": ["Tequila", "Mango Puree", "Triple Sec", "Lime Juice"],
-        "images": []
-    },
-    "cucumber_gin_fizz": {
-        "description": "A light and crisp gin cocktail with fresh cucumber and elderflower topped with soda for garden-party freshness.",
-        "ingredients": ["Gin", "Cucumber", "Elderflower Liqueur", "Lime Juice", "Soda Water"],
-        "images": []
-    },
-    "elderflower_collins": {
-        "description": "A delicate and floral twist on the Tom Collins with elderflower liqueur adding a fragrant sweetness.",
-        "ingredients": ["Gin", "Elderflower Liqueur", "Lemon Juice", "Soda Water"],
-        "images": []
-    },
-    "blood_orange_margarita": {
-        "description": "A stunning ruby-red Margarita with the rich, slightly tart flavour of freshly squeezed blood orange juice.",
-        "ingredients": ["Tequila", "Blood Orange Juice", "Triple Sec", "Lime Juice"],
-        "images": []
-    },
-    "pisco_sour": {
-        "description": "Peru's national cocktail — a frothy, citrusy sour made with pisco brandy and finished with aromatic bitters.",
-        "ingredients": ["Pisco", "Lime Juice", "Simple Syrup", "Egg White", "Bitters"],
-        "images": []
-    },
-    "caipirinha": {
-        "description": "Brazil's national cocktail — muddled lime and sugar with earthy cachaça for a raw, refreshing punch.",
-        "ingredients": ["Cachaça", "Lime", "Sugar"],
-        "images": []
-    },
-    "irish_coffee": {
-        "description": "A warming classic combining hot Irish whiskey and coffee, topped with a thick layer of lightly whipped cream.",
-        "ingredients": ["Irish Whiskey", "Hot Coffee", "Brown Sugar", "Heavy Cream"],
-        "images": []
-    },
-    "spanish_coffee": {
-        "description": "A flambéed coffee cocktail layering rum, Kahlua, and Triple Sec under hot coffee and whipped cream.",
-        "ingredients": ["Rum", "Kahlua", "Triple Sec", "Hot Coffee", "Whipped Cream"],
-        "images": []
-    },
-    "black_velvet": {
-        "description": "An elegant and luxurious drink layering creamy Guinness stout over chilled sparkling wine or Champagne.",
-        "ingredients": ["Guinness Stout", "Champagne or Sparkling Wine"],
-        "images": []
-    },
-    "kir_royale": {
-        "description": "A simple and elegant French aperitif of Champagne with a splash of blackcurrant creme de cassis.",
-        "ingredients": ["Champagne", "Creme de Cassis"],
-        "images": []
-    },
-    "bellini": {
-        "description": "A classic Italian brunch cocktail from Venice combining white peach puree with light and bubbly Prosecco.",
-        "ingredients": ["Prosecco", "White Peach Puree"],
-        "images": []
-    },
-    "mimosa": {
-        "description": "A brunch icon blending chilled Champagne with fresh orange juice in a beautifully simple 50/50 ratio.",
-        "ingredients": ["Champagne", "Orange Juice"],
-        "images": []
-    },
-    "death_in_the_afternoon": {
-        "description": "An Ernest Hemingway creation combining absinthe with Champagne for a dangerously smooth and elegant sip.",
-        "ingredients": ["Absinthe", "Champagne"],
-        "images": []
-    },
-    "tipperary": {
-        "description": "A rich and herbal pre-Prohibition Irish cocktail combining Irish whiskey, sweet vermouth, and green Chartreuse.",
-        "ingredients": ["Irish Whiskey", "Sweet Vermouth", "Green Chartreuse"],
-        "images": ["https://mybartender.com/wp-content/uploads/2023/12/tipperary-cocktail-recipe.jpg"]
-    },
-    "vieux_carre": {
-        "description": "A New Orleans classic blending rye whiskey, Cognac, sweet vermouth, Benedictine, and bitters in equal harmony.",
-        "ingredients": ["Rye Whiskey", "Cognac", "Sweet Vermouth", "Benedictine", "Peychaud Bitters", "Angostura Bitters"],
-        "images": ["https://drinkinghobby.com/wp-content/uploads/2018/06/Vieux-Carre-cocktail-28-Blog.jpg"]
-    },
-    "toronto": {
-        "description": "A spirit-forward Canadian cocktail featuring rye whisky sweetened and deepened with Fernet-Branca amaro.",
-        "ingredients": ["Rye Whisky", "Fernet-Branca", "Simple Syrup", "Angostura Bitters"],
-        "images": ["https://punchdrink.com/wp-content/uploads/2023/01/Social-Toronto-Cocktail-Recipe-Jamie-Bourdreau-Canon-Seattle.jpg"]
-    },
-    "trinidad_sour": {
-        "description": "A daring modern cocktail built on a full ounce of Angostura bitters, balanced with orgeat and lemon juice.",
-        "ingredients": ["Angostura Bitters", "Orgeat Syrup", "Lemon Juice", "Rye Whisky"],
-        "images": ["https://www.foodandwine.com/thmb/QFqSackTjNKMoe5AMKCBNJ9cpuY=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/trinidad-sour-FT-RECIPE1025-272d97e433be4d0c8665c07ad937f3eb.jpg"]
-    },
-    "final_ward": {
-        "description": "A modern riff on the Last Word swapping gin for rye whiskey for a spicier, more complex equal-parts cocktail.",
-        "ingredients": ["Rye Whiskey", "Green Chartreuse", "Maraschino Liqueur", "Lemon Juice"],
-        "images": ["https://bar-vademecum.eu/wp-content/uploads/2021/04/Final-Ward-1.jpg"]
-    },
-    "revolver": {
-        "description": "A bold coffee-forward Bourbon cocktail with Kahlua and orange bitters for a rich, warming nightcap.",
-        "ingredients": ["Bourbon", "Kahlua", "Orange Bitters"],
-        "images": ["https://www.liquor.com/thmb/YO9-iwg4pbDlxNE64JeZ0_ZWar8=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/__opt__aboutcom__coeus__resources__content_migration__liquor__2019__04__24153243__revolver-720x720-recipe-1-f662b26f4c3e49588c629a4533c8830b.jpg"]
-    },
-    "oaxacan_old_fashioned": {
-        "description": "A celebrated modern classic combining mezcal and reposado tequila for a smoky, complex Old Fashioned.",
-        "ingredients": ["Reposado Tequila", "Mezcal", "Agave Nectar", "Mole Bitters"],
-        "images": ["https://www.slightlypretentious.co/wp-content/uploads/2021/12/Oaxacan-Old-Fashioned-2-1024x683.jpg"]
-    },
-    "shirley_temple": {
-        "description": "A classic non-alcoholic mocktail for all ages with ginger ale and grenadine for a sweet, fizzy sip.",
-        "ingredients": ["Ginger Ale", "Grenadine", "Orange Juice"],
-        "images": ["https://vintageamericancocktails.com/wp-content/uploads/2023/01/shirley_temple-1.jpg"]
-    },
-    "blue_lagoon_mocktail": {
-        "description": "A vivid blue non-alcoholic cooler with blue curacao syrup, lemon juice, and lemonade for a tropical feel.",
-        "ingredients": ["Blue Curacao Syrup", "Lemon Juice", "Lemonade", "Soda Water"],
-        "images": ["https://frobishers.com/cdn/shop/articles/blue_lagoon_3.png?v=1695025795"]
-    },
-    "cucumber_mint_cooler": {
-        "description": "A light and refreshing non-alcoholic mocktail with fresh cucumber, mint, and a hint of lime.",
-        "ingredients": ["Cucumber", "Fresh Mint", "Lime Juice", "Soda Water", "Simple Syrup"],
-        "images": ["https://empirewine.imgix.net/recipes/203_1723664773009.jpg?w=1200"]
-    },
-    "jungle_juice": {
-        "description": "A potent party punch combining multiple spirits with tropical juices for a crowd-pleasing, fruit-forward drink.",
-        "ingredients": ["Vodka", "Rum", "Fruit Punch", "Orange Juice", "Pineapple Juice", "Lemon-Lime Soda"],
-        "images": ["https://vintageamericancocktails.com/wp-content/uploads/2020/11/jungle-juice.jpg"]
-    },
-    "sex_and_the_city": {
-        "description": "A glamorous and fruity vodka cocktail inspired by the iconic TV series, bursting with citrus and berry flavours.",
-        "ingredients": ["Vodka", "Raspberry Liqueur", "Cranberry Juice", "Lime Juice"],
-        "images": []
-    },
-    "absinthe_drip": {
-        "description": "A traditional French preparation of absinthe with ice-cold water dripped slowly over a sugar cube to louche the spirit.",
-        "ingredients": ["Absinthe", "Ice Water", "Sugar Cube"],
-        "images": ["https://drinksworld.com/wp-content/uploads/Absinthe-Drip-Ingredients-scaled.jpg"]
-    },
-    "remember_the_maine": {
-        "description": "A complex and smoky Manhattan variation with Cherry Heering and absinthe for a dramatic depth of flavour.",
-        "ingredients": ["Rye Whisky", "Sweet Vermouth", "Cherry Heering", "Absinthe"],
-        "images": ["https://australianbartender.com.au/wp-content/uploads/2018/06/remember_the_maine_DSC9517.jpg"]
-    },
-    "cafe_caribbean": {
-        "description": "A tropical coffee concoction blending Caribbean rum with rich coffee for a warm and indulgent after-dinner treat.",
-        "ingredients": ["Caribbean Rum", "Hot Coffee", "Sugar", "Whipped Cream"],
-        "images": ["https://www.thespruceeats.com/thmb/m9i2cJPy1kM9by2c5j8-dZ45RAk=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/cafe-caribbean-cocktail-recipe-760506-hero-images-3-dcd499a7c0cf44e491a76e04598a97d5.jpg"]
-    }
-}
 
-
-
-
-# ─────────────────────────────────────────
-#  Cocktail History Data (10 iconic cocktails)
-# ─────────────────────────────────────────
 # ─────────────────────────────────────────
 #  Cocktail History Data (10 iconic cocktails)
 #  Images served from: static/cocktail_history/
@@ -675,9 +114,6 @@ cocktail_history = {
     }
 }
 
-# ─────────────────────────────────────────
-#  Food Pairing Data (25 dishes)
-# ─────────────────────────────────────────
 # ─────────────────────────────────────────
 #  Food Pairing Data (25 dishes)
 #  Videos served from: static/food_pairing_videos/
@@ -1337,153 +773,6 @@ food_pairings = {
 
 
 # ─────────────────────────────────────────
-#  Mocktails & Zero-Proof Data (20 drinks)
-# ─────────────────────────────────────────
-mocktails = {
-    "virgin_mojito": {
-        "description": "A refreshing alcohol-free take on the Cuban classic — muddled fresh mint, lime juice, and sugar topped with sparkling water for a lively, cooling effervescence.",
-        "ingredients": ["Fresh Mint", "Lime Juice", "Simple Syrup", "Soda Water", "Crushed Ice"],
-        "images": ["https://www.recipetineats.com/wp-content/uploads/2021/07/Virgin-Mojito_4.jpg"],
-        "zero_proof": True,
-        "flavour_profile": ["Minty", "Citrusy", "Refreshing", "Light"]
-    },
-    "virgin_mary": {
-        "description": "The bold, savoury alcohol-free version of the Bloody Mary — tomato juice with Worcestershire, Tabasco, lemon, and a celery salt rim. Every bit as punchy as the original.",
-        "ingredients": ["Tomato Juice", "Worcestershire Sauce", "Tabasco", "Lemon Juice", "Celery Salt", "Pepper", "Horseradish"],
-        "images": ["https://www.recipetineats.com/wp-content/uploads/2021/09/Virgin-Mary_4.jpg"],
-        "zero_proof": True,
-        "flavour_profile": ["Savoury", "Spicy", "Tangy", "Bold"]
-    },
-    "nojito": {
-        "description": "A sophisticated zero-proof Negroni alternative — bitter botanical shrub, non-alcoholic aperitivo, and a hint of citrus peel. The full Negroni complexity without any alcohol.",
-        "ingredients": ["Non-Alcoholic Aperitivo", "Bitter Botanical Shrub", "Orange Peel", "Soda Water"],
-        "images": ["https://www.thecocktailacademy.com/wp-content/uploads/2022/03/nojito-mocktail.jpg"],
-        "zero_proof": True,
-        "flavour_profile": ["Bitter", "Herbal", "Complex", "Aromatic"]
-    },
-    "sparkling_elderflower_lemonade": {
-        "description": "A delicate and floral zero-proof drink blending elderflower cordial with fresh lemon juice and sparkling water — light, fragrant, and perfect for warm evenings.",
-        "ingredients": ["Elderflower Cordial", "Lemon Juice", "Sparkling Water", "Fresh Mint", "Cucumber Slice"],
-        "images": ["https://www.recipetineats.com/wp-content/uploads/2021/06/Elderflower-Lemonade_4.jpg"],
-        "zero_proof": True,
-        "flavour_profile": ["Floral", "Citrusy", "Delicate", "Refreshing"]
-    },
-    "watermelon_mint_cooler": {
-        "description": "Freshly blended watermelon juice shaken with mint, lime, and a pinch of sea salt — vibrantly pink, naturally sweet, and incredibly refreshing.",
-        "ingredients": ["Fresh Watermelon Juice", "Fresh Mint", "Lime Juice", "Sea Salt", "Soda Water"],
-        "images": ["https://www.recipetineats.com/wp-content/uploads/2022/01/Watermelon-Juice_4.jpg"],
-        "zero_proof": True,
-        "flavour_profile": ["Sweet", "Fruity", "Minty", "Vibrant"]
-    },
-    "ginger_lemon_fizz": {
-        "description": "Freshly pressed ginger juice combined with honey, lemon, and topped with ginger beer — spicy, zingy, and deeply warming with a natural effervescence.",
-        "ingredients": ["Fresh Ginger Juice", "Lemon Juice", "Honey Syrup", "Ginger Beer", "Lemon Slice"],
-        "images": ["https://www.recipetineats.com/wp-content/uploads/2022/08/Ginger-Lemonade_4.jpg"],
-        "zero_proof": True,
-        "flavour_profile": ["Spicy", "Zingy", "Sweet", "Warming"]
-    },
-    "hibiscus_spritz": {
-        "description": "A stunning ruby-red zero-proof spritz made from hibiscus flower tea, fresh orange juice, and sparkling water — tart, floral, and visually dramatic.",
-        "ingredients": ["Hibiscus Tea", "Orange Juice", "Honey Syrup", "Sparkling Water", "Orange Slice"],
-        "images": ["https://www.loveandlemons.com/wp-content/uploads/2021/07/hibiscus-drink.jpg"],
-        "zero_proof": True,
-        "flavour_profile": ["Tart", "Floral", "Fruity", "Vibrant"]
-    },
-    "virgin_pina_colada": {
-        "description": "Creamy, tropical, and utterly indulgent — blended coconut cream and fresh pineapple juice served over ice. All the sunshine of the Caribbean, zero alcohol.",
-        "ingredients": ["Pineapple Juice", "Coconut Cream", "Lime Juice", "Crushed Ice"],
-        "images": ["https://www.recipetineats.com/wp-content/uploads/2021/07/Virgin-Pina-Colada_4.jpg"],
-        "zero_proof": True,
-        "flavour_profile": ["Tropical", "Creamy", "Sweet", "Rich"]
-    },
-    "passionfruit_cooler": {
-        "description": "Fresh passion fruit pulp shaken with lime, vanilla syrup, and topped with soda — exotic, tangy, and beautifully balanced between sweet and sour.",
-        "ingredients": ["Passion Fruit Pulp", "Lime Juice", "Vanilla Syrup", "Soda Water", "Mint Sprig"],
-        "images": ["https://www.recipetineats.com/wp-content/uploads/2022/04/Passionfruit-Drink_4.jpg"],
-        "zero_proof": True,
-        "flavour_profile": ["Exotic", "Tangy", "Sweet", "Tropical"]
-    },
-    "cucumber_basil_smash": {
-        "description": "Muddled cucumber and fresh basil shaken with lemon juice and honey, topped with sparkling water — clean, herbal, and incredibly sophisticated for a zero-proof drink.",
-        "ingredients": ["Fresh Cucumber", "Fresh Basil", "Lemon Juice", "Honey Syrup", "Sparkling Water"],
-        "images": ["https://www.loveandlemons.com/wp-content/uploads/2020/07/cucumber-basil-smash.jpg"],
-        "zero_proof": True,
-        "flavour_profile": ["Herbal", "Clean", "Refreshing", "Sophisticated"]
-    },
-    "mango_chilli_limeade": {
-        "description": "Fresh mango purée blended with lime juice and a rim of chilli salt — sweet tropical mango with a fiery kick that builds slowly on the finish.",
-        "ingredients": ["Mango Puree", "Lime Juice", "Chilli Salt", "Simple Syrup", "Soda Water"],
-        "images": ["https://www.isabeleats.com/wp-content/uploads/2021/07/mango-agua-fresca-small-3.jpg"],
-        "zero_proof": True,
-        "flavour_profile": ["Spicy", "Tropical", "Sour", "Bold"]
-    },
-    "rose_lychee_fizz": {
-        "description": "A delicate and feminine zero-proof cocktail — lychee juice and rose water shaken with lemon and served with sparkling water for a luxurious, floral finish.",
-        "ingredients": ["Lychee Juice", "Rose Water", "Lemon Juice", "Simple Syrup", "Sparkling Water"],
-        "images": ["https://www.loveandlemons.com/wp-content/uploads/2021/05/lychee-mocktail.jpg"],
-        "zero_proof": True,
-        "flavour_profile": ["Floral", "Sweet", "Delicate", "Exotic"]
-    },
-    "spiced_apple_cider": {
-        "description": "Warm or chilled spiced apple cider simmered with cinnamon, star anise, and cloves — deeply aromatic, comforting, and the perfect zero-proof autumn drink.",
-        "ingredients": ["Apple Cider", "Cinnamon Stick", "Star Anise", "Cloves", "Orange Peel", "Honey"],
-        "images": ["https://www.recipetineats.com/wp-content/uploads/2021/10/Mulled-Cider_4.jpg"],
-        "zero_proof": True,
-        "flavour_profile": ["Spiced", "Warm", "Sweet", "Aromatic"]
-    },
-    "blue_lagoon_zero": {
-        "description": "A vivid electric-blue zero-proof cooler with blue curacao syrup, lemon juice, and lemonade — visually stunning and refreshingly tropical.",
-        "ingredients": ["Blue Curacao Syrup", "Lemon Juice", "Lemonade", "Soda Water"],
-        "images": ["https://frobishers.com/cdn/shop/articles/blue_lagoon_3.png?v=1695025795"],
-        "zero_proof": True,
-        "flavour_profile": ["Tropical", "Sweet", "Citrusy", "Vibrant"]
-    },
-    "pineapple_turmeric_fizz": {
-        "description": "A health-forward zero-proof cocktail blending fresh pineapple juice with turmeric, ginger, and black pepper — golden, anti-inflammatory, and surprisingly complex.",
-        "ingredients": ["Pineapple Juice", "Fresh Turmeric", "Fresh Ginger", "Black Pepper", "Honey", "Sparkling Water"],
-        "images": ["https://www.loveandlemons.com/wp-content/uploads/2021/03/turmeric-drink.jpg"],
-        "zero_proof": True,
-        "flavour_profile": ["Earthy", "Tropical", "Spiced", "Bright"]
-    },
-    "virgin_cosmopolitan": {
-        "description": "The glamorous zero-proof version of the iconic cosmo — cranberry juice, fresh lime, orange juice, and a hint of grenadine for that signature pink blush.",
-        "ingredients": ["Cranberry Juice", "Lime Juice", "Orange Juice", "Grenadine", "Orange Peel"],
-        "images": ["https://www.recipetineats.com/wp-content/uploads/2021/08/Virgin-Cosmopolitan_4.jpg"],
-        "zero_proof": True,
-        "flavour_profile": ["Tart", "Fruity", "Bright", "Elegant"]
-    },
-    "cucumber_mint_cooler": {
-        "description": "A light and refreshing zero-proof mocktail with fresh cucumber, mint, and a hint of lime — clean, cool, and effortlessly sophisticated.",
-        "ingredients": ["Cucumber", "Fresh Mint", "Lime Juice", "Soda Water", "Simple Syrup"],
-        "images": ["https://empirewine.imgix.net/recipes/203_1723664773009.jpg?w=1200"],
-        "zero_proof": True,
-        "flavour_profile": ["Cool", "Herbal", "Light", "Clean"]
-    },
-    "coconut_lime_refresher": {
-        "description": "Chilled coconut water with fresh lime juice, a touch of agave, and a pinch of sea salt — hydrating, subtly sweet, and perfectly balanced with a tropical finish.",
-        "ingredients": ["Coconut Water", "Lime Juice", "Agave Nectar", "Sea Salt", "Lime Wheel"],
-        "images": ["https://www.loveandlemons.com/wp-content/uploads/2020/06/coconut-water-drink.jpg"],
-        "zero_proof": True,
-        "flavour_profile": ["Tropical", "Light", "Refreshing", "Balanced"]
-    },
-    "strawberry_basil_lemonade": {
-        "description": "Freshly muddled strawberries and basil shaken with lemon juice and honey syrup — vibrant red, sweetly aromatic, and full of summer energy.",
-        "ingredients": ["Fresh Strawberries", "Fresh Basil", "Lemon Juice", "Honey Syrup", "Soda Water"],
-        "images": ["https://www.recipetineats.com/wp-content/uploads/2021/07/Strawberry-Lemonade_4.jpg"],
-        "zero_proof": True,
-        "flavour_profile": ["Sweet", "Herbal", "Fruity", "Bright"]
-    },
-    "virgin_dark_and_stormy": {
-        "description": "All the drama of the original — spicy ginger beer poured over a float of dark molasses syrup with fresh lime and a pinch of sea salt. Bold and stormy without the rum.",
-        "ingredients": ["Ginger Beer", "Molasses Syrup", "Lime Juice", "Sea Salt", "Lime Wedge"],
-        "images": ["https://www.recipetineats.com/wp-content/uploads/2022/03/Mocktail_4.jpg"],
-        "zero_proof": True,
-        "flavour_profile": ["Spicy", "Bold", "Dark", "Zingy"]
-    }
-}
-
-
-# ─────────────────────────────────────────
 #  Cocktail Videos (38 videos)
 #
 #  HOW TO USE:
@@ -1851,6 +1140,252 @@ cocktail_videos = {
 }
 
 # ─────────────────────────────────────────
+#  Mocktail Videos (15 zero-proof drinks)
+#  Videos served from: static/mocktail_videos/
+# ─────────────────────────────────────────
+MOCKTAIL_VIDEO_BASE = "/static/mocktail_videos/"
+
+mocktails = {
+    "coffee_limonade": {
+        "title": "Coffee Limonade",
+        "filename": "COFFEE LIMONADE.mp4",
+        "category": "Coffee",
+        "description": "A bold and unexpected zero-proof fusion of cold brew coffee and sparkling lemonade — rich coffee depth meets bright citrus for a refreshingly complex sip.",
+        "ingredients": ["Cold Brew Coffee", "Lemon Juice", "Simple Syrup", "Sparkling Water", "Lemon Slice"],
+        "tags": ["Coffee", "Citrus", "Sparkling", "Bold"],
+        "flavour_profile": ["Bold", "Citrusy", "Bittersweet", "Refreshing"],
+        "zero_proof": True
+    },
+    "kiwi_mocktail": {
+        "title": "Kiwi Mocktail",
+        "filename": "KIWI MOCKTAIL.mp4",
+        "category": "Fruit",
+        "description": "Freshly muddled kiwi with lime juice and mint, topped with soda — tangy, tropical, and vivid green. A crowd-pleasing zero-proof favourite.",
+        "ingredients": ["Fresh Kiwi", "Lime Juice", "Fresh Mint", "Simple Syrup", "Soda Water"],
+        "tags": ["Kiwi", "Tropical", "Muddled", "Fruity"],
+        "flavour_profile": ["Tangy", "Tropical", "Sweet", "Fresh"],
+        "zero_proof": True
+    },
+    "orange_blue_paradise": {
+        "title": "Orange Blue Paradise",
+        "filename": "Orange Blue Paradise.mp4",
+        "category": "Tropical",
+        "description": "A stunning two-tone tropical mocktail layering fresh orange juice over blue curacao syrup — a visual sunset in a glass, sweet and citrusy.",
+        "ingredients": ["Orange Juice", "Blue Curacao Syrup", "Lime Juice", "Simple Syrup", "Soda Water"],
+        "tags": ["Tropical", "Layered", "Citrus", "Vibrant"],
+        "flavour_profile": ["Sweet", "Citrusy", "Tropical", "Vibrant"],
+        "zero_proof": True
+    },
+    "pineapple_ade": {
+        "title": "Pineapple Ade",
+        "filename": "pineapple_ade.mp4",
+        "category": "Tropical",
+        "description": "Fresh pineapple juice brightened with lemon and a touch of honey, topped with sparkling water — light, tropical, and effortlessly refreshing.",
+        "ingredients": ["Fresh Pineapple Juice", "Lemon Juice", "Honey Syrup", "Sparkling Water", "Pineapple Slice"],
+        "tags": ["Pineapple", "Tropical", "Light", "Sparkling"],
+        "flavour_profile": ["Tropical", "Sweet", "Bright", "Light"],
+        "zero_proof": True
+    },
+    "blue_lagoon_zero": {
+        "title": "Blue Lagoon Zero",
+        "filename": "blue_lagoon_zero.mp4",
+        "category": "Tropical",
+        "description": "A vivid electric-blue zero-proof cooler with blue curacao syrup, lemon juice, and lemonade — visually stunning and refreshingly tropical without any alcohol.",
+        "ingredients": ["Blue Curacao Syrup", "Lemon Juice", "Lemonade", "Soda Water"],
+        "tags": ["Blue", "Tropical", "Sparkling", "Refreshing"],
+        "flavour_profile": ["Tropical", "Sweet", "Citrusy", "Vibrant"],
+        "zero_proof": True
+    },
+    "rose_lychee_refresher": {
+        "title": "Rose Lychee Refresher",
+        "filename": "Rose Lychee Refresher.mp4",
+        "category": "Floral",
+        "description": "A delicate and exotic zero-proof blend of lychee juice and rose water with lemon — fragrant, floral, and luxuriously soft on the palate.",
+        "ingredients": ["Lychee Juice", "Rose Water", "Lemon Juice", "Simple Syrup", "Sparkling Water"],
+        "tags": ["Floral", "Lychee", "Delicate", "Exotic"],
+        "flavour_profile": ["Floral", "Sweet", "Delicate", "Exotic"],
+        "zero_proof": True
+    },
+    "mango_chile_limeade": {
+        "title": "Mango Chile Limeade",
+        "filename": "Mango Chile Limeadeee.mp4",
+        "category": "Spicy",
+        "description": "Fresh mango purée blended with lime juice and finished with a chilli salt rim — sweet tropical mango with a slow-building fiery kick.",
+        "ingredients": ["Mango Puree", "Lime Juice", "Chilli Salt Rim", "Simple Syrup", "Soda Water"],
+        "tags": ["Spicy", "Mango", "Tropical", "Bold"],
+        "flavour_profile": ["Spicy", "Tropical", "Sour", "Bold"],
+        "zero_proof": True
+    },
+    "passion_fruit_coffee": {
+        "title": "Passion Fruit Coffee",
+        "filename": "PASSION FRUIT COFFEE.mp4",
+        "category": "Coffee",
+        "description": "An adventurous zero-proof fusion of cold brew coffee and tangy passion fruit — the bitterness of coffee meets tropical acidity for an unexpected and addictive combination.",
+        "ingredients": ["Cold Brew Coffee", "Passion Fruit Puree", "Simple Syrup", "Sparkling Water", "Passion Fruit"],
+        "tags": ["Coffee", "Tropical", "Bold", "Unique"],
+        "flavour_profile": ["Bold", "Tangy", "Tropical", "Bittersweet"],
+        "zero_proof": True
+    },
+    "virgin_pina_colada": {
+        "title": "Virgin Piña Colada",
+        "filename": "virgin_pina_colada.mp4",
+        "category": "Tropical",
+        "description": "Creamy blended coconut cream and fresh pineapple juice over crushed ice — all the sunshine of the Caribbean with zero alcohol.",
+        "ingredients": ["Pineapple Juice", "Coconut Cream", "Lime Juice", "Crushed Ice"],
+        "tags": ["Tropical", "Creamy", "Blended", "Classic"],
+        "flavour_profile": ["Tropical", "Creamy", "Sweet", "Rich"],
+        "zero_proof": True
+    },
+    "hibiscus_lemonade": {
+        "title": "Hibiscus Lemonade",
+        "filename": "Hibiscus Lemonade.mp4",
+        "category": "Floral",
+        "description": "A ruby-red zero-proof stunner made from hibiscus flower tea and fresh lemon juice, topped with sparkling water — tart, floral, and visually dramatic.",
+        "ingredients": ["Hibiscus Tea", "Lemon Juice", "Honey Syrup", "Sparkling Water", "Lemon Slice"],
+        "tags": ["Floral", "Tart", "Vibrant", "Sparkling"],
+        "flavour_profile": ["Tart", "Floral", "Fruity", "Vibrant"],
+        "zero_proof": True
+    },
+    "ramos_gin_fizz_zero": {
+        "title": "The Ramos Gin Fizz (Zero)",
+        "filename": "the Ramos Gin Fizz.mp4",
+        "category": "Artisan",
+        "description": "A zero-proof take on New Orleans' most legendary drink — non-alcoholic gin, cream, egg white, orange blossom water, and citrus shaken to a cloud-like foam.",
+        "ingredients": ["Non-Alcoholic Gin", "Heavy Cream", "Egg White", "Orange Blossom Water", "Lemon Juice", "Lime Juice", "Simple Syrup", "Soda Water"],
+        "tags": ["Artisan", "Foam", "Citrus", "New Orleans"],
+        "flavour_profile": ["Creamy", "Floral", "Citrusy", "Silky"],
+        "zero_proof": True
+    },
+    "peach_watermelon_cooler": {
+        "title": "Peach Watermelon Cooler",
+        "filename": "peach watermelon cooler.mp4",
+        "category": "Fruit",
+        "description": "Freshly blended watermelon and ripe peach with a squeeze of lime and mint — naturally sweet, vibrantly pink, and incredibly cooling.",
+        "ingredients": ["Fresh Watermelon Juice", "Peach Puree", "Lime Juice", "Fresh Mint", "Soda Water"],
+        "tags": ["Fruity", "Summer", "Pink", "Cooling"],
+        "flavour_profile": ["Sweet", "Fruity", "Fresh", "Light"],
+        "zero_proof": True
+    },
+    "lavender_lemonade": {
+        "title": "Lavender Lemonade",
+        "filename": "avender_lemonade.mp4",
+        "category": "Floral",
+        "description": "Fragrant lavender syrup stirred with fresh lemon juice and topped with sparkling water — delicately floral, softly sweet, and elegantly purple-hued.",
+        "ingredients": ["Lavender Syrup", "Lemon Juice", "Sparkling Water", "Honey", "Lemon Slice"],
+        "tags": ["Floral", "Lavender", "Elegant", "Sparkling"],
+        "flavour_profile": ["Floral", "Sweet", "Citrusy", "Delicate"],
+        "zero_proof": True
+    },
+    "virgin_mojito": {
+        "title": "Virgin Mojito",
+        "filename": "virgin_mojito.mp4",
+        "category": "Classic",
+        "description": "A refreshing alcohol-free take on the Cuban classic — muddled fresh mint and lime with sugar, topped with sparkling water for a lively, cooling effervescence.",
+        "ingredients": ["Fresh Mint", "Lime Juice", "Simple Syrup", "Soda Water", "Crushed Ice"],
+        "tags": ["Mint", "Citrus", "Muddled", "Classic"],
+        "flavour_profile": ["Minty", "Citrusy", "Refreshing", "Light"],
+        "zero_proof": True
+    }
+}
+
+# ─────────────────────────────────────────
+#  Garnish Tutorial Videos (11 videos)
+#  Videos served from: static/garnish_videos/
+# ─────────────────────────────────────────
+GARNISH_VIDEO_BASE = "/static/garnish_videos/"
+
+garnish_tutorials = {
+    "garnish_orange_peel_01": {
+        "title": "Garnish Tutorial 01",
+        "filename": "garnish_orange_peel_01.mp4",
+        "category": "Garnish",
+        "description": "A garnish tutorial video.",
+        "tags": ["Garnish", "Tutorial"],
+        "difficulty": "Beginner"
+    },
+    "garnish_orange_peel_02": {
+        "title": "Garnish Tutorial 02",
+        "filename": "garnish_orange_peel_02.mp4",
+        "category": "Garnish",
+        "description": "A garnish tutorial video.",
+        "tags": ["Garnish", "Tutorial"],
+        "difficulty": "Beginner"
+    },
+    "garnish_orange_twist_03": {
+        "title": "Garnish Tutorial 03",
+        "filename": "garnish_orange_twist_03.mp4",
+        "category": "Garnish",
+        "description": "A garnish tutorial video.",
+        "tags": ["Garnish", "Tutorial"],
+        "difficulty": "Beginner"
+    },
+    "garnish_orange_twist_04": {
+        "title": "Garnish Tutorial 04",
+        "filename": "garnish_orange_twist_04.mp4",
+        "category": "Garnish",
+        "description": "A garnish tutorial video.",
+        "tags": ["Garnish", "Tutorial"],
+        "difficulty": "Beginner"
+    },
+    "garnish_orange_carving_05": {
+        "title": "Garnish Tutorial 05",
+        "filename": "garnish_orange_carving_05.mp4",
+        "category": "Garnish",
+        "description": "A garnish tutorial video.",
+        "tags": ["Garnish", "Tutorial"],
+        "difficulty": "Intermediate"
+    },
+    "garnish_orange_carving_06": {
+        "title": "Garnish Tutorial 06",
+        "filename": "garnish_orange_carving_06.mp4",
+        "category": "Garnish",
+        "description": "A garnish tutorial video.",
+        "tags": ["Garnish", "Tutorial"],
+        "difficulty": "Intermediate"
+    },
+    "garnish_orange_plate_design_07": {
+        "title": "Garnish Tutorial 07",
+        "filename": "garnish_orange_plate_design_07.mp4",
+        "category": "Garnish",
+        "description": "A garnish tutorial video.",
+        "tags": ["Garnish", "Tutorial"],
+        "difficulty": "Intermediate"
+    },
+    "garnish_orange_cutting_08": {
+        "title": "Garnish Tutorial 08",
+        "filename": "garnish_orange_cutting_08.mp4",
+        "category": "Garnish",
+        "description": "A garnish tutorial video.",
+        "tags": ["Garnish", "Tutorial"],
+        "difficulty": "Beginner"
+    },
+    "garnish_orange_knife_skill_09": {
+        "title": "Garnish Tutorial 09",
+        "filename": "garnish_orange_knife_skill_09.mp4",
+        "category": "Garnish",
+        "description": "A garnish tutorial video.",
+        "tags": ["Garnish", "Tutorial"],
+        "difficulty": "Intermediate"
+    },
+    "garnish_orange_simple_10": {
+        "title": "Garnish Tutorial 10",
+        "filename": "garnish_orange_simple_10.mp4",
+        "category": "Garnish",
+        "description": "A garnish tutorial video.",
+        "tags": ["Garnish", "Tutorial"],
+        "difficulty": "Beginner"
+    },
+    "garnish_orange_garnish_11": {
+        "title": "Garnish Tutorial 11",
+        "filename": "garnish_orange_garnish_11.mp4",
+        "category": "Garnish",
+        "description": "A garnish tutorial video.",
+        "tags": ["Garnish", "Tutorial"],
+        "difficulty": "Beginner"
+    }
+}
+
+# ─────────────────────────────────────────
 #  Background Media Data
 # ─────────────────────────────────────────
 background = {
@@ -1860,81 +1395,58 @@ background = {
     },
     "bar": {
         "videos": [
-            "https://assets.mixkit.co/videos/4043/4043-360.mp4",   # A busy elegant bar
-            "https://assets.mixkit.co/videos/8711/8711-360.mp4"    # Beer bar atmosphere
+            "https://assets.mixkit.co/videos/4043/4043-360.mp4",
+            "https://assets.mixkit.co/videos/8711/8711-360.mp4"
         ],
         "images": []
     },
     "shaker": {
         "videos": [
-            "https://assets.mixkit.co/videos/4174/4174-360.mp4"    # Barista waving a cocktail shaker
+            "https://assets.mixkit.co/videos/4174/4174-360.mp4"
         ],
         "images": []
     },
     "pouring": {
         "videos": [
-            "https://assets.mixkit.co/videos/4173/4173-360.mp4"    # Bartender preparing and pouring a cocktail
+            "https://assets.mixkit.co/videos/4173/4173-360.mp4"
         ],
         "images": []
     },
     "garnish": {
         "videos": [
-            "https://assets.mixkit.co/videos/15171/15171-360.mp4"  # Bartender decorating drink glasses
+            "https://assets.mixkit.co/videos/15171/15171-360.mp4"
         ],
         "images": []
     },
     "ambience": {
         "videos": [
-            "https://assets.mixkit.co/videos/27819/27819-360.mp4", # Tropical cocktail glass at sunset
-            "https://assets.mixkit.co/videos/25458/25458-360.mp4"  # Two cocktails on the beach
+            "https://assets.mixkit.co/videos/27819/27819-360.mp4",
+            "https://assets.mixkit.co/videos/25458/25458-360.mp4"
         ],
         "images": []
     },
     "glassware": {
         "videos": [
-            "https://assets.mixkit.co/videos/22848/22848-360.mp4", # Margarita glass with salt rim close-up
-            "https://assets.mixkit.co/videos/22850/22850-360.mp4"  # Smoking cocktail glass
+            "https://assets.mixkit.co/videos/22848/22848-360.mp4",
+            "https://assets.mixkit.co/videos/22850/22850-360.mp4"
         ],
         "images": []
     },
     "ingredients": {
         "videos": [
-            "https://assets.mixkit.co/videos/4295/4295-360.mp4",   # Barmaid preparing cocktail with bottles
-            "https://assets.mixkit.co/videos/40487/40487-360.mp4"  # Close-up cocktail with fresh berry ingredients
+            "https://assets.mixkit.co/videos/4295/4295-360.mp4",
+            "https://assets.mixkit.co/videos/40487/40487-360.mp4"
         ],
         "images": []
     },
     "cocktail_making": {
         "videos": [
-            "https://assets.mixkit.co/videos/43962/43962-360.mp4", # Serving a prepared cocktail at the bar
-            "https://assets.mixkit.co/videos/4173/4173-360.mp4"    # Bartender mixing a cocktail
+            "https://assets.mixkit.co/videos/43962/43962-360.mp4",
+            "https://assets.mixkit.co/videos/4173/4173-360.mp4"
         ],
         "images": []
     }
 }
-
-
-# ─────────────────────────────────────────
-#  Helper
-# ─────────────────────────────────────────
-def format_cocktail(key, cocktail, image=None):
-    images = cocktail["images"]
-
-    # If no local images, fetch from TheCocktailDB as fallback
-    if not images:
-        fallback = get_fallback_image(key)
-        if fallback:
-            images = [fallback]
-
-    return {
-        "id": key,
-        "name": key.replace("_", " ").title(),
-        "description": cocktail["description"],
-        "ingredients": cocktail["ingredients"],
-        "image": image or (random.choice(images) if images else None),
-        "images": images,
-        "total_ingredients": len(cocktail["ingredients"])
-    }
 
 
 # ─────────────────────────────────────────
@@ -1945,18 +1457,13 @@ def format_cocktail(key, cocktail, image=None):
 def home():
     return jsonify({
         "message": "🍹 Cocktail API is running!",
-        "total_cocktails": len(cocktails),
         "total_backgrounds": len(background),
         "total_histories": len(cocktail_history),
         "total_pairings": len(food_pairings),
-        "total_mocktails": len(mocktails),
         "total_videos": len(cocktail_videos),
+        "total_mocktails": len(mocktails),
+        "total_garnish_tutorials": len(garnish_tutorials),
         "endpoints": {
-            "GET /api/cocktails": "List all cocktails (supports ?search=, ?ingredient=, ?limit=, ?offset=)",
-            "GET /api/cocktail/<n>": "Get cocktail by name (random image)",
-            "GET /api/cocktail/<n>/images": "Get all images for a cocktail",
-            "GET /api/cocktails/random": "Get a random cocktail",
-            "GET /api/cocktails/names": "Get all cocktail names/IDs",
             "GET /api/backgrounds": "Get all background media",
             "GET /api/background/<n>": "Get a specific background by name (e.g. hero, bar, pouring)",
             "GET /api/histories": "Get all cocktail history entries",
@@ -1966,92 +1473,19 @@ def home():
             "GET /api/pairing/<n>": "Get cocktail pairings for a specific dish (e.g. wagyu_beef, sashimi)",
             "GET /api/pairings/random": "Get a random food pairing entry",
             "GET /api/pairings/categories": "Get all available food categories",
-            "GET /api/mocktails": "Get all mocktails & zero-proof drinks (supports ?flavour=)",
-            "GET /api/mocktail/<n>": "Get a specific mocktail (e.g. virgin_mojito, hibiscus_spritz)",
-            "GET /api/mocktails/random": "Get a random mocktail",
             "GET /api/videos": "Get all cocktail videos (supports ?category=, ?difficulty=, ?tag=)",
             "GET /api/video/<n>": "Get a specific video entry (e.g. negroni, smoked_old_fashioned)",
             "GET /api/videos/random": "Get a random video entry",
-            "GET /api/videos/categories": "Get all video categories"
+            "GET /api/videos/categories": "Get all video categories",
+            "GET /api/mocktails": "Get all mocktail videos (supports ?category=, ?flavour=, ?tag=)",
+            "GET /api/mocktail/<n>": "Get a specific mocktail (e.g. virgin_mojito, kiwi_mocktail)",
+            "GET /api/mocktails/random": "Get a random mocktail entry",
+            "GET /api/mocktails/categories": "Get all mocktail categories",
+            "GET /api/garnish_tutorials": "Get all garnish tutorial videos (supports ?difficulty=)",
+            "GET /api/garnish_tutorial/<n>": "Get a specific garnish tutorial (e.g. garnish_orange_peel_01)",
+            "GET /api/garnish_tutorials/random": "Get a random garnish tutorial"
         }
     })
-
-
-@app.route("/api/cocktails")
-def get_all_cocktails():
-    search = request.args.get("search", "").lower()
-    ingredient_filter = request.args.get("ingredient", "").lower()
-    limit = request.args.get("limit", type=int)
-    offset = request.args.get("offset", 0, type=int)
-
-    results = []
-    for key, cocktail in cocktails.items():
-        # Filter by name search
-        if search and search not in key.replace("_", " ") and search not in cocktail["description"].lower():
-            continue
-        # Filter by ingredient
-        if ingredient_filter:
-            ingredients_lower = [i.lower() for i in cocktail["ingredients"]]
-            if not any(ingredient_filter in i for i in ingredients_lower):
-                continue
-        results.append(format_cocktail(key, cocktail))
-
-    total = len(results)
-    results = results[offset:]
-    if limit:
-        results = results[:limit]
-
-    return jsonify({
-        "total": total,
-        "offset": offset,
-        "limit": limit,
-        "count": len(results),
-        "cocktails": results
-    })
-
-
-@app.route("/api/cocktails/names")
-def get_names():
-    return jsonify({
-        "total": len(cocktails),
-        "cocktails": [
-            {"id": key, "name": key.replace("_", " ").title()}
-            for key in cocktails
-        ]
-    })
-
-
-@app.route("/api/cocktails/random")
-def get_random():
-    key = random.choice(list(cocktails.keys()))
-    cocktail = cocktails[key]
-    return jsonify(format_cocktail(key, cocktail))
-
-
-@app.route("/api/cocktail/<name>")
-def get_cocktail(name):
-    key = name.lower().replace(" ", "_").replace("-", "_")
-    cocktail = cocktails.get(key)
-    if not cocktail:
-        return jsonify({
-            "error": f"Cocktail '{name}' not found.",
-            "suggestion": "Use GET /api/cocktails/names to see all available cocktails."
-        }), 404
-    return jsonify(format_cocktail(key, cocktail))
-
-
-@app.route("/api/cocktail/<name>/images")
-def get_images(name):
-    key = name.lower().replace(" ", "_").replace("-", "_")
-    cocktail = cocktails.get(key)
-    if not cocktail:
-        return jsonify({"error": f"Cocktail '{name}' not found."}), 404
-    return jsonify({
-        "id": key,
-        "name": key.replace("_", " ").title(),
-        "images": cocktail["images"]
-    })
-
 
 
 # ─────────────────────────────────────────
@@ -2095,7 +1529,6 @@ def get_background(name):
     })
 
 
-
 # ─────────────────────────────────────────
 #  Cocktail History Routes
 # ─────────────────────────────────────────
@@ -2108,7 +1541,7 @@ def get_all_histories():
     })
 
 
-@app.route("/api/history/<n>")
+@app.route("/api/history/<name>")
 def get_history(name):
     key = name.lower().replace(" ", "_").replace("-", "_")
     history = cocktail_history.get(key)
@@ -2124,7 +1557,6 @@ def get_history(name):
 def get_random_history():
     key = random.choice(list(cocktail_history.keys()))
     return jsonify(cocktail_history[key])
-
 
 
 # ─────────────────────────────────────────
@@ -2145,7 +1577,7 @@ def get_all_pairings():
     })
 
 
-@app.route("/api/pairing/<n>")
+@app.route("/api/pairing/<name>")
 def get_pairing(name):
     key = name.lower().replace(" ", "_").replace("-", "_")
     pairing = food_pairings.get(key)
@@ -2177,59 +1609,6 @@ def get_pairing_categories():
     })
 
 
-
-# ─────────────────────────────────────────
-#  Mocktail & Zero-Proof Routes
-# ─────────────────────────────────────────
-
-def format_mocktail(key, drink):
-    return {
-        "id": key,
-        "name": key.replace("_", " ").title(),
-        "description": drink["description"],
-        "ingredients": drink["ingredients"],
-        "image": random.choice(drink["images"]) if drink["images"] else None,
-        "zero_proof": drink["zero_proof"],
-        "flavour_profile": drink["flavour_profile"],
-        "total_ingredients": len(drink["ingredients"])
-    }
-
-
-@app.route("/api/mocktails")
-def get_all_mocktails():
-    flavour_filter = request.args.get("flavour", "").lower()
-    results = []
-    for key, drink in mocktails.items():
-        if flavour_filter:
-            profiles_lower = [f.lower() for f in drink["flavour_profile"]]
-            if not any(flavour_filter in f for f in profiles_lower):
-                continue
-        results.append(format_mocktail(key, drink))
-    return jsonify({
-        "total": len(results),
-        "mocktails": results
-    })
-
-
-@app.route("/api/mocktail/<n>")
-def get_mocktail(name):
-    key = name.lower().replace(" ", "_").replace("-", "_")
-    drink = mocktails.get(key)
-    if not drink:
-        return jsonify({
-            "error": f"Mocktail '{name}' not found.",
-            "available": list(mocktails.keys())
-        }), 404
-    return jsonify(format_mocktail(key, drink))
-
-
-@app.route("/api/mocktails/random")
-def get_random_mocktail():
-    key = random.choice(list(mocktails.keys()))
-    return jsonify(format_mocktail(key, mocktails[key]))
-
-
-
 # ─────────────────────────────────────────
 #  Cocktail Video Routes
 # ─────────────────────────────────────────
@@ -2250,9 +1629,9 @@ def format_video(key, video):
 
 @app.route("/api/videos")
 def get_all_videos():
-    category_filter  = request.args.get("category",   "").lower()
+    category_filter   = request.args.get("category",   "").lower()
     difficulty_filter = request.args.get("difficulty", "").lower()
-    tag_filter       = request.args.get("tag",        "").lower()
+    tag_filter        = request.args.get("tag",        "").lower()
 
     results = []
     for key, video in cocktail_videos.items():
@@ -2273,7 +1652,7 @@ def get_all_videos():
     })
 
 
-@app.route("/api/video/<n>")
+@app.route("/api/video/<name>")
 def get_video(name):
     key = name.lower().replace(" ", "_").replace("-", "_")
     video = cocktail_videos.get(key)
@@ -2308,6 +1687,139 @@ def get_video_categories():
         "total_categories": len(categories),
         "categories": categories
     })
+
+
+# ─────────────────────────────────────────
+#  Mocktail Routes
+# ─────────────────────────────────────────
+
+def format_mocktail(key, drink):
+    return {
+        "id": key,
+        "title": drink["title"],
+        "filename": drink["filename"],
+        "url": MOCKTAIL_VIDEO_BASE + drink["filename"],
+        "category": drink["category"],
+        "description": drink["description"],
+        "ingredients": drink["ingredients"],
+        "tags": drink["tags"],
+        "flavour_profile": drink["flavour_profile"],
+        "zero_proof": drink["zero_proof"],
+        "total_ingredients": len(drink["ingredients"])
+    }
+
+
+@app.route("/api/mocktails")
+def get_all_mocktails():
+    category_filter = request.args.get("category", "").lower()
+    flavour_filter  = request.args.get("flavour",  "").lower()
+    tag_filter      = request.args.get("tag",      "").lower()
+
+    results = []
+    for key, drink in mocktails.items():
+        if category_filter and category_filter not in drink["category"].lower():
+            continue
+        if flavour_filter:
+            profiles_lower = [f.lower() for f in drink["flavour_profile"]]
+            if not any(flavour_filter in f for f in profiles_lower):
+                continue
+        if tag_filter:
+            tags_lower = [t.lower() for t in drink["tags"]]
+            if not any(tag_filter in t for t in tags_lower):
+                continue
+        results.append(format_mocktail(key, drink))
+
+    return jsonify({
+        "total": len(results),
+        "mocktail_video_base_url": MOCKTAIL_VIDEO_BASE,
+        "mocktails": results
+    })
+
+
+@app.route("/api/mocktail/<n>")
+def get_mocktail(name):
+    key = name.lower().replace(" ", "_").replace("-", "_")
+    drink = mocktails.get(key)
+    if not drink:
+        return jsonify({
+            "error": f"Mocktail '{name}' not found.",
+            "available": list(mocktails.keys())
+        }), 404
+    return jsonify(format_mocktail(key, drink))
+
+
+@app.route("/api/mocktails/random")
+def get_random_mocktail():
+    key = random.choice(list(mocktails.keys()))
+    return jsonify(format_mocktail(key, mocktails[key]))
+
+
+@app.route("/api/mocktails/categories")
+def get_mocktail_categories():
+    categories = {}
+    for key, drink in mocktails.items():
+        cat = drink["category"]
+        if cat not in categories:
+            categories[cat] = []
+        categories[cat].append({
+            "id": key,
+            "title": drink["title"],
+            "url": MOCKTAIL_VIDEO_BASE + drink["filename"]
+        })
+    return jsonify({
+        "total_categories": len(categories),
+        "categories": categories
+    })
+
+
+# ─────────────────────────────────────────
+#  Garnish Tutorial Routes
+# ─────────────────────────────────────────
+
+def format_garnish(key, tutorial):
+    return {
+        "id": key,
+        "title": tutorial["title"],
+        "filename": tutorial["filename"],
+        "url": GARNISH_VIDEO_BASE + tutorial["filename"],
+        "category": tutorial["category"],
+        "description": tutorial["description"],
+        "tags": tutorial["tags"],
+        "difficulty": tutorial["difficulty"]
+    }
+
+
+@app.route("/api/garnish_tutorials")
+def get_all_garnish_tutorials():
+    difficulty_filter = request.args.get("difficulty", "").lower()
+    results = []
+    for key, tutorial in garnish_tutorials.items():
+        if difficulty_filter and difficulty_filter not in tutorial["difficulty"].lower():
+            continue
+        results.append(format_garnish(key, tutorial))
+    return jsonify({
+        "total": len(results),
+        "garnish_video_base_url": GARNISH_VIDEO_BASE,
+        "garnish_tutorials": results
+    })
+
+
+@app.route("/api/garnish_tutorial/<n>")
+def get_garnish_tutorial(name):
+    key = name.lower().replace(" ", "_").replace("-", "_")
+    tutorial = garnish_tutorials.get(key)
+    if not tutorial:
+        return jsonify({
+            "error": f"Garnish tutorial '{name}' not found.",
+            "available": list(garnish_tutorials.keys())
+        }), 404
+    return jsonify(format_garnish(key, tutorial))
+
+
+@app.route("/api/garnish_tutorials/random")
+def get_random_garnish_tutorial():
+    key = random.choice(list(garnish_tutorials.keys()))
+    return jsonify(format_garnish(key, garnish_tutorials[key]))
 
 
 # ─────────────────────────────────────────
