@@ -576,6 +576,12 @@ cocktails = {
 # ─────────────────────────────────────────
 #  Cocktail History Data (10 iconic cocktails)
 # ─────────────────────────────────────────
+# ─────────────────────────────────────────
+#  Cocktail History Data (10 iconic cocktails)
+#  Images served from: static/cocktail_history/
+# ─────────────────────────────────────────
+HISTORY_IMAGE_BASE = "/static/cocktail_history/"
+
 cocktail_history = {
     "old_fashioned": {
         "name": "Old Fashioned",
@@ -584,7 +590,7 @@ cocktail_history = {
         "era": "19th Century",
         "summary": "The Old Fashioned is widely considered the original cocktail. The word 'cocktail' was first defined in 1806 as a mix of spirits, sugar, water, and bitters — which is exactly what an Old Fashioned is. By the 1880s, bartenders began adding unnecessary garnishes and liqueurs, prompting patrons to request their drink made the 'old fashioned' way. The name stuck. It remains one of the most ordered cocktails in the world.",
         "fun_fact": "President Franklin D. Roosevelt reportedly celebrated the end of Prohibition in 1933 by mixing Old Fashioneds for his staff.",
-        "image": "https://www.liquor.com/thmb/oatRTuOoMojsHW4-KydgBYh4uT4=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/old-fashioned-720x720-primary-6628052faee04b3a95f975b5ff1e2388.jpg"
+        "image": HISTORY_IMAGE_BASE + "old_fashioned_history.png"
     },
     "martini": {
         "name": "Martini",
@@ -593,7 +599,7 @@ cocktail_history = {
         "era": "Gilded Age",
         "summary": "The Martini's exact origin is disputed — some trace it to Martinez, California in the 1860s, while others credit New York bartenders in the 1880s. Originally made with sweet vermouth and gin, it evolved into the drier version we know today. By the 1920s it became the defining drink of sophistication. Ernest Hemingway, Winston Churchill, and Dorothy Parker all had famously strong opinions about the perfect Martini ratio.",
         "fun_fact": "Winston Churchill's preferred method was to simply glance at a bottle of vermouth across the room while drinking his gin — he liked his Martini bone dry.",
-        "image": "https://www.liquor.com/thmb/oSRqGIJFhTAMKgUmHIKJj4S7JNQ=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/dry-martini-720x720-primary-6628052faee04b3a95f975b5ff1e2388.jpg"
+        "image": HISTORY_IMAGE_BASE + "martini.png"
     },
     "negroni": {
         "name": "Negroni",
@@ -602,7 +608,7 @@ cocktail_history = {
         "era": "Post-WWI",
         "summary": "The Negroni was born in Florence, Italy in 1919 when Count Camillo Negroni asked bartender Fosco Scarselli to strengthen his Americano by replacing soda water with gin. The bartender also switched the orange slice for an orange peel to signify it was a different drink. The Count's family later opened the Negroni distillery to produce a ready-made version of the cocktail, cementing its place in history.",
         "fun_fact": "The Negroni is one of the few cocktails named after a real person who actually invented it — most cocktail origin stories are disputed myths.",
-        "image": "https://www.liquor.com/thmb/KPTRXSVO7vyx7O2fPyNkLh9JQPo=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/mezcal-negroni-1500x1500-primary-6f6c472050a949c8a55aa07e1b5a2d1b.jpg"
+        "image": HISTORY_IMAGE_BASE + "negroni.png"
     },
     "manhattan": {
         "name": "Manhattan",
@@ -611,7 +617,7 @@ cocktail_history = {
         "era": "Gilded Age",
         "summary": "The Manhattan is said to have been created at the Manhattan Club in New York City around 1874, allegedly for a banquet hosted by Lady Randolph Churchill — mother of Winston Churchill. However historians note she was likely in England at the time, pregnant. The true origin remains debated, but what is certain is that by the 1880s the Manhattan was already one of the most popular cocktails in America, setting the template for all stirred, spirit-forward cocktails.",
         "fun_fact": "The Manhattan is believed to be the first cocktail to use vermouth as a key ingredient, sparking the entire vermouth cocktail category.",
-        "image": "https://www.liquor.com/thmb/DR2UAsRlu-YCVn9r_iLJCmOvzlg=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/manhattan-4000x4000-primary-ig-9c3d894510284e9d8fbd9c518d00790b.jpg"
+        "image": HISTORY_IMAGE_BASE + "manhattan.png"
     },
     "mojito": {
         "name": "Mojito",
@@ -620,7 +626,7 @@ cocktail_history = {
         "era": "Colonial Era",
         "summary": "The Mojito traces its roots to 16th century Cuba. Sir Francis Drake's crew used a primitive version called 'El Draque' — made with aguardiente, mint, lime, and sugar — to combat scurvy and dysentery. As Cuban rum improved in quality, aguardiente was replaced, and the modern Mojito was born. It became internationally famous when Ernest Hemingway adopted it as his drink of choice at La Bodeguita del Medio bar in Havana during the 1940s and 50s.",
         "fun_fact": "Ernest Hemingway wrote on the wall of La Bodeguita del Medio: 'My mojito in La Bodeguita, my daiquiri in El Floridita' — though some historians believe this was a marketing invention.",
-        "image": "https://www.liquor.com/thmb/MJRVqf-itJGY90nwUOYGXnyG-HA=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/mojito-720x720-primary-6a57f80e200c412e9a77a1687f312ff7.jpg"
+        "image": HISTORY_IMAGE_BASE + "mojito.png"
     },
     "daiquiri": {
         "name": "Daiquiri",
@@ -629,7 +635,7 @@ cocktail_history = {
         "era": "Spanish-American War Era",
         "summary": "The Daiquiri was invented by American mining engineer Jennings Cox near the town of Daiquiri, Cuba in 1898. Running low on gin to serve guests, Cox mixed local rum with lime juice and sugar — and the Daiquiri was born. Naval officer Lucius Johnson brought the recipe to the Army and Navy Club in Washington D.C., spreading it across the United States. During WWII, whisky and other spirits were rationed, making rum-based Daiquiris enormously popular.",
         "fun_fact": "JFK was such a fan of Daiquiris that the drink reportedly became fashionable among Washington's political elite during his presidency.",
-        "image": "https://www.liquor.com/thmb/WjUD7EuXuhZ98tfYtOjdfmuA-y4=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/Strawberry_Daquiri_1800x1800_primary-63c25c677616479da2d08767b3b4ee8a.jpg"
+        "image": HISTORY_IMAGE_BASE + "daiquiri.png"
     },
     "margarita": {
         "name": "Margarita",
@@ -638,7 +644,7 @@ cocktail_history = {
         "era": "Prohibition Aftermath",
         "summary": "The Margarita has at least seven disputed origin stories. The most widely accepted credits socialite Margarita Sames who created it at her Acapulco villa in 1948. Others credit Dallas restaurant owner Santos Cruz who made it for singer Peggy Lee in 1948, or bartender Danny Herrera who created it for actress Marjorie King in 1938. Regardless of origin, by the 1950s it was appearing in magazines, and by the 1970s it had become America's most ordered cocktail.",
         "fun_fact": "The frozen Margarita machine was invented by Dallas restaurateur Mariano Martinez in 1971, inspired by a 7-Eleven Slurpee machine.",
-        "image": "https://soufflebombay.com/wp-content/uploads/2017/05/Classic-Margarita-Recipe.jpg"
+        "image": HISTORY_IMAGE_BASE + "margarita.png"
     },
     "singapore_sling": {
         "name": "Singapore Sling",
@@ -647,7 +653,7 @@ cocktail_history = {
         "era": "Colonial Era",
         "summary": "The Singapore Sling was created around 1915 by bartender Ngiam Tong Boon at the Long Bar of Raffles Hotel in Singapore. At the time, it was considered improper for women to drink alcohol in public, so Ngiam crafted a cocktail that resembled fruit punch — allowing women to drink discreetly. The pink, fruity drink was a social revolution in its time. The original recipe was lost and rediscovered in the 1970s from a scribbled note found in the hotel's safe.",
         "fun_fact": "Raffles Hotel still serves over 1,000 Singapore Slings per day, making it one of the most consistently ordered cocktails at a single venue in the world.",
-        "image": "https://www.liquor.com/thmb/aHEFMpnbDpnKxDjrqU9aVmKbPUE=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/singapore-sling-720x720-primary-6628052faee04b3a95f975b5ff1e2388.jpg"
+        "image": HISTORY_IMAGE_BASE + "singapore_sling.png"
     },
     "sazerac": {
         "name": "Sazerac",
@@ -656,7 +662,7 @@ cocktail_history = {
         "era": "Antebellum America",
         "summary": "The Sazerac is often called America's first cocktail. It was created in New Orleans around 1838 by Antoine Amedie Peychaud, a Creole apothecary who served brandy toddies with his own bitters in an egg cup called a 'coquetier' — which Americans mispronounced as 'cocktay', possibly giving us the word 'cocktail'. The drink evolved to use rye whisky after a phylloxera epidemic wiped out European cognac production in the 1870s. New Orleans declared it the city's official cocktail in 2008.",
         "fun_fact": "The Sazerac may have inadvertently given us the word 'cocktail' — Peychaud's egg cup coquetier allegedly became the mispronounced origin of the term.",
-        "image": "https://static-prod.remymartin.com/app/uploads/2024/06/remy-martin-cocktails-sazerac-1x1-250716-02.jpg"
+        "image": HISTORY_IMAGE_BASE + "sazerac.png"
     },
     "mai_tai": {
         "name": "Mai Tai",
@@ -665,21 +671,26 @@ cocktail_history = {
         "era": "Post-WWII Tiki Era",
         "summary": "The Mai Tai was invented in 1944 by Trader Vic (Victor Bergeron) at his restaurant in Oakland, California. He shook up the drink for two friends visiting from Tahiti — Ham and Carrie Guild. Upon tasting it, Carrie reportedly exclaimed 'Mai Tai — Roa Ae!' meaning 'Out of this world — the best!' in Tahitian, and the drink had its name. The Mai Tai became the signature drink of the entire Tiki cocktail movement that swept America in the post-WWII era.",
         "fun_fact": "Donn Beach (Don the Beachcomber) claimed he invented the Mai Tai earlier, sparking a lifelong rivalry with Trader Vic that was never officially resolved.",
-        "image": "https://www.liquor.com/thmb/e3f9o53cCHVbFbPzN4k5M5iZhOM=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/mai-tai-720x720-primary-f518d5df5e9c4e2da5b9de4d4b4b4e78.jpg"
+        "image": HISTORY_IMAGE_BASE + "mai_tai.png"
     }
 }
-
 
 # ─────────────────────────────────────────
 #  Food Pairing Data (25 dishes)
 # ─────────────────────────────────────────
+# ─────────────────────────────────────────
+#  Food Pairing Data (25 dishes)
+#  Videos served from: static/food_pairing_videos/
+# ─────────────────────────────────────────
+FOOD_VIDEO_BASE = "/static/food_pairing_videos/"
+
 food_pairings = {
     "wagyu_beef": {
         "name": "Wagyu Beef",
         "category": "Meat",
         "description": "Exceptionally marbled Japanese beef with an intensely buttery, umami-rich flavour and a melt-in-the-mouth texture. The high fat content calls for cocktails that cut through richness while complementing its depth.",
         "flavour_profile": ["Rich", "Buttery", "Umami", "Savoury"],
-        "image": "https://www.recipetineats.com/wp-content/uploads/2024/04/Wagyu-Steak_6.jpg",
+        "video": FOOD_VIDEO_BASE + "wagyu_beef.mp4",
         "pairings": [
             {
                 "cocktail": "Old Fashioned",
@@ -706,7 +717,7 @@ food_pairings = {
         "category": "Seafood",
         "description": "Thinly sliced raw fish of the highest quality — typically salmon, tuna, or yellowtail. Clean, delicate, and oceanic with a silky texture that demands equally clean, refreshing cocktails.",
         "flavour_profile": ["Clean", "Delicate", "Oceanic", "Umami"],
-        "image": "https://www.justonecookbook.com/wp-content/uploads/2022/08/Sashimi-0070-I.jpg",
+        "video": FOOD_VIDEO_BASE + "sashimi.mp4",
         "pairings": [
             {
                 "cocktail": "Martini",
@@ -733,7 +744,7 @@ food_pairings = {
         "category": "Soup",
         "description": "Thailand's iconic hot and sour soup, fragrant with lemongrass, kaffir lime, galangal, and chilli. Bold, aromatic, and intensely spiced — it calls for cocktails that cool and refresh.",
         "flavour_profile": ["Spicy", "Sour", "Aromatic", "Herbal"],
-        "image": "https://hot-thai-kitchen.com/wp-content/uploads/2022/01/Tom-yum-goong-sq.jpg",
+        "video": FOOD_VIDEO_BASE + "tom_yum.mp4",
         "pairings": [
             {
                 "cocktail": "Mojito",
@@ -760,7 +771,7 @@ food_pairings = {
         "category": "Pasta",
         "description": "Fresh pasta enveloped in a luxurious truffle cream sauce — earthy, deeply aromatic, and indulgently rich. The pungent umami of black truffle demands cocktails with complexity and structure.",
         "flavour_profile": ["Earthy", "Rich", "Aromatic", "Creamy"],
-        "image": "https://www.sipandfeast.com/wp-content/uploads/2022/09/truffle-pasta-recipe-snippet.jpg",
+        "video": FOOD_VIDEO_BASE + "truffle_pasta.mp4",
         "pairings": [
             {
                 "cocktail": "Negroni",
@@ -787,7 +798,7 @@ food_pairings = {
         "category": "Seafood",
         "description": "Charred, tender octopus with smoky caramelised edges and a clean oceanic sweetness, typically served with citrus, herbs, or a Mediterranean salsa verde.",
         "flavour_profile": ["Smoky", "Oceanic", "Charred", "Tender"],
-        "image": "https://www.themediterraneandish.com/wp-content/uploads/2020/07/grilled-octopus-recipe-3.jpg",
+        "video": FOOD_VIDEO_BASE + "grilled_octopus.mp4",
         "pairings": [
             {
                 "cocktail": "Aperol Spritz",
@@ -814,7 +825,7 @@ food_pairings = {
         "category": "Meat",
         "description": "Raw, hand-chopped premium beef seasoned with capers, shallots, Dijon mustard, and egg yolk. Bold, briny, and intensely savoury — a dish that commands equally bold cocktails.",
         "flavour_profile": ["Briny", "Savoury", "Bold", "Rich"],
-        "image": "https://www.foodandwine.com/thmb/6-XXsGBGRxFrFKUXUGMGQI5O7Bc=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/classic-steak-tartare-FT-RECIPE0321-dad2692a3f6b45f8b6f38c6b72a11a22.jpg",
+        "video": FOOD_VIDEO_BASE + "beef_tartare.mp4",
         "pairings": [
             {
                 "cocktail": "Martini",
@@ -841,7 +852,7 @@ food_pairings = {
         "category": "Soup",
         "description": "A velvety, cream-enriched shellfish soup with deep oceanic sweetness, a hint of brandy, and aromatic tarragon. Rich and luxurious — it needs cocktails with enough presence to stand alongside it.",
         "flavour_profile": ["Sweet", "Creamy", "Oceanic", "Luxurious"],
-        "image": "https://www.spendwithpennies.com/wp-content/uploads/2022/01/Lobster-Bisque-SpendWithPennies-2.jpg",
+        "video": FOOD_VIDEO_BASE + "lobster_bisque.mp4",
         "pairings": [
             {
                 "cocktail": "French 75",
@@ -868,7 +879,7 @@ food_pairings = {
         "category": "Delicacy",
         "description": "Silky pan-seared duck liver with an extraordinary buttery richness and subtle sweetness, typically served with brioche and fruit compote. One of the world's most indulgent dishes.",
         "flavour_profile": ["Buttery", "Rich", "Sweet", "Silky"],
-        "image": "https://www.finedininglovers.com/sites/g/files/xknfdk626/files/styles/article_1200_800_fallback/public/2021-11/foie-gras%401200x800.jpg",
+        "video": FOOD_VIDEO_BASE + "foie_gras.mp4",
         "pairings": [
             {
                 "cocktail": "Sidecar",
@@ -895,7 +906,7 @@ food_pairings = {
         "category": "Sushi",
         "description": "Fresh tuna mixed with sriracha and sesame oil, rolled in seasoned rice and nori. A balance of oceanic tuna sweetness with a slow-building chilli heat and nutty sesame finish.",
         "flavour_profile": ["Spicy", "Oceanic", "Nutty", "Fresh"],
-        "image": "https://www.justonecookbook.com/wp-content/uploads/2021/08/Spicy-Tuna-Roll-9018-I.jpg",
+        "video": FOOD_VIDEO_BASE + "spicy_tuna_roll.mp4",
         "pairings": [
             {
                 "cocktail": "Paloma",
@@ -922,7 +933,7 @@ food_pairings = {
         "category": "Meat",
         "description": "Herb-crusted rack of lamb with a rosemary and garlic crust, perfectly pink in the centre. Gamey, rich, and aromatic — a dish that pairs beautifully with bold, complex cocktails.",
         "flavour_profile": ["Gamey", "Herbal", "Rich", "Aromatic"],
-        "image": "https://www.recipetineats.com/wp-content/uploads/2020/12/Lamb-chops_1.jpg",
+        "video": FOOD_VIDEO_BASE + "lamb_chops.mp4",
         "pairings": [
             {
                 "cocktail": "Rob Roy",
@@ -949,7 +960,7 @@ food_pairings = {
         "category": "Seafood",
         "description": "Fresh raw oysters served on ice with mignonette and lemon — briny, mineral, and oceanic with an incredibly clean finish. One of the most cocktail-friendly foods in existence.",
         "flavour_profile": ["Briny", "Mineral", "Oceanic", "Clean"],
-        "image": "https://www.seriouseats.com/thmb/Z_mHIFe7h7J9mMaX4K5Q5t9X4gA=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/20211117-oysters-on-halfshell-vicky-wasik-seriouseats-1-735f42de66874f3d9ad2c0dc1faae600.jpg",
+        "video": FOOD_VIDEO_BASE + "oysters.mp4",
         "pairings": [
             {
                 "cocktail": "Martini",
@@ -976,7 +987,7 @@ food_pairings = {
         "category": "Meat",
         "description": "Duck leg slow-cooked in its own fat until the skin is shatteringly crisp and the meat is fall-off-the-bone tender. Rich, deeply savoury, and intensely flavoured.",
         "flavour_profile": ["Rich", "Crispy", "Savoury", "Deep"],
-        "image": "https://www.recipetineats.com/wp-content/uploads/2021/08/Duck-Confit_6.jpg",
+        "video": FOOD_VIDEO_BASE + "duck_confit.mp4",
         "pairings": [
             {
                 "cocktail": "Vieux Carré",
@@ -1003,7 +1014,7 @@ food_pairings = {
         "category": "Dessert",
         "description": "Italy's iconic layered dessert of espresso-soaked ladyfingers and mascarpone cream, dusted with cocoa. Coffee-forward, gently sweet, and indulgently creamy.",
         "flavour_profile": ["Coffee", "Sweet", "Creamy", "Cocoa"],
-        "image": "https://www.recipetineats.com/wp-content/uploads/2021/11/Tiramisu_1.jpg",
+        "video": FOOD_VIDEO_BASE + "tiramisu.mp4",
         "pairings": [
             {
                 "cocktail": "Espresso Martini",
@@ -1030,7 +1041,7 @@ food_pairings = {
         "category": "Salad",
         "description": "Crisp romaine lettuce dressed in an anchovy-rich, garlicky, lemony Caesar dressing with shaved Parmesan and house-made croutons. Bold umami with bright acidity.",
         "flavour_profile": ["Umami", "Tangy", "Savoury", "Crisp"],
-        "image": "https://www.recipetineats.com/wp-content/uploads/2016/08/Caesar-Salad_9.jpg",
+        "video": FOOD_VIDEO_BASE + "caesar_salad.mp4",
         "pairings": [
             {
                 "cocktail": "Bloody Mary",
@@ -1057,7 +1068,7 @@ food_pairings = {
         "category": "Dessert",
         "description": "Warm dark chocolate fondant with a molten liquid centre that flows when cut — intense, bittersweet, and luxuriously rich. One of the world's most indulgent desserts.",
         "flavour_profile": ["Bittersweet", "Intense", "Rich", "Warm"],
-        "image": "https://www.recipetineats.com/wp-content/uploads/2020/01/Chocolate-Lava-Cake_5.jpg",
+        "video": FOOD_VIDEO_BASE + "chocolate_lava_cake.mp4",
         "pairings": [
             {
                 "cocktail": "Oaxacan Old Fashioned",
@@ -1084,7 +1095,7 @@ food_pairings = {
         "category": "Noodles",
         "description": "Thailand's beloved stir-fried rice noodles with tamarind, fish sauce, eggs, bean sprouts, and peanuts. Sweet, sour, salty, and savoury in perfect balance with a subtle wok smokiness.",
         "flavour_profile": ["Sweet", "Sour", "Salty", "Nutty"],
-        "image": "https://hot-thai-kitchen.com/wp-content/uploads/2015/02/pad-thai-new-sq.jpg",
+        "video": FOOD_VIDEO_BASE + "pad_thai.mp4",
         "pairings": [
             {
                 "cocktail": "Singapore Sling",
@@ -1111,7 +1122,7 @@ food_pairings = {
         "category": "Cheese",
         "description": "Fresh Italian mozzarella filled with stracciatella and cream — extraordinarily milky, soft, and rich. Typically served with heirloom tomatoes, basil, and a drizzle of olive oil.",
         "flavour_profile": ["Milky", "Fresh", "Creamy", "Delicate"],
-        "image": "https://www.recipetineats.com/wp-content/uploads/2022/06/Burrata_5.jpg",
+        "video": FOOD_VIDEO_BASE + "burrata.mp4",
         "pairings": [
             {
                 "cocktail": "Aperol Spritz",
@@ -1138,7 +1149,7 @@ food_pairings = {
         "category": "Meat",
         "description": "Ceremonial Chinese roasted duck with lacquered, mahogany-crisp skin, served with thin pancakes, hoisin sauce, cucumber, and spring onion. Sweet, smoky, and intensely savoury.",
         "flavour_profile": ["Smoky", "Sweet", "Crispy", "Savoury"],
-        "image": "https://omnivorescookbook.com/wp-content/uploads/2022/11/221101_Peking-Duck_01.jpg",
+        "video": FOOD_VIDEO_BASE + "peking_duck.mp4",
         "pairings": [
             {
                 "cocktail": "Oaxacan Old Fashioned",
@@ -1165,7 +1176,7 @@ food_pairings = {
         "category": "Cheese",
         "description": "A curated selection of artisan cheeses — typically spanning soft brie, aged cheddar, blue cheese, and hard manchego — served with crackers, honey, and fruit.",
         "flavour_profile": ["Varied", "Rich", "Funky", "Complex"],
-        "image": "https://www.recipetineats.com/wp-content/uploads/2020/12/Cheese-Board_5.jpg",
+        "video": FOOD_VIDEO_BASE + "cheese_board.mp4",
         "pairings": [
             {
                 "cocktail": "Last Word",
@@ -1192,7 +1203,7 @@ food_pairings = {
         "category": "Seafood",
         "description": "Fresh raw fish cured in citrus juice — intensely bright, acidic, and fresh with a slight heat from ají amarillo chilli. A Peruvian icon that is clean, vibrant, and punchy.",
         "flavour_profile": ["Acidic", "Bright", "Spicy", "Fresh"],
-        "image": "https://www.recipetineats.com/wp-content/uploads/2021/03/Ceviche_5.jpg",
+        "video": FOOD_VIDEO_BASE + "ceviche.mp4",
         "pairings": [
             {
                 "cocktail": "Pisco Sour",
@@ -1219,7 +1230,7 @@ food_pairings = {
         "category": "Seafood",
         "description": "Salmon fillet with crispy charred skin and a moist, flaky interior — rich in omega oils with a gentle smokiness from the grill and a subtle oceanic sweetness.",
         "flavour_profile": ["Smoky", "Rich", "Oceanic", "Flaky"],
-        "image": "https://www.recipetineats.com/wp-content/uploads/2021/06/Grilled-Salmon_4.jpg",
+        "video": FOOD_VIDEO_BASE + "grilled_salmon.mp4",
         "pairings": [
             {
                 "cocktail": "Elderflower Collins",
@@ -1246,7 +1257,7 @@ food_pairings = {
         "category": "Rice",
         "description": "Slow-stirred Arborio rice with porcini and cremini mushrooms in a rich parmesan-enriched stock. Deeply earthy, umami-laden, and luxuriously creamy with a gentle nuttiness.",
         "flavour_profile": ["Earthy", "Umami", "Creamy", "Nutty"],
-        "image": "https://www.recipetineats.com/wp-content/uploads/2018/10/Mushroom-Risotto_5.jpg",
+        "video": FOOD_VIDEO_BASE + "mushroom_risotto.mp4",
         "pairings": [
             {
                 "cocktail": "Toronto",
@@ -1273,7 +1284,7 @@ food_pairings = {
         "category": "Street Food",
         "description": "Marinated pork cooked on a vertical spit, served in soft corn tortillas with pineapple, cilantro, and onion. Smoky, sweet, citrusy, and boldly spiced.",
         "flavour_profile": ["Smoky", "Sweet", "Spicy", "Citrusy"],
-        "image": "https://www.isabeleats.com/wp-content/uploads/2020/01/tacos-al-pastor-small-3.jpg",
+        "video": FOOD_VIDEO_BASE + "tacos_al_pastor.mp4",
         "pairings": [
             {
                 "cocktail": "Margarita",
@@ -1295,39 +1306,12 @@ food_pairings = {
             }
         ]
     },
-    "bruschetta": {
-        "name": "Bruschetta",
-        "category": "Appetiser",
-        "description": "Grilled sourdough rubbed with garlic and topped with fresh heirloom tomatoes, basil, olive oil, and sea salt. Simple, bright, and intensely flavourful — quintessential Italian summer eating.",
-        "flavour_profile": ["Fresh", "Bright", "Herbal", "Garlicky"],
-        "image": "https://www.recipetineats.com/wp-content/uploads/2020/07/Bruschetta_5.jpg",
-        "pairings": [
-            {
-                "cocktail": "Aperol Spritz",
-                "cocktail_id": "aperol_spritz",
-                "reason": "Italy's favourite aperitivo pairs with Italy's favourite starter — bittersweet orange notes complement the tomato acidity and olive oil.",
-                "match_level": "Perfect"
-            },
-            {
-                "cocktail": "Tom Collins",
-                "cocktail_id": "tom_collins",
-                "reason": "The lemon and soda effervescence mirrors the bruschetta's bright acidity and refreshes between bites of garlic toast.",
-                "match_level": "Excellent"
-            },
-            {
-                "cocktail": "Cupid",
-                "cocktail_id": "cupid",
-                "reason": "The strawberry shrub's sweet acidity and vinegar base harmonise with the tomato's brightness and olive oil's richness.",
-                "match_level": "Good"
-            }
-        ]
-    },
     "mango_sticky_rice": {
         "name": "Mango Sticky Rice",
         "category": "Dessert",
         "description": "Thai dessert of sweet glutinous rice cooked in coconut milk, served warm with fresh ripe mango and a drizzle of coconut cream. Sweet, tropical, and fragrant with pandan.",
         "flavour_profile": ["Sweet", "Tropical", "Coconut", "Fragrant"],
-        "image": "https://hot-thai-kitchen.com/wp-content/uploads/2015/04/mango-sticky-rice-sq.jpg",
+        "video": FOOD_VIDEO_BASE + "mango_sticky_rice.mp4",
         "pairings": [
             {
                 "cocktail": "Pina Colada",
