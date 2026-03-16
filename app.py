@@ -119,6 +119,7 @@ cocktail_history = {
 #  Videos served from: static/food_pairing_videos/
 # ─────────────────────────────────────────
 FOOD_VIDEO_BASE = "/static/food_pairing_videos/"
+COCKTAIL_IMAGE_BASE = "/static/cocktail_pairing_images/"
 
 food_pairings = {
     "wagyu_beef": {
@@ -132,19 +133,22 @@ food_pairings = {
                 "cocktail": "Old Fashioned",
                 "cocktail_id": "old_fashioned",
                 "reason": "Bourbon's caramel and vanilla notes mirror the beef's richness, while the bitters cut through the fat and cleanse the palate between bites.",
-                "match_level": "Perfect"
+                "match_level": "Perfect",
+                "image": COCKTAIL_IMAGE_BASE + "Old Fashioned.jpg"
             },
             {
                 "cocktail": "Manhattan",
                 "cocktail_id": "manhattan",
                 "reason": "Rye whisky's spice and sweet vermouth's herbal complexity complement wagyu's deep umami without overpowering it.",
-                "match_level": "Excellent"
+                "match_level": "Excellent",
+                "image": COCKTAIL_IMAGE_BASE + "Manhattan.jpg"
             },
             {
                 "cocktail": "Whisky Highball",
                 "cocktail_id": "whisky_highball",
                 "reason": "The effervescence cleanses the palate of rich fat between bites — a classic Japanese pairing tradition.",
-                "match_level": "Excellent"
+                "match_level": "Excellent",
+                "image": COCKTAIL_IMAGE_BASE + "Whisky Highball.jpg"
             }
         ]
     },
@@ -159,19 +163,22 @@ food_pairings = {
                 "cocktail": "Martini",
                 "cocktail_id": "martini",
                 "reason": "The dry, clean botanicals of gin mirror the purity of fresh fish, while cold temperature and salinity echo the oceanic flavour.",
-                "match_level": "Perfect"
+                "match_level": "Perfect",
+                "image": COCKTAIL_IMAGE_BASE + "Martini.jpg"
             },
             {
                 "cocktail": "Gimlet",
                 "cocktail_id": "gimlet",
                 "reason": "Lime's brightness lifts the delicate fat of raw fish, creating a refreshing contrast that highlights the sashimi's subtle sweetness.",
-                "match_level": "Excellent"
+                "match_level": "Excellent",
+                "image": COCKTAIL_IMAGE_BASE + "Gimlet.jpg"
             },
             {
                 "cocktail": "Whisky Highball",
                 "cocktail_id": "whisky_highball",
                 "reason": "A traditional Japanese pairing — the light effervescence and gentle whisky notes complement raw fish without masking its flavour.",
-                "match_level": "Excellent"
+                "match_level": "Excellent",
+                "image": COCKTAIL_IMAGE_BASE + "Whisky Highball.jpg"
             }
         ]
     },
@@ -186,19 +193,22 @@ food_pairings = {
                 "cocktail": "Mojito",
                 "cocktail_id": "mojito",
                 "reason": "Fresh mint and lime echo the herbaceous lemongrass and citrus in the soup, while the coolness tames the chilli heat.",
-                "match_level": "Perfect"
+                "match_level": "Perfect",
+                "image": COCKTAIL_IMAGE_BASE + "mojito.jpg"
             },
             {
                 "cocktail": "Moscow Mule",
                 "cocktail_id": "moscow_mule",
                 "reason": "Ginger beer's spice harmonises with galangal's warmth, while lime and effervescence cut through the soup's bold aromatics.",
-                "match_level": "Excellent"
+                "match_level": "Excellent",
+                "image": COCKTAIL_IMAGE_BASE + "Moscow Mule.jpg"
             },
             {
                 "cocktail": "Gimlet",
                 "cocktail_id": "gimlet",
                 "reason": "The sharp citrus-forward profile refreshes the palate between spoonfuls of the intensely flavoured broth.",
-                "match_level": "Good"
+                "match_level": "Good",
+                "image": COCKTAIL_IMAGE_BASE + "Gimlet.jpg"
             }
         ]
     },
@@ -213,19 +223,22 @@ food_pairings = {
                 "cocktail": "Negroni",
                 "cocktail_id": "negroni",
                 "reason": "The bitter botanicals of the Negroni cut through the cream's richness, while the sweet vermouth mirrors the earthy depth of truffles.",
-                "match_level": "Perfect"
+                "match_level": "Perfect",
+                "image": COCKTAIL_IMAGE_BASE + "Negroni.jpg"
             },
             {
                 "cocktail": "Manhattan",
                 "cocktail_id": "manhattan",
                 "reason": "The rye spice and vermouth complexity echo truffle's layered earthiness, creating an elegant high-low contrast.",
-                "match_level": "Excellent"
+                "match_level": "Excellent",
+                "image": COCKTAIL_IMAGE_BASE + "Manhattan.jpg"
             },
             {
                 "cocktail": "Old Fashioned",
                 "cocktail_id": "old_fashioned",
                 "reason": "Bourbon's vanilla and oak notes harmonise beautifully with truffle's pungent, forest-floor aroma.",
-                "match_level": "Excellent"
+                "match_level": "Excellent",
+                "image": COCKTAIL_IMAGE_BASE + "Old Fashioned.jpg"
             }
         ]
     },
@@ -240,19 +253,22 @@ food_pairings = {
                 "cocktail": "Aperol Spritz",
                 "cocktail_id": "aperol_spritz",
                 "reason": "The bittersweet orange notes of Aperol and the effervescence complement the smoky char and oceanic sweetness of the octopus.",
-                "match_level": "Perfect"
+                "match_level": "Perfect",
+                "image": COCKTAIL_IMAGE_BASE + "Aperol Spritz.jpg"
             },
             {
                 "cocktail": "Paloma",
                 "cocktail_id": "paloma",
                 "reason": "Grapefruit's tartness cuts through the charred smokiness while complementing the seafood's natural salinity.",
-                "match_level": "Excellent"
+                "match_level": "Excellent",
+                "image": COCKTAIL_IMAGE_BASE + "Paloma.jpg"
             },
             {
                 "cocktail": "Gimlet",
                 "cocktail_id": "gimlet",
                 "reason": "Crisp lime and gin botanicals echo Mediterranean herbs, cleansing the smoky aftertaste.",
-                "match_level": "Good"
+                "match_level": "Good",
+                "image": COCKTAIL_IMAGE_BASE + "Gimlet.jpg"
             }
         ]
     },
@@ -267,19 +283,22 @@ food_pairings = {
                 "cocktail": "Martini",
                 "cocktail_id": "martini",
                 "reason": "The clean, cold clarity of a dry Martini echoes the tartare's precise seasoning — both are exercises in elegant restraint.",
-                "match_level": "Perfect"
+                "match_level": "Perfect",
+                "image": COCKTAIL_IMAGE_BASE + "Martini.jpg"
             },
             {
                 "cocktail": "Sazerac",
                 "cocktail_id": "sazerac",
                 "reason": "The absinthe rinse and rye spice provide a bold counterpoint to the rich raw beef and briny capers.",
-                "match_level": "Excellent"
+                "match_level": "Excellent",
+                "image": COCKTAIL_IMAGE_BASE + "Sazerac.jpg"
             },
             {
                 "cocktail": "Bloody Mary",
                 "cocktail_id": "bloody_mary",
                 "reason": "The tomato, horseradish, and Worcestershire create a savoury mirror to the tartare's briny umami profile.",
-                "match_level": "Excellent"
+                "match_level": "Excellent",
+                "image": COCKTAIL_IMAGE_BASE + "Bloody Mary.jpg"
             }
         ]
     },
@@ -294,19 +313,22 @@ food_pairings = {
                 "cocktail": "French 75",
                 "cocktail_id": "french_75",
                 "reason": "The Champagne and lemon lift the bisque's heavy cream richness, while the gin botanicals complement the lobster's sweetness.",
-                "match_level": "Perfect"
+                "match_level": "Perfect",
+                "image": COCKTAIL_IMAGE_BASE + "french_75.jpg"
             },
             {
                 "cocktail": "Sidecar",
                 "cocktail_id": "sidecar",
                 "reason": "Cognac shares the bisque's brandy base, while the orange liqueur and citrus brighten the dish's creamy sweetness.",
-                "match_level": "Excellent"
+                "match_level": "Excellent",
+                "image": COCKTAIL_IMAGE_BASE + "Sidecar.jpg"
             },
             {
                 "cocktail": "Aperol Spritz",
                 "cocktail_id": "aperol_spritz",
                 "reason": "The light bitterness and effervescence cut through the cream and refresh the palate between spoonfuls.",
-                "match_level": "Good"
+                "match_level": "Good",
+                "image": COCKTAIL_IMAGE_BASE + "Aperol Spritz.jpg"
             }
         ]
     },
@@ -321,19 +343,22 @@ food_pairings = {
                 "cocktail": "Sidecar",
                 "cocktail_id": "sidecar",
                 "reason": "Cognac's stone fruit richness matches foie gras's luxurious fat, while the citrus provides essential acidity to balance the richness.",
-                "match_level": "Perfect"
+                "match_level": "Perfect",
+                "image": COCKTAIL_IMAGE_BASE + "Sidecar.jpg"
             },
             {
                 "cocktail": "French 75",
                 "cocktail_id": "french_75",
                 "reason": "Champagne's bubbles and acidity cut through the fat with elegance — the classic French pairing for a classic French delicacy.",
-                "match_level": "Excellent"
+                "match_level": "Excellent",
+                "image": COCKTAIL_IMAGE_BASE + "french_75.jpg"
             },
             {
                 "cocktail": "Vieux Carré",
                 "cocktail_id": "vieux_carre",
                 "reason": "The Cognac and Benedictine base mirrors the French tradition behind foie gras, adding herbal complexity to the fat.",
-                "match_level": "Excellent"
+                "match_level": "Excellent",
+                "image": COCKTAIL_IMAGE_BASE + "Vieux Carré.jpg"
             }
         ]
     },
@@ -348,19 +373,22 @@ food_pairings = {
                 "cocktail": "Paloma",
                 "cocktail_id": "paloma",
                 "reason": "Grapefruit's tartness cuts the sriracha heat while complementing the tuna's oceanic sweetness and the sesame's nuttiness.",
-                "match_level": "Perfect"
+                "match_level": "Perfect",
+                "image": COCKTAIL_IMAGE_BASE + "Paloma.jpg"
             },
             {
                 "cocktail": "Gimlet",
                 "cocktail_id": "gimlet",
                 "reason": "Bright lime and clean gin provide a refreshing cooldown after the chilli heat builds.",
-                "match_level": "Excellent"
+                "match_level": "Excellent",
+                "image": COCKTAIL_IMAGE_BASE + "Gimlet.jpg"
             },
             {
                 "cocktail": "Cucumber Gin Fizz",
                 "cocktail_id": "cucumber_gin_fizz",
                 "reason": "Cool cucumber and elderflower soothe the spice while echoing the clean, fresh flavours of the roll.",
-                "match_level": "Excellent"
+                "match_level": "Excellent",
+                "image": COCKTAIL_IMAGE_BASE + "Cucumber Gin Fizz.jpg"
             }
         ]
     },
@@ -375,19 +403,22 @@ food_pairings = {
                 "cocktail": "Rob Roy",
                 "cocktail_id": "rob_roy",
                 "reason": "Scotch whisky's peaty earthiness and herbal vermouth mirror the lamb's gamey richness and rosemary crust.",
-                "match_level": "Perfect"
+                "match_level": "Perfect",
+                "image": COCKTAIL_IMAGE_BASE + "Rob Roy.jpg"
             },
             {
                 "cocktail": "Negroni",
                 "cocktail_id": "negroni",
                 "reason": "Campari's bitter herbal notes contrast the richness of lamb fat beautifully, while the gin botanicals echo the herb crust.",
-                "match_level": "Excellent"
+                "match_level": "Excellent",
+                "image": COCKTAIL_IMAGE_BASE + "Negroni.jpg"
             },
             {
                 "cocktail": "Manhattan",
                 "cocktail_id": "manhattan",
                 "reason": "The sweet vermouth and whisky structure complement the gamey depth of lamb without overpowering it.",
-                "match_level": "Good"
+                "match_level": "Good",
+                "image": COCKTAIL_IMAGE_BASE + "Manhattan.jpg"
             }
         ]
     },
@@ -402,19 +433,22 @@ food_pairings = {
                 "cocktail": "Martini",
                 "cocktail_id": "martini",
                 "reason": "The definitive oyster pairing. The saline, mineral quality of a cold dry Martini is a direct mirror of the oyster's oceanic brine.",
-                "match_level": "Perfect"
+                "match_level": "Perfect",
+                "image": COCKTAIL_IMAGE_BASE + "Martini.jpg"
             },
             {
                 "cocktail": "French 75",
                 "cocktail_id": "french_75",
                 "reason": "Champagne's minerality and fine bubbles echo the oyster's ocean brine — a classic French tradition of pairing the two.",
-                "match_level": "Excellent"
+                "match_level": "Excellent",
+                "image": COCKTAIL_IMAGE_BASE + "french_75.jpg"
             },
             {
                 "cocktail": "Corpse Reviver No. 2",
                 "cocktail_id": "corpse_reviver_no2",
                 "reason": "The absinthe rinse and Lillet Blanc bring herbal anise notes that pair classically with raw shellfish.",
-                "match_level": "Excellent"
+                "match_level": "Excellent",
+                "image": COCKTAIL_IMAGE_BASE + "Corpse Reviver No. 2.jpg"
             }
         ]
     },
@@ -429,19 +463,22 @@ food_pairings = {
                 "cocktail": "Vieux Carré",
                 "cocktail_id": "vieux_carre",
                 "reason": "The New Orleans classic with Cognac and Benedictine mirrors duck confit's French origins while the rye spice cuts the fat.",
-                "match_level": "Perfect"
+                "match_level": "Perfect",
+                "image": COCKTAIL_IMAGE_BASE + "Vieux Carré.jpg"
             },
             {
                 "cocktail": "Rob Roy",
                 "cocktail_id": "rob_roy",
                 "reason": "Scotch whisky's smokiness and the herbal vermouth complement the richness of duck fat and crispy skin.",
-                "match_level": "Excellent"
+                "match_level": "Excellent",
+                "image": COCKTAIL_IMAGE_BASE + "Rob Roy.jpg"
             },
             {
                 "cocktail": "Sazerac",
                 "cocktail_id": "sazerac",
                 "reason": "The absinthe complexity and rye spice cut through duck's intense richness, cleansing the palate between bites.",
-                "match_level": "Excellent"
+                "match_level": "Excellent",
+                "image": COCKTAIL_IMAGE_BASE + "Sazerac.jpg"
             }
         ]
     },
@@ -456,19 +493,22 @@ food_pairings = {
                 "cocktail": "Espresso Martini",
                 "cocktail_id": "espresso_martini",
                 "reason": "A natural marriage — the espresso and coffee liqueur in the cocktail directly mirror the dessert's core flavour, amplifying the coffee experience.",
-                "match_level": "Perfect"
+                "match_level": "Perfect",
+                "image": COCKTAIL_IMAGE_BASE + "espresso_martini.jpg"
             },
             {
                 "cocktail": "White Russian",
                 "cocktail_id": "white_russian",
                 "reason": "Coffee liqueur and cream echo tiramisu's mascarpone and espresso in liquid form — essentially the same flavour profile.",
-                "match_level": "Excellent"
+                "match_level": "Excellent",
+                "image": COCKTAIL_IMAGE_BASE + "White Russian.jpg"
             },
             {
                 "cocktail": "Stinger",
                 "cocktail_id": "stinger",
                 "reason": "The menthol freshness of crème de menthe provides a refreshing contrast to the dense cocoa and cream.",
-                "match_level": "Good"
+                "match_level": "Good",
+                "image": COCKTAIL_IMAGE_BASE + "Stinger.jpg"
             }
         ]
     },
@@ -483,19 +523,22 @@ food_pairings = {
                 "cocktail": "Bloody Mary",
                 "cocktail_id": "bloody_mary",
                 "reason": "The savoury, umami-rich Bloody Mary mirrors the Caesar's anchovy and Worcestershire backbone — both are bold, savoury classics.",
-                "match_level": "Perfect"
+                "match_level": "Perfect",
+                "image": COCKTAIL_IMAGE_BASE + "Bloody Mary.jpg"
             },
             {
                 "cocktail": "Tom Collins",
                 "cocktail_id": "tom_collins",
                 "reason": "The light, lemony effervescence echoes the salad's citrus dressing and refreshes the palate between bites.",
-                "match_level": "Excellent"
+                "match_level": "Excellent",
+                "image": COCKTAIL_IMAGE_BASE + "Tom Collins.jpg"
             },
             {
                 "cocktail": "Gimlet",
                 "cocktail_id": "gimlet",
                 "reason": "Lime's brightness complements the tangy Caesar dressing while gin's botanicals echo the herbal Parmesan notes.",
-                "match_level": "Good"
+                "match_level": "Good",
+                "image": COCKTAIL_IMAGE_BASE + "Gimlet.jpg"
             }
         ]
     },
@@ -510,19 +553,22 @@ food_pairings = {
                 "cocktail": "Oaxacan Old Fashioned",
                 "cocktail_id": "oaxacan_old_fashioned",
                 "reason": "Mezcal's smoke and the mole bitters create a dark, complex pairing that mirrors the bittersweet chocolate's depth.",
-                "match_level": "Perfect"
+                "match_level": "Perfect",
+                "image": COCKTAIL_IMAGE_BASE + "Oaxacan Old Fashioned.jpg"
             },
             {
                 "cocktail": "Espresso Martini",
                 "cocktail_id": "espresso_martini",
                 "reason": "Coffee's bitterness amplifies dark chocolate's complexity, while the vodka base keeps it clean and sharp.",
-                "match_level": "Excellent"
+                "match_level": "Excellent",
+                "image": COCKTAIL_IMAGE_BASE + "espresso_martini.jpg"
             },
             {
                 "cocktail": "Revolver",
                 "cocktail_id": "revolver",
                 "reason": "The coffee-forward bourbon and Kahlua pair directly with the dark chocolate — warm, sweet, and deeply satisfying.",
-                "match_level": "Excellent"
+                "match_level": "Excellent",
+                "image": COCKTAIL_IMAGE_BASE + "Revolver.jpg"
             }
         ]
     },
@@ -537,19 +583,22 @@ food_pairings = {
                 "cocktail": "Singapore Sling",
                 "cocktail_id": "singapore_sling",
                 "reason": "The tropical fruit sweetness and pineapple juice harmonise with tamarind's sweet-sour profile and peanut's richness.",
-                "match_level": "Perfect"
+                "match_level": "Perfect",
+                "image": COCKTAIL_IMAGE_BASE + "singapore_sling.jpg"
             },
             {
                 "cocktail": "Mojito",
                 "cocktail_id": "mojito",
                 "reason": "Mint and lime provide a refreshing, clean contrast to the wok smokiness and fish sauce saltiness.",
-                "match_level": "Excellent"
+                "match_level": "Excellent",
+                "image": COCKTAIL_IMAGE_BASE + "mojito.jpg"
             },
             {
                 "cocktail": "Paloma",
                 "cocktail_id": "paloma",
                 "reason": "Grapefruit's bitterness cuts through the noodle dish's richness while the salt rim echoes the dish's seasoning.",
-                "match_level": "Good"
+                "match_level": "Good",
+                "image": COCKTAIL_IMAGE_BASE + "Paloma.jpg"
             }
         ]
     },
@@ -564,19 +613,22 @@ food_pairings = {
                 "cocktail": "Aperol Spritz",
                 "cocktail_id": "aperol_spritz",
                 "reason": "Italy's favourite aperitivo pairs with Italy's favourite starter — the bittersweet orange notes complement the tomato acidity and olive oil.",
-                "match_level": "Perfect"
+                "match_level": "Perfect",
+                "image": COCKTAIL_IMAGE_BASE + "Aperol Spritz.jpg"
             },
             {
                 "cocktail": "Flora",
                 "cocktail_id": "flora",
                 "reason": "The floral, delicate gin profile and rose water echo burrata's milky freshness and the basil's herbal notes.",
-                "match_level": "Excellent"
+                "match_level": "Excellent",
+                "image": COCKTAIL_IMAGE_BASE + "Flora.jpg"
             },
             {
                 "cocktail": "French 75",
                 "cocktail_id": "french_75",
                 "reason": "Champagne's acidity and fine bubbles cut the cream's richness elegantly — a light, celebratory pairing.",
-                "match_level": "Good"
+                "match_level": "Good",
+                "image": COCKTAIL_IMAGE_BASE + "french_75.jpg"
             }
         ]
     },
@@ -591,19 +643,22 @@ food_pairings = {
                 "cocktail": "Oaxacan Old Fashioned",
                 "cocktail_id": "oaxacan_old_fashioned",
                 "reason": "Mezcal's smoke mirrors the duck's lacquered skin, while agave nectar echoes the hoisin sweetness.",
-                "match_level": "Perfect"
+                "match_level": "Perfect",
+                "image": COCKTAIL_IMAGE_BASE + "Oaxacan Old Fashioned.jpg"
             },
             {
                 "cocktail": "Whisky Highball",
                 "cocktail_id": "whisky_highball",
                 "reason": "A classic East Asian pairing — the light effervescence and mellow whisky wash the palate of the rich duck fat and sweet hoisin.",
-                "match_level": "Excellent"
+                "match_level": "Excellent",
+                "image": COCKTAIL_IMAGE_BASE + "Whisky Highball.jpg"
             },
             {
                 "cocktail": "Dark and Stormy",
                 "cocktail_id": "dark_and_stormy",
                 "reason": "Dark rum's molasses depth and ginger beer's spice complement the duck's sweet, smoky glaze.",
-                "match_level": "Good"
+                "match_level": "Good",
+                "image": COCKTAIL_IMAGE_BASE + "Dark and Stormy.jpg"
             }
         ]
     },
@@ -618,19 +673,22 @@ food_pairings = {
                 "cocktail": "Last Word",
                 "cocktail_id": "last_word",
                 "reason": "Green Chartreuse's herbal complexity creates a versatile cocktail that finds harmony with every cheese on the board.",
-                "match_level": "Perfect"
+                "match_level": "Perfect",
+                "image": COCKTAIL_IMAGE_BASE + "Last Word.jpg"
             },
             {
                 "cocktail": "Tipperary",
                 "cocktail_id": "tipperary",
                 "reason": "Irish whiskey and Chartreuse's herbal depth pair particularly well with aged hard cheeses and pungent blues.",
-                "match_level": "Excellent"
+                "match_level": "Excellent",
+                "image": COCKTAIL_IMAGE_BASE + "tipperary.jpg"
             },
             {
                 "cocktail": "Negroni",
                 "cocktail_id": "negroni",
                 "reason": "The bitter-sweet-herbal structure of a Negroni is a classic aperitivo pairing for cheese — bitterness cuts through fat and salt.",
-                "match_level": "Excellent"
+                "match_level": "Excellent",
+                "image": COCKTAIL_IMAGE_BASE + "Negroni.jpg"
             }
         ]
     },
@@ -645,19 +703,22 @@ food_pairings = {
                 "cocktail": "Pisco Sour",
                 "cocktail_id": "pisco_sour",
                 "reason": "The national cocktail of Peru meets the national dish — citrus, pisco, and bitters mirror ceviche's acidity and complexity perfectly.",
-                "match_level": "Perfect"
+                "match_level": "Perfect",
+                "image": COCKTAIL_IMAGE_BASE + "pisco_sour.jpg"
             },
             {
                 "cocktail": "Paloma",
                 "cocktail_id": "paloma",
                 "reason": "Grapefruit's sharp citrus amplifies the leche de tigre and cuts through the raw fish with refreshing acidity.",
-                "match_level": "Excellent"
+                "match_level": "Excellent",
+                "image": COCKTAIL_IMAGE_BASE + "Paloma.jpg"
             },
             {
                 "cocktail": "Daiquiri",
                 "cocktail_id": "daiquiri",
                 "reason": "The lime and rum combination echoes ceviche's citrus cure while the sweetness balances the chilli heat.",
-                "match_level": "Excellent"
+                "match_level": "Excellent",
+                "image": COCKTAIL_IMAGE_BASE + "daiquiri.jpg"
             }
         ]
     },
@@ -672,19 +733,22 @@ food_pairings = {
                 "cocktail": "Elderflower Collins",
                 "cocktail_id": "elderflower_collins",
                 "reason": "Elderflower's delicate floral sweetness complements the salmon's richness, while lemon and soda cleanse the oiliness.",
-                "match_level": "Perfect"
+                "match_level": "Perfect",
+                "image": COCKTAIL_IMAGE_BASE + "elderflower_collins.jpg"
             },
             {
                 "cocktail": "Cucumber Gin Fizz",
                 "cocktail_id": "cucumber_gin_fizz",
                 "reason": "Cool cucumber and gin botanicals provide a fresh, clean contrast to the smoky, fatty salmon.",
-                "match_level": "Excellent"
+                "match_level": "Excellent",
+                "image": COCKTAIL_IMAGE_BASE + "Cucumber Gin Fizz.jpg"
             },
             {
                 "cocktail": "Gimlet",
                 "cocktail_id": "gimlet",
                 "reason": "Sharp lime and clean gin cut through the rich omega oils and complement the charred grill flavour.",
-                "match_level": "Good"
+                "match_level": "Good",
+                "image": COCKTAIL_IMAGE_BASE + "Gimlet.jpg"
             }
         ]
     },
@@ -699,19 +763,22 @@ food_pairings = {
                 "cocktail": "Toronto",
                 "cocktail_id": "toronto",
                 "reason": "Fernet-Branca's herbal and earthy bitterness directly complements the porcini's deep forest-floor umami.",
-                "match_level": "Perfect"
+                "match_level": "Perfect",
+                "image": COCKTAIL_IMAGE_BASE + "Toronto.jpg"
             },
             {
                 "cocktail": "Negroni",
                 "cocktail_id": "negroni",
                 "reason": "The Negroni's bitter botanical structure cuts through the creamy risotto while sweet vermouth echoes the mushroom's earthiness.",
-                "match_level": "Excellent"
+                "match_level": "Excellent",
+                "image": COCKTAIL_IMAGE_BASE + "Negroni.jpg"
             },
             {
                 "cocktail": "Manhattan",
                 "cocktail_id": "manhattan",
                 "reason": "Rye whisky's spice and the herbal vermouth create an earthy, warming complement to the mushroom's deep umami.",
-                "match_level": "Good"
+                "match_level": "Good",
+                "image": COCKTAIL_IMAGE_BASE + "Manhattan.jpg"
             }
         ]
     },
@@ -726,19 +793,22 @@ food_pairings = {
                 "cocktail": "Margarita",
                 "cocktail_id": "margarita",
                 "reason": "The definitive Mexican pairing — tequila's agave spirit mirrors the al pastor marinade, and the salted rim echoes the taco's seasoning.",
-                "match_level": "Perfect"
+                "match_level": "Perfect",
+                "image": COCKTAIL_IMAGE_BASE + "margarita.jpg"
             },
             {
                 "cocktail": "Paloma",
                 "cocktail_id": "paloma",
                 "reason": "Grapefruit's tartness cuts the pork's richness and fat while complementing the pineapple's tropical sweetness.",
-                "match_level": "Excellent"
+                "match_level": "Excellent",
+                "image": COCKTAIL_IMAGE_BASE + "Paloma.jpg"
             },
             {
                 "cocktail": "Spicy Margarita",
                 "cocktail_id": "spicy_margarita",
                 "reason": "Jalapeño heat doubles down on the al pastor's chilli spice — for those who love turning up the heat.",
-                "match_level": "Excellent"
+                "match_level": "Excellent",
+                "image": COCKTAIL_IMAGE_BASE + "spicy_margarita.jpg"
             }
         ]
     },
@@ -753,24 +823,26 @@ food_pairings = {
                 "cocktail": "Pina Colada",
                 "cocktail_id": "pina_colada",
                 "reason": "Coconut and pineapple echo the dish's coconut cream and tropical mango, creating a seamless tropical experience.",
-                "match_level": "Perfect"
+                "match_level": "Perfect",
+                "image": COCKTAIL_IMAGE_BASE + "pina_colada.jpg"
             },
             {
                 "cocktail": "Mango Margarita",
                 "cocktail_id": "mango_margarita",
                 "reason": "Fresh mango doubled in cocktail form — the tequila's agave sweetness and lime cut the coconut richness.",
-                "match_level": "Excellent"
+                "match_level": "Excellent",
+                "image": COCKTAIL_IMAGE_BASE + "mango_margarita.jpg"
             },
             {
                 "cocktail": "Mai Tai",
                 "cocktail_id": "mai_tai",
                 "reason": "The Tiki classic's tropical rum and orgeat create a synergy with the coconut sticky rice's sweet, exotic profile.",
-                "match_level": "Excellent"
+                "match_level": "Excellent",
+                "image": COCKTAIL_IMAGE_BASE + "mai_tai.jpg"
             }
         ]
     }
 }
-
 
 # ─────────────────────────────────────────
 #  Cocktail Videos (38 videos)
